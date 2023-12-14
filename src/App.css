@@ -254,3 +254,9 @@ input[type="number"] {
   display: none;
   background-color: white;
 }
+
+.source__text-link {
+  position: absolute;
+  bottom: 0;
+  max-width: 100vw;
+}

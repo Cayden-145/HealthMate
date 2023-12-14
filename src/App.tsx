@@ -448,6 +448,16 @@ const App = () => {
                   </a>
               </div>
           </div>
+
+          <div className={"source"}>
+              <a
+              href={"https://github.com/Cayden-145/bmi-calculator"}
+              className="source__text-link"
+              target="_blank"
+              rel="noreferrer">
+                  View the source code on github
+              </a>
+          </div>
       </div>
   );
 }
