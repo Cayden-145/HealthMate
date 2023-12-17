@@ -6,8 +6,8 @@ Updates:
 - Added proper routing
 - 5 revamped pages:
   - Home
-  - Height Converter
-  - Weight Converter
+  - Height Converter (not functional yet)
+  - Weight Converter (not functional yet)
   - BMI Calculator
 
 Added Components
