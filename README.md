@@ -21,3 +21,6 @@ Added 404 page
 Extra Functionality to BMI Calculator
 - Convert between Imperial to Metric
 - Improved UI/UX design
+
+Re-brand:
+- HealthMate
