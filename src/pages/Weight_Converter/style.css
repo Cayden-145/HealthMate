@@ -1,0 +1,37 @@
+.main {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    font-family: 'Noto Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    color: #3a3a3a;
+    background-color: white;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: white;
+        color: #3a3a3a;
+    }
+}
+
+.main__footer {
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.main__link-container {
+    display: inline;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.main__link-a {
+    color: #3a3a3a;
+    padding-left: 2vw;
+}

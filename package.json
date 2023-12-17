@@ -1,7 +1,6 @@
 {
   "name": "bmi-calc",
   "version": "0.1.0",
-  "homepage": "https://cayden-145.github.io/bmi-calculator/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -14,6 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
+    "react-router-dom": "^6.21.0",
     "react-scripts": "5.0.1",
     "react-toggle": "^4.1.3",
     "typescript": "^4.9.5",

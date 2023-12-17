@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans:wght@300&family=Playpen+Sans:wght@300&display=swap');
 
-.app {
-
-  --header-color: #a2e8a2;
+:root {
+  --header-color: #db7207;
   --information-text-color: rgba(162, 232, 162, 0.4);
   --button-background: #d4a7fc;
   --submit-button-hover: #8f63b6;
@@ -11,6 +10,9 @@
   --weight-text-link: #0050be;
   --weight-text-link-hover: #137bfd;
   --error: #fd4646;
+}
+
+.app {
 
   font-family: 'Noto Sans', sans-serif;
   display: flex;
@@ -32,17 +34,6 @@
   .information {
     height: 200px;
   }
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--header-color);
-
-  height: 180px;
-  width: 100vw;
-  margin-bottom: 50px;
 }
 
 .errors {
@@ -223,6 +214,7 @@
   height: 130px;
   background-color: var(--information-text-color);
   border-radius: 20px;
+  margin-bottom: 70px;
 }
 
 .weight__text {
@@ -255,8 +247,73 @@ input[type="number"] {
   background-color: white;
 }
 
-.source__text-link {
-  position: absolute;
-  bottom: 0;
-  max-width: 100vw;
+.source {
+  display: none;
+}
+
+.header__link-container {
+  display: inline;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.header__link-a {
+  color: #3a3a3a;
+  padding-left: 2vw;
+}
+
+@media screen and (max-width: 1000px) {
+  .header__link-a {
+    color: #3a3a3a;
+    padding-left: 10vw;
+  }
+}
+
+/* Phones */
+
+@media only screen and (max-width: 767px) {
+  .source__img-link {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header__image {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .header__title {
+    margin-inline: 20px;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .fields, .metric-fields {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .fields__input {
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 65px;
+    height: 40px;
+  }
+
+  .toggle__checkbox {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .toggle__text {
+    margin-top: 20px;
+    margin-bottom: 38px;
+  }
 }

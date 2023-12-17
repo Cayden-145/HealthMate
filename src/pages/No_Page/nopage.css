@@ -1,0 +1,65 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    display: flex;
+    align-content: center;
+    --return-hover: #0050be;
+    --return-background: #137bfd;
+}
+
+.noPage__header {
+    display: flex;
+    margin-top: 10vh;
+    margin-left: 10%;
+}
+
+.noPage__header-image {
+    width: 180px;
+    height: 180px;
+}
+
+.noPage__header-title {
+    margin-left: 30%;
+    font-weight: bold;
+    font-size: 80px;
+}
+
+.noPage__paragraph {
+    display: flex;
+    margin-top: 10vh;
+    margin-left: 50px;
+}
+
+.noPage__button {
+    background-color: var(--return-background);
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 50px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+.noPage__button:hover {
+    background-color: var(--return-background);
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+
+.noPage__button:active {
+    transition: 0.3s;
+    transform: scale(0.9);
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .noPage__button {
+        margin-left: 0;
+    }
+}
