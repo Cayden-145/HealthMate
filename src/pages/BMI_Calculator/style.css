@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans:wght@300&family=Playpen+Sans:wght@300&display=swap');
 
 :root {
-  --header-color: #db7207;
+  --header-color: rgb(162, 232, 162);
   --information-text-color: rgba(162, 232, 162, 0.4);
   --button-background: #d4a7fc;
   --submit-button-hover: #8f63b6;
@@ -65,6 +65,14 @@
 .toggle__text {
   display: flex;
   margin-left: 10px;
+  border: none;
+  background: none;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 20px;
+}
+
+.toggle__text:hover {
+  text-decoration: underline;
 }
 
 .toggle__checkbox {

@@ -1,9 +1,159 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './style.css'
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
+import Toggle from "react-toggle";
 
 const HeightConverter = () => {
+    const [feet, setFeet] = useState<number>(-1);
+    const [inches, setInches] = useState<number>(-1);
+    const [metres, setMetres] = useState<number>(-1);
+
+    const [imperialToMetric, setImperialToMetric] = useState<boolean>(true);
+    const [metricToImperial, setMetricToImperial] = useState<boolean>(false);
+
+    const [feetError, setFeetError] = useState<boolean>(false);
+    const [inchesError, setInchesError] = useState<boolean>(false);
+    const [metresError, setMetresError] = useState<boolean>(false);
+
+    const [metresResults, setMetresResults] = useState<number | string>('Unknown');
+    const [feetResults, setFeetResults] = useState<number | string>('Unknown');
+    const [inchesResults, setInchesResults] = useState<number | string>('Unknown');
+
+    const [imperialResultsVisible, setImperialResultsVisible] = useState<boolean>(false);
+    const [metricResultsVisible, setMetricResultsVisible] = useState<boolean>(false);
+
+    const handleImperialToggle = () => {
+        setImperialToMetric(!imperialToMetric);
+
+        if (metricToImperial) {
+            setMetricToImperial(false);
+        }
+    };
+
+    const handleMetricToggle = () => {
+        setMetricToImperial(!metricToImperial)
+
+        if (imperialToMetric) {
+            setImperialToMetric(false);
+        }
+    };
+
+    const feetInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const inputValue: string = event.target.value.trim();
+        const parsedValue: number = inputValue === '' || isNaN(parseFloat(inputValue)) ? -1 : parseFloat(inputValue);
+        setFeet(parsedValue >= 0 && parsedValue <= 11 ? parsedValue : -1);
+    };
+
+    const inchesInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const inputValue: string = event.target.value.trim();
+        const parsedValue: number = inputValue === '' || isNaN(parseFloat(inputValue)) ? -1 : parseFloat(inputValue);
+        setInches(parsedValue >= 0 && parsedValue <= 11 ? parsedValue : -1);
+    };
+
+    const metresInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const inputValue: string = event.target.value.trim();
+
+        const sanitizedInput: string = inputValue.replace(/[^0-9.]+/g, '');
+
+        const isValidInput: boolean = sanitizedInput.split('.').length <= 2;
+
+        if (isValidInput) {
+            const parsedValue: number = sanitizedInput === '' ? -1 : parseFloat(sanitizedInput);
+            setMetres(parsedValue > 0 && parsedValue <= 10 ? parsedValue : -1);
+        }
+    };
+
+    const calculate = () => {
+        setFeetError(false);
+        setInchesError(false);
+        setMetresError(false);
+
+        if (imperialToMetric) {
+            if (feet <= -1 || inches <= -1) {
+                if (feet <= -1) {
+                    setFeetError(true);
+                } else {
+                    setFeetError(false);
+                }
+
+                if (inches <= -1) {
+                    setInchesError(true);
+                } else {
+                    setInchesError(false);
+                }
+
+                return;
+            }
+        }
+
+        if (metricToImperial) {
+            if (metres <= -1) {
+                if (metres <= -1) {
+                    setMetresError(true);
+                } else {
+                    setMetresError(false);
+                }
+
+                return;
+            }
+        }
+
+        if (imperialToMetric) {
+            const feetToMetres: number = 0.3048
+            const inchesToMetres: number = 0.0254
+
+            const metresFromFeet: number = feet * feetToMetres
+            const metresFromInches: number = inches * inchesToMetres
+
+            const totalMetres = metresFromFeet + metresFromInches
+
+            setMetresResults(totalMetres.toFixed(2));
+
+            setMetricResultsVisible(true);
+        }
+
+        if (metricToImperial) {
+            const metresToFeet: number = 3.281;
+            const metresToInches: number = 39.37;
+
+            const feetFromMetres: number = metres * metresToFeet;
+            const totalInches: number = metres * metresToInches;
+
+            const remainingFeet: number = Math.floor(feetFromMetres);
+            const inchesFromMetres: number = totalInches % 12;
+
+            const roundedInches: number = inchesFromMetres % 1 > 0.5 ? Math.ceil(inchesFromMetres) : inchesFromMetres;
+
+            const feetResult = isNaN(remainingFeet) || remainingFeet < 0 ? 'Unknown' : remainingFeet;
+            const inchesResult = isNaN(roundedInches) || roundedInches < 0
+                ? 'Unknown'
+                : roundedInches % 1 === 0
+                    ? roundedInches.toFixed(0)
+                    : roundedInches.toFixed(2);
+
+            setFeetResults(feetResult);
+            setInchesResults(inchesResult);
+
+            setImperialResultsVisible(true);
+        }
+    };
+
+    const reset = () => {
+        setFeet(-1);
+        setInches(-1);
+        setMetres(-1);
+        setMetresResults('Unknown');
+        setFeetResults('Unknown');
+        setInchesResults('Unknown');
+
+        setFeetError(false);
+        setMetresError(false);
+        setInchesError(false);
+        setMetricResultsVisible(false);
+        setImperialResultsVisible(false);
+    };
+
     return (
         <div className={"main"}>
             <Header imageSRC={"height.png"} headerTITLE={"Height Converter"} altTAG={"logo"}/>
@@ -19,6 +169,144 @@ const HeightConverter = () => {
 
                 <a href={"/weight-converter"} className={"main__link-a"}>
                     Weight Converter
+                </a>
+            </div>
+
+            <div className={"errors"}>
+                <p>
+                    {feetError ? "* You must enter a valid amount of feet." : ""}
+                </p>
+
+                <p>
+                    {inchesError ? "* You must enter a valid amount of inches." : ""}
+                </p>
+
+                <p>
+                    {metresError ? "* You must enter a valid amount of metres." : ""}
+                </p>
+            </div>
+
+            <div className={"toggle"}>
+                <Toggle
+                    type={"checkbox"}
+                    checked={imperialToMetric}
+                    onChange={handleImperialToggle}
+                    className={"toggle__checkbox"}
+                />
+
+                <button
+                    className={"toggle__text"}
+                    onClick={handleImperialToggle}>
+                        <span style={{fontWeight: imperialToMetric ? 'bold' : 'normal'}}>
+                          Imperial
+                        </span>
+                </button>
+
+                <Toggle
+                    type={"checkbox"}
+                    checked={metricToImperial}
+                    onChange={handleMetricToggle}
+                    className={"toggle__checkbox"}
+                />
+
+                <button
+                    className={"toggle__text"}
+                    onClick={handleMetricToggle}>
+                        <span style={{fontWeight: metricToImperial ? 'bold' : 'normal'}}>
+                          Metric
+                        </span>
+                </button>
+            </div>
+
+            <div className={`${imperialToMetric ? 'fields' : 'hidden'}`}>
+                <p className={"fields__text"}>
+                    Height:
+                </p>
+
+                <input
+                    type={"numeric"}
+                    value={feet === -1 ? '' : feet}
+                    onChange={feetInputChange}
+                    className={"fields__input"}
+                />
+
+                <p className={"fields__text"}>
+                    ft
+                </p>
+
+                <input
+                    type={"numeric"}
+                    value={inches === -1 ? '' : inches}
+                    onChange={inchesInputChange}
+                    className={"fields__input"}
+                />
+
+                <p className={"fields__text"}>
+                    inch
+                </p>
+            </div>
+
+            <div className={`${metricToImperial ? 'fields' : 'hidden'}`}>
+                <p className={"fields__text"}>
+                    Height:
+                </p>
+
+                <input
+                    type={"number"}
+                    value={metres === -1 ? '' : metres}
+                    onChange={metresInputChange}
+                    className={"fields__input"}
+                />
+
+                <p className={"fields__text"}>
+                    metres
+                </p>
+            </div>
+
+            <div className={"buttons"}>
+                <button
+                    className={"buttons__submit"}
+                    type={"submit"}
+                    onClick={calculate}
+                >
+                    Calculate
+                </button>
+
+                <button
+                    className={"buttons__reset"}
+                    onClick={reset}
+                >
+                    Reset
+                </button>
+            </div>
+
+            <div className={`${imperialResultsVisible ? 'results' : 'hidden'}`}>
+                <p className={"results__text"}>
+                    Your height is: <br/>
+                </p>
+
+                <p className={"results__text-two"}>
+                    {feetResults > 0 ? `${feetResults} ft` : "Unknown"}
+                </p>
+
+                <p className={"results__text-two"}>
+                    {inchesResults > 0 ? `${inchesResults} in` : "Unknown"}
+                </p>
+            </div>
+
+            <div className={`${metricResultsVisible ? 'results' : 'hidden'}`}>
+                <p className={"results__text"}>
+                    Your height is: <br/>
+                </p>
+
+                <p className={"results__text-two"}>
+                    {metresResults > 0 ? metresResults : "Unknown"} metres
+                </p>
+            </div>
+
+            <div className={`${metricResultsVisible || imperialResultsVisible ? 'results__info' : 'hidden'}`}>
+                <a href={"/bmi-calculator"} className={"results__info-link"}>
+                    Use this to find out your <span className={"results__info-span"}>BMI</span>
                 </a>
             </div>
 

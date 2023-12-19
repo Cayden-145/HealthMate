@@ -259,12 +259,13 @@ const BMICalculator = () => {
                     className={"toggle__checkbox"}
                 />
 
-                <p className={"toggle__text"}>
-                  <span style={{fontWeight: imperialToggle ? 'bold' : 'normal'}}>
-                      Imperial
-                  </span>
-
-                </p>
+                <button
+                    className={"toggle__text"}
+                    onClick={handleImperialToggle}>
+                        <span style={{fontWeight: imperialToggle ? 'bold' : 'normal'}}>
+                          Imperial
+                        </span>
+                </button>
 
                 <Toggle
                     type={"checkbox"}
@@ -273,11 +274,13 @@ const BMICalculator = () => {
                     className={"toggle__checkbox"}
                 />
 
-                <p className={"toggle__text"}>
-                  <span style={{fontWeight: metricToggle ? 'bold' : 'normal'}}>
-                      Metric
-                  </span>
-                </p>
+                <button
+                    className={"toggle__text"}
+                    onClick={handleMetricToggle}>
+                        <span style={{fontWeight: metricToggle ? 'bold' : 'normal'}}>
+                          Metric
+                        </span>
+                </button>
             </div>
 
             <div className={`${imperialToggle ? 'fields' : 'hidden'}`}>
@@ -449,19 +452,6 @@ const BMICalculator = () => {
                         {range !== "" ? "See why this matters" : ""}
                     </a>
                 </div>
-            </div>
-
-            <div className={"source"}>
-                <a
-                    href={"https://github.com/Cayden-145/bmi-calculator"}
-                    className="source__img-link"
-                    target="_blank"
-                    rel="noreferrer">
-                    <img
-                        src={`${process.env.PUBLIC_URL}/github.png`}
-                        alt="github"
-                    />
-                </a>
             </div>
         </div>
     );
