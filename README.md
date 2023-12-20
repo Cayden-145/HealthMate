@@ -1,4 +1,4 @@
-This simple, easy to use BMI calculator uses maths formula to calculate your BMI for your own knowledge. A BMI calculator can be useful to ensure you are at a healthy weight.
+Introducing HealthMate. Your comprehensive health companion designed to empower you on your wellness journey. Whether you're striving for fitness goals, monitoring your health, or simply making lifestyle changes, HealthMate is here to support you every step of the way.
 
 ___Recent Updates___
 
@@ -39,6 +39,6 @@ Routing V1.3
 
 Note:
 
-- New pages may not function and display as expected on smaller devices. (phones, tablets, other small screens..)
+- New pages may not function and display as expected on smaller devices. (phones, tablets, other small screens.)
 
 
