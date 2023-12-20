@@ -3,11 +3,14 @@ import './style.css'
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
 import Toggle from "react-toggle";
+import {
+    useKilogramsState, usePoundsState, useStoneState
+} from "../../utils";
 
 const WeightConvert = () => {
-    const [kilograms, setKilograms] = useState<number>(-1);
-    const [stone, setStone] = useState<number>(-1);
-    const [pounds, setPounds] = useState<number>(-1);
+    const {stone, setStone} = useStoneState();
+    const {pounds, setPounds} = usePoundsState();
+    const {kilograms, setKilograms} = useKilogramsState();
 
     const [imperialToMetric, setImperialToMetric] = useState<boolean>(true);
     const [metricToImperial, setMetricToImperial] = useState<boolean>(false);
@@ -95,7 +98,7 @@ const WeightConvert = () => {
         }
 
         if (imperialToMetric) {
-            const results = (stone * 6.35029) + (pounds * 0.453592)
+            const results: number = (stone * 6.35029) + (pounds * 0.453592)
 
             setKilogramsResults(results.toFixed(2));
 
@@ -131,7 +134,7 @@ const WeightConvert = () => {
 
     return (
         <div className={"main"}>
-            <Header imageSRC={"height.png"} headerTITLE={"Weight Converter"} altTAG={"logo"}/>
+            <Header imageSRC={"weight.png"} headerTITLE={"Weight Converter"} altTAG={"logo"}/>
 
             <div className={"main__link-container"}>
                 <a href={"/"} className={"main__link-a"}>
@@ -280,7 +283,14 @@ const WeightConvert = () => {
             </div>
 
             <div className={`${metricResultsVisible || imperialResultsVisible ? 'results__info' : 'hidden'}`}>
-                <a href={"/bmi-calculator"} className={"results__info-link"}>
+                <a
+                    href={
+                        metricResultsVisible
+                            ? `/bmi-calculator?kilograms=${kilogramsResults}&type=metric`
+                            : `/bmi-calculator?stone=${stoneResults}&pounds=${poundsResults}&type=imperial`
+                    }
+                    className={"results__info-link"}
+                >
                     Use this to find out your <span className={"results__info-span"}>BMI</span>
                 </a>
             </div>

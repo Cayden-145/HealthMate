@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './style.css';
 import Toggle from "react-toggle";
 import Header from "../../components/Header/header";
-import Footer from "../../components/Footer/footer";
+import {
+    useFeetState, useInchesState, useKilogramsState, useMetresState, usePoundsState, useStoneState
+} from "../../utils";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const BMICalculator = () => {
-    const [height, setHeight] = useState<number>(-1);
-    const [inches, setInches] = useState<number>(-1);
-    const [stone, setStone] = useState<number>(-1);
-    const [pounds, setPounds] = useState<number>(-1);
-    const [kilograms, setKilograms] = useState<number>(-1);
-    const [metres, setMetres] = useState<number>(-1);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const kilogramsLocation = new URLSearchParams(location.search).get('kilograms');
+    const stoneLocation = new URLSearchParams(location.search).get('stone');
+    const poundsLocation = new URLSearchParams(location.search).get('pounds');
+
+    const metresLocation = new URLSearchParams(location.search).get('metres');
+    const feetLocation = new URLSearchParams(location.search).get('feet');
+    const inchesLocation = new URLSearchParams(location.search).get('inches');
+
+    const typeLocation = new URLSearchParams(location.search).get('type');
+
+    const { feet, setFeet } = useFeetState();
+    const { inches, setInches } = useInchesState();
+    const { stone, setStone } = useStoneState();
+    const { pounds, setPounds } = usePoundsState();
+    const { kilograms, setKilograms } = useKilogramsState();
+    const { metres, setMetres } = useMetresState();
 
     const [results, setResults] = useState<number | string>('Unknown');
     const [range, setRange] = useState<string>("")
@@ -27,11 +43,100 @@ const BMICalculator = () => {
     const [imperialToggle, setImperialToggle] = useState<boolean>(true);
     const [metricToggle, setMetricToggle] = useState<boolean>(false);
 
+    useEffect(() => {
+        if (typeLocation === "imperial") {
+            setImperialToggle(true);
+            setMetricToggle(false);
+
+            if (feetLocation !== null) setFeet(parseFloat(feetLocation));
+            if (inchesLocation !== null) setInches(parseFloat(inchesLocation));
+
+            if (stoneLocation !== null) setStone(parseFloat(stoneLocation));
+            if (poundsLocation !== null) setPounds(parseFloat(poundsLocation));
+
+            navigate('/bmi-calculator');
+
+        } else if (typeLocation === "metric") {
+            setMetricToggle(true);
+            setImperialToggle(false);
+
+            if (metresLocation !== null) {
+                const sanitizedInput: string = metresLocation.replace(/[^0-9.]+/g, '');
+
+                const isValidInput: boolean = sanitizedInput.split('.').length <= 2;
+
+                if (isValidInput) {
+                    const parsedValue: number = sanitizedInput === '' ? -1 : parseFloat(sanitizedInput);
+                    setMetres(parsedValue > 0 && parsedValue <= 10 ? parsedValue : -1);
+                }
+            }
+
+            if (kilogramsLocation !== null) setKilograms(parseFloat(kilogramsLocation));
+
+            navigate('/bmi-calculator');
+        }
+    }, [navigate, stoneLocation, poundsLocation, kilogramsLocation, typeLocation, feetLocation, inchesLocation, metresLocation, setStone, setPounds, setImperialToggle, setMetricToggle, setFeet, setInches, setMetres, setKilograms]);
+
+    useEffect(() => {
+        const resetURL = () => {
+            window.history.replaceState({}, '', '/bmi-calculator');
+        };
+
+        resetURL();
+
+        // Add event listener to reset URL when the page is refreshed
+        const handleBeforeUnload = () => {
+            resetURL();
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        // Cleanup the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
     const handleImperialToggle = () => {
         setImperialToggle(!imperialToggle);
 
         if (metricToggle) {
             setMetricToggle(false);
+        }
+
+        if (metres !== -1 || kilograms !== -1) {
+            if (metres !== -1) {
+                const metresToFeet: number = 3.281;
+                const metresToInches: number = 39.37;
+
+                const feetFromMetres: number = metres * metresToFeet;
+                const totalInches: number = metres * metresToInches;
+
+                const remainingFeet: number = Math.floor(feetFromMetres);
+
+                const inchesFromMetres: number = totalInches % 12;
+
+                const roundedInches: number = inchesFromMetres % 1 > 0.5 ? Math.ceil(inchesFromMetres) : inchesFromMetres;
+
+                const feetResult: number = isNaN(remainingFeet) || remainingFeet < 0 ? 0 : remainingFeet;
+                const inchesResult: string = isNaN(roundedInches) || roundedInches < 0
+                    ? 'Unknown'
+                    : roundedInches % 1 === 0
+                        ? roundedInches.toFixed(0)
+                        : roundedInches.toFixed(2);
+
+                setFeet(feetResult);
+                setInches(parseFloat(inchesResult));
+            }
+
+            if (kilograms !== -1) {
+                const stone = Math.floor(kilograms / 6.35029);
+                const remainingPounds = (kilograms % 6.35029) / 0.453592;
+                const pounds = Math.round(remainingPounds);
+
+                setStone(stone);
+                setPounds(pounds);
+            }
         }
     };
 
@@ -41,30 +146,50 @@ const BMICalculator = () => {
         if (imperialToggle) {
             setImperialToggle(false);
         }
+
+        if (feet !== -1 || inches !== -1 || stone !== -1 || pounds !== -1) {
+            if (feet !== -1 && inches !== -1) {
+                const feetToMetres: number = 0.3048
+                const inchesToMetres: number = 0.0254
+
+                const metresFromFeet: number = feet * feetToMetres
+                const metresFromInches: number = inches * inchesToMetres
+
+                const totalMetres: number = metresFromFeet + metresFromInches
+
+                setMetres(parseFloat(totalMetres.toFixed(2)));
+            }
+
+            if (stone !== -1 && pounds !== -1) {
+                const results: number = (stone * 6.35029) + (pounds * 0.453592)
+
+                setKilograms(parseFloat(results.toFixed(2)));
+            }
+        }
     };
 
     const heightInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const inputValue: string = event.target.value.trim();
         const parsedValue: number = inputValue === '' || isNaN(parseFloat(inputValue)) ? -1 : parseFloat(inputValue);
-        setHeight(parsedValue >= 0 && parsedValue <= 11 ? parsedValue : -1);
+        setFeet(parsedValue);
     };
 
     const inchesInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const inputValue: string = event.target.value.trim();
         const parsedValue: number = inputValue === '' || isNaN(parseFloat(inputValue)) ? -1 : parseFloat(inputValue);
-        setInches(parsedValue >= 0 && parsedValue <= 11 ? parsedValue : -1);
+        setInches(parsedValue);
     };
 
     const stoneInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const inputValue: string = event.target.value.trim();
         const parsedValue: number = inputValue === '' || isNaN(parseFloat(inputValue)) ? -1 : parseFloat(inputValue);
-        setStone(parsedValue > 0 && parsedValue <= 30 ? parsedValue : -1);
+        setStone(parsedValue);
     };
 
     const poundsInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const inputValue: string = event.target.value.trim();
         const parsedValue: number = inputValue === '' || isNaN(parseFloat(inputValue)) ? -1 : parseFloat(inputValue);
-        setPounds(parsedValue >= 0 && parsedValue <= 14 ? parsedValue : -1);
+        setPounds(parsedValue);
     };
 
     const metresInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -82,8 +207,15 @@ const BMICalculator = () => {
 
     const kilogramsInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const inputValue: string = event.target.value.trim();
-        const parsedValue: number = inputValue === '' || isNaN(parseFloat(inputValue)) ? -1 : parseFloat(inputValue);
-        setKilograms(parsedValue > 0 && parsedValue <= 150 ? parsedValue : -1);
+
+        const sanitizedInput: string = inputValue.replace(/[^0-9.]+/g, '');
+
+        const isValidInput: boolean = sanitizedInput.split('.').length <= 2;
+
+        if (isValidInput) {
+            const parsedValue: number = sanitizedInput === '' ? -1 : parseFloat(sanitizedInput);
+            setKilograms(parsedValue > 0 && parsedValue <= 150 ? parsedValue : -1);
+        }
     };
 
     const calculate = () => {
@@ -95,8 +227,8 @@ const BMICalculator = () => {
         setMetresError(false);
 
         if (imperialToggle) {
-            if (height <= -1 || inches <= -1 || stone <= -1 || pounds <= -1) {
-                if (height <= -1) {
+            if (feet <= -1 || inches <= -1 || stone <= -1 || pounds <= -1) {
+                if (feet <= -1) {
                     setHeightError(true);
                 } else {
                     setHeightError(false);
@@ -120,8 +252,6 @@ const BMICalculator = () => {
                     setPoundsError(false);
                 }
 
-                // alert("All values must be above 0.")
-
                 return;
             }
         }
@@ -140,14 +270,12 @@ const BMICalculator = () => {
                     setKilogramsError(false);
                 }
 
-                // alert("All values must be above 0.")
-
                 return;
             }
         }
 
         if (imperialToggle) {
-            let height_in_inches: number = (height * 12) + inches;
+            let height_in_inches: number = (feet * 12) + inches;
             let weight_in_pounds: number = (stone * 14) + pounds;
             let squared_height: number = height_in_inches ** 2;
 
@@ -188,7 +316,7 @@ const BMICalculator = () => {
     }
 
     const reset = () => {
-        setHeight(-1);
+        setFeet(-1);
         setInches(-1);
         setStone(-1);
         setPounds(-1);
@@ -205,6 +333,7 @@ const BMICalculator = () => {
         setPoundsError(false);
         setKilogramsError(false);
         setMetresError(false);
+        navigate('/bmi-calculator');
     }
 
     return (
@@ -292,7 +421,7 @@ const BMICalculator = () => {
                 <input
                     type={"numeric"}
                     id={"heightInput"}
-                    value={height === -1 ? '' : height}
+                    value={feet === -1 ? '' : feet}
                     onChange={heightInputChange}
                     className={"fields__input"}
                 />
@@ -346,7 +475,6 @@ const BMICalculator = () => {
             </div>
 
             <div className={`${metricToggle ? 'metric-fields' : 'hidden'}`}>
-
                 <p className={"fields__text"}>
                     Height:
                 </p>
@@ -370,7 +498,7 @@ const BMICalculator = () => {
                 </p>
 
                 <input
-                    type={"numeric"}
+                    type={"number"}
                     id={"heightInput"}
                     value={kilograms === -1 ? '' : kilograms}
                     onChange={kilogramsInputChange}

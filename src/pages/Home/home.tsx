@@ -2,8 +2,6 @@ import React from 'react';
 import Header from "../../components/Header/header";
 import './home.css';
 import Footer from "../../components/Footer/footer";
-import WeightConvert from "../Weight_Converter/weightConvert";
-import {Route} from "react-router-dom";
 
 const Home = () => {
     return (

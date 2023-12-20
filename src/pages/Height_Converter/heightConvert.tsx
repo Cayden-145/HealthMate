@@ -3,11 +3,14 @@ import './style.css'
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
 import Toggle from "react-toggle";
+import {
+    useFeetState, useInchesState, useMetresState
+} from "../../utils";
 
 const HeightConverter = () => {
-    const [feet, setFeet] = useState<number>(-1);
-    const [inches, setInches] = useState<number>(-1);
-    const [metres, setMetres] = useState<number>(-1);
+    const { feet, setFeet } = useFeetState();
+    const { inches, setInches } = useInchesState();
+    const { metres, setMetres } = useMetresState();
 
     const [imperialToMetric, setImperialToMetric] = useState<boolean>(true);
     const [metricToImperial, setMetricToImperial] = useState<boolean>(false);
@@ -68,6 +71,8 @@ const HeightConverter = () => {
         setFeetError(false);
         setInchesError(false);
         setMetresError(false);
+        setMetricResultsVisible(false);
+        setImperialResultsVisible(false);
 
         if (imperialToMetric) {
             if (feet <= -1 || inches <= -1) {
@@ -106,7 +111,7 @@ const HeightConverter = () => {
             const metresFromFeet: number = feet * feetToMetres
             const metresFromInches: number = inches * inchesToMetres
 
-            const totalMetres = metresFromFeet + metresFromInches
+            const totalMetres: number = metresFromFeet + metresFromInches
 
             setMetresResults(totalMetres.toFixed(2));
 
@@ -121,12 +126,13 @@ const HeightConverter = () => {
             const totalInches: number = metres * metresToInches;
 
             const remainingFeet: number = Math.floor(feetFromMetres);
+
             const inchesFromMetres: number = totalInches % 12;
 
             const roundedInches: number = inchesFromMetres % 1 > 0.5 ? Math.ceil(inchesFromMetres) : inchesFromMetres;
 
-            const feetResult = isNaN(remainingFeet) || remainingFeet < 0 ? 'Unknown' : remainingFeet;
-            const inchesResult = isNaN(roundedInches) || roundedInches < 0
+            const feetResult: number | string = isNaN(remainingFeet) || remainingFeet < 0 ? 'Unknown' : remainingFeet;
+            const inchesResult: string = isNaN(roundedInches) || roundedInches < 0
                 ? 'Unknown'
                 : roundedInches % 1 === 0
                     ? roundedInches.toFixed(0)
@@ -305,7 +311,14 @@ const HeightConverter = () => {
             </div>
 
             <div className={`${metricResultsVisible || imperialResultsVisible ? 'results__info' : 'hidden'}`}>
-                <a href={"/bmi-calculator"} className={"results__info-link"}>
+                <a
+                    href={
+                        metricResultsVisible
+                            ? `/bmi-calculator?metres=${metresResults}&type=metric`
+                            : `/bmi-calculator?feet=${feetResults}&inches=${inchesResults}&type=imperial`
+                    }
+                    className={"results__info-link"}
+                >
                     Use this to find out your <span className={"results__info-span"}>BMI</span>
                 </a>
             </div>
