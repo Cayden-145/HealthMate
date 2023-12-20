@@ -6,6 +6,10 @@ import {
     useFeetState, useInchesState, useKilogramsState, useMetresState, usePoundsState, useStoneState
 } from "../../utils";
 import { useLocation, useNavigate } from 'react-router-dom';
+import * as GiIcons from 'react-icons/gi'
+import * as IoIcons from 'react-icons/io5'
+import * as FaIcons6 from 'react-icons/fa6'
+import Footer from "../../components/Footer/footer";
 
 const BMICalculator = () => {
     const location = useLocation();
@@ -337,209 +341,213 @@ const BMICalculator = () => {
     }
 
     return (
-        <div className={"app"}>
-            <Header imageSRC={"logo_bmi.png"} altTAG={"bmi"} headerTITLE={"BMI Calculator"}/>
+        <>
+            <div className={"app"}>
+                <Header altTAG={"bmi"} headerTITLE={"BMI Calculator"}/>
 
-            <div className={"header__link-container"}>
-                <a href={"/"} className={"header__link-a"}>
-                    Home
-                </a>
+                <div className={"header__link-container"}>
+                    <a href={"/"} className={"header__link-a"}>
+                        <IoIcons.IoHome className={"header__link-img"}/>
+                        Home
+                    </a>
 
-                <a href={"/height-converter"} className={"header__link-a"}>
-                    Height Converter
-                </a>
+                    <a href={"/height-converter"} className={"header__link-a"}>
+                        <GiIcons.GiBodyHeight className={"header__link-img"}/>
+                        Height Converter
+                    </a>
 
-                <a href={"/weight-converter"} className={"header__link-a"}>
-                    Weight Converter
-                </a>
-            </div>
+                    <a href={"/weight-converter"} className={"header__link-a"}>
+                        <FaIcons6.FaWeightScale className={"header__link-img"}/>
+                        Weight Converter
+                    </a>
+                </div>
 
-            <div className={"errors"}>
-                <p>
-                    {heightError ? "* You must enter a valid amount of feet." : ""}
-                </p>
+                <div className={"errors"}>
+                    <p>
+                        {heightError ? "* You must enter a valid amount of feet." : ""}
+                    </p>
 
-                <p>
-                    {inchesError ? "* You must enter a valid amount of inches." : ""}
-                </p>
+                    <p>
+                        {inchesError ? "* You must enter a valid amount of inches." : ""}
+                    </p>
 
-                <p>
-                    {stoneError ? "* You must enter a valid amount of stones." : ""}
-                </p>
+                    <p>
+                        {stoneError ? "* You must enter a valid amount of stones." : ""}
+                    </p>
 
-                <p>
-                    {poundsError ? "* You must enter a valid amount of pounds." : ""}
-                </p>
+                    <p>
+                        {poundsError ? "* You must enter a valid amount of pounds." : ""}
+                    </p>
 
-                <p>
-                    {kilogramsError ? "* You must enter a valid amount of kilograms." : ""}
-                </p>
+                    <p>
+                        {kilogramsError ? "* You must enter a valid amount of kilograms." : ""}
+                    </p>
 
-                <p>
-                    {metresError ? "* You must enter a valid amount of metres." : ""}
-                </p>
-            </div>
+                    <p>
+                        {metresError ? "* You must enter a valid amount of metres." : ""}
+                    </p>
+                </div>
 
-            <div className={"toggle"}>
-                <Toggle
-                    type={"checkbox"}
-                    checked={imperialToggle}
-                    onChange={handleImperialToggle}
-                    className={"toggle__checkbox"}
-                />
+                <div className={"toggle"}>
+                    <Toggle
+                        type={"checkbox"}
+                        checked={imperialToggle}
+                        onChange={handleImperialToggle}
+                        className={"toggle__checkbox"}
+                    />
 
-                <button
-                    className={"toggle__text"}
-                    onClick={handleImperialToggle}>
+                    <button
+                        className={"toggle__text"}
+                        onClick={handleImperialToggle}>
                         <span style={{fontWeight: imperialToggle ? 'bold' : 'normal'}}>
                           Imperial
                         </span>
-                </button>
+                    </button>
 
-                <Toggle
-                    type={"checkbox"}
-                    checked={metricToggle}
-                    onChange={handleMetricToggle}
-                    className={"toggle__checkbox"}
-                />
+                    <Toggle
+                        type={"checkbox"}
+                        checked={metricToggle}
+                        onChange={handleMetricToggle}
+                        className={"toggle__checkbox"}
+                    />
 
-                <button
-                    className={"toggle__text"}
-                    onClick={handleMetricToggle}>
+                    <button
+                        className={"toggle__text"}
+                        onClick={handleMetricToggle}>
                         <span style={{fontWeight: metricToggle ? 'bold' : 'normal'}}>
                           Metric
                         </span>
-                </button>
-            </div>
+                    </button>
+                </div>
 
-            <div className={`${imperialToggle ? 'fields' : 'hidden'}`}>
+                <div className={`${imperialToggle ? 'fields' : 'hidden'}`}>
 
-                <p className={"fields__text"}>
-                    Height:
-                </p>
+                    <p className={"fields__text"}>
+                        Height:
+                    </p>
 
-                <input
-                    type={"numeric"}
-                    id={"heightInput"}
-                    value={feet === -1 ? '' : feet}
-                    onChange={heightInputChange}
-                    className={"fields__input"}
-                />
+                    <input
+                        type={"numeric"}
+                        id={"heightInput"}
+                        value={feet === -1 ? '' : feet}
+                        onChange={heightInputChange}
+                        className={"fields__input"}
+                    />
 
-                <p className={"fields__text"}>
-                    ft
-                </p>
+                    <p className={"fields__text"}>
+                        ft
+                    </p>
 
-                <input
-                    type={"numeric"}
-                    id={"inchesInput"}
-                    value={inches === -1 ? '' : inches}
-                    onChange={inchesInputChange}
-                    className={"fields__input"}
-                />
+                    <input
+                        type={"numeric"}
+                        id={"inchesInput"}
+                        value={inches === -1 ? '' : inches}
+                        onChange={inchesInputChange}
+                        className={"fields__input"}
+                    />
 
-                <p className={"fields__text"}>
-                    inch
-                </p>
-            </div>
+                    <p className={"fields__text"}>
+                        inch
+                    </p>
+                </div>
 
-            <div className={`${imperialToggle ? 'fields' : 'hidden'}`}>
-                <p className={"fields__text-weight"}>
-                    Weight:
-                </p>
+                <div className={`${imperialToggle ? 'fields' : 'hidden'}`}>
+                    <p className={"fields__text-weight"}>
+                        Weight:
+                    </p>
 
-                <input
-                    type={"numeric"}
-                    id={"heightInput"}
-                    value={stone === -1 ? '' : stone}
-                    onChange={stoneInputChange}
-                    className={"fields__input"}
-                />
+                    <input
+                        type={"numeric"}
+                        id={"heightInput"}
+                        value={stone === -1 ? '' : stone}
+                        onChange={stoneInputChange}
+                        className={"fields__input"}
+                    />
 
-                <p className={"fields__text"}>
-                    st
-                </p>
+                    <p className={"fields__text"}>
+                        st
+                    </p>
 
-                <input
-                    type={"numeric"}
-                    id={"inchesInput"}
-                    value={pounds === -1 ? '' : pounds}
-                    onChange={poundsInputChange}
-                    className={"fields__input"}
-                />
+                    <input
+                        type={"numeric"}
+                        id={"inchesInput"}
+                        value={pounds === -1 ? '' : pounds}
+                        onChange={poundsInputChange}
+                        className={"fields__input"}
+                    />
 
-                <p className={"fields__text"}>
-                    lbs
-                </p>
+                    <p className={"fields__text"}>
+                        lbs
+                    </p>
 
-            </div>
+                </div>
 
-            <div className={`${metricToggle ? 'metric-fields' : 'hidden'}`}>
-                <p className={"fields__text"}>
-                    Height:
-                </p>
+                <div className={`${metricToggle ? 'metric-fields' : 'hidden'}`}>
+                    <p className={"fields__text"}>
+                        Height:
+                    </p>
 
-                <input
-                    type={"number"}
-                    id={"heightInput"}
-                    value={metres === -1 ? '' : metres}
-                    onChange={metresInputChange}
-                    className={"fields__input"}
-                />
+                    <input
+                        type={"number"}
+                        id={"heightInput"}
+                        value={metres === -1 ? '' : metres}
+                        onChange={metresInputChange}
+                        className={"fields__input"}
+                    />
 
-                <p className={"fields__text"}>
-                    metres
-                </p>
-            </div>
+                    <p className={"fields__text"}>
+                        metres
+                    </p>
+                </div>
 
-            <div className={`${metricToggle ? 'metric-fields' : 'hidden'}`}>
-                <p className={"metric-fields__text-weight"}>
-                    Weight:
-                </p>
+                <div className={`${metricToggle ? 'metric-fields' : 'hidden'}`}>
+                    <p className={"metric-fields__text-weight"}>
+                        Weight:
+                    </p>
 
-                <input
-                    type={"number"}
-                    id={"heightInput"}
-                    value={kilograms === -1 ? '' : kilograms}
-                    onChange={kilogramsInputChange}
-                    className={"fields__input"}
-                />
+                    <input
+                        type={"number"}
+                        id={"heightInput"}
+                        value={kilograms === -1 ? '' : kilograms}
+                        onChange={kilogramsInputChange}
+                        className={"fields__input"}
+                    />
 
-                <p className={"fields__text"}>
-                    kilograms
-                </p>
+                    <p className={"fields__text"}>
+                        kilograms
+                    </p>
 
-            </div>
+                </div>
 
-            <div className={"buttons"}>
-                <button
-                    className={"buttons__submit"}
-                    type={"submit"}
-                    onClick={calculate}
-                >
-                    Calculate
-                </button>
+                <div className={"buttons"}>
+                    <button
+                        className={"buttons__submit"}
+                        type={"submit"}
+                        onClick={calculate}
+                    >
+                        Calculate
+                    </button>
 
-                <button
-                    className={"buttons__reset"}
-                    onClick={reset}
-                >
-                    Reset
-                </button>
-            </div>
+                    <button
+                        className={"buttons__reset"}
+                        onClick={reset}
+                    >
+                        Reset
+                    </button>
+                </div>
 
-            <div className={`${isBMIVisible ? 'results' : 'hidden'}`}>
-                <p>
-                    Your BMI is:
-                </p>
+                <div className={`${isBMIVisible ? 'results' : 'hidden'}`}>
+                    <p>
+                        Your BMI is:
+                    </p>
 
-                <p className={"results__text"}>
-                    {results > 0 ? results : "unknown"}
-                </p>
-            </div>
+                    <p className={"results__text"}>
+                        {results > 0 ? results : "unknown"}
+                    </p>
+                </div>
 
-            <div className={"information"}>
-                <p className={"information__text"}>
+                <div className={"information"}>
+                    <p className={"information__text"}>
                   <span>
                       <span style={{textDecoration: 'underline'}}>
                         BMI weight ranges:
@@ -565,23 +573,28 @@ const BMICalculator = () => {
                           Over 30 = Obese
                       </span>
                   </span>
-                </p>
-            </div>
+                    </p>
+                </div>
 
-            <div className={`${isWeightVisible ? 'weight' : 'hidden'}`}>
-                <div className="weight__text">
-                    <p>{range !== "" ? `You are in the ${range} range.` : ""}</p>
-                    <a
-                        href="https://patient.info/healthy-living/obesity-overweight"
-                        className="weight__text-link"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        {range !== "" ? "See why this matters" : ""}
-                    </a>
+                <div className={`${isWeightVisible ? 'weight' : 'hidden'}`}>
+                    <div className="weight__text">
+                        <p>{range !== "" ? `You are in the ${range} range.` : ""}</p>
+                        <a
+                            href="https://patient.info/healthy-living/obesity-overweight"
+                            className="weight__text-link"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            {range !== "" ? "See why this matters" : ""}
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div className={"bmiFooter"}>
+                <Footer/>
+            </div>
+        </>
     );
 }
 

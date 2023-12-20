@@ -6,6 +6,9 @@ import Toggle from "react-toggle";
 import {
     useKilogramsState, usePoundsState, useStoneState
 } from "../../utils";
+import * as IoIcons from "react-icons/io5";
+import {FaHeartbeat} from "react-icons/fa";
+import * as GiIcons from "react-icons/gi";
 
 const WeightConvert = () => {
     const {stone, setStone} = useStoneState();
@@ -134,18 +137,21 @@ const WeightConvert = () => {
 
     return (
         <div className={"main"}>
-            <Header imageSRC={"weight.png"} headerTITLE={"Weight Converter"} altTAG={"logo"}/>
+            <Header headerTITLE={"Weight Converter"} altTAG={"weight"}/>
 
-            <div className={"main__link-container"}>
-                <a href={"/"} className={"main__link-a"}>
+            <div className={"header__link-container"}>
+                <a href={"/"} className={"header__link-a"}>
+                    <IoIcons.IoHome className={"header__link-img"}/>
                     Home
                 </a>
 
-                <a href={"/bmi-calculator"} className={"main__link-a"}>
+                <a href={"/bmi-calculator"} className={"header__link-a"}>
+                    <FaHeartbeat className={"header__link-img"}/>
                     BMI Calculator
                 </a>
 
-                <a href={"/height-converter"} className={"main__link-a"}>
+                <a href={"/height-converter"} className={"header__link-a"}>
+                    <GiIcons.GiBodyHeight className={"header__link-img"}/>
                     Height Converter
                 </a>
             </div>

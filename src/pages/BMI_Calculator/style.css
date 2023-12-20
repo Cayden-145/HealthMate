@@ -2,7 +2,7 @@
 
 :root {
   --header-color: rgb(162, 232, 162);
-  --information-text-color: rgba(162, 232, 162, 0.4);
+  --information-text-color: rgba(162, 232, 162, 0.4); /* bg color */
   --button-background: #d4a7fc;
   --submit-button-hover: #8f63b6;
   --reset-button: #0050be;
@@ -98,6 +98,10 @@
   margin-top: 20px;
   text-align: center;
   color: #3a3a3a;
+}
+
+.bmiFooter {
+  margin-top: 0;
 }
 
 .fields, .metric-fields {
@@ -269,12 +273,37 @@ input[type="number"] {
 .header__link-a {
   color: #3a3a3a;
   padding-left: 2vw;
+  font-size: 18px;
+}
+
+.header__link-a:hover {
+  color: #2d2d2d;
+  font-weight: bold;
+}
+
+.header__link-img {
+  color: #3a3a3a;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 @media screen and (max-width: 1000px) {
   .header__link-a {
     color: #3a3a3a;
     padding-left: 10vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header__link-a {
+    color: #3a3a3a;
+    padding-left: 6vw;
+  }
+}
+
+@media screen and (max-width: 795px) {
+  .header__link-img {
+    display: none;
   }
 }
 

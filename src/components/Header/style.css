@@ -23,3 +23,11 @@ body {
     height: 180px;
     width: 100vw;
 }
+
+.header__image {
+    font-size: 60px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 10px;
+}

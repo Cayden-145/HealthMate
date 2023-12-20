@@ -3,6 +3,15 @@ This simple, easy to use BMI calculator uses maths formula to calculate your BMI
 ___Recent Updates___
 
 ```
+Routing V1.4.1
+```
+
+- Added lazy loading to pages to resolve loading issues
+- Added a footer to BMI Calculator page
+- Updated Icons
+- Fixed styling issues
+
+```
  Routing V1.4
 ```
 

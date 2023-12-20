@@ -6,6 +6,9 @@ import Toggle from "react-toggle";
 import {
     useFeetState, useInchesState, useMetresState
 } from "../../utils";
+import * as IoIcons from "react-icons/io5";
+import {FaHeartbeat} from "react-icons/fa";
+import * as FaIcons6 from "react-icons/fa6";
 
 const HeightConverter = () => {
     const { feet, setFeet } = useFeetState();
@@ -162,18 +165,21 @@ const HeightConverter = () => {
 
     return (
         <div className={"main"}>
-            <Header imageSRC={"height.png"} headerTITLE={"Height Converter"} altTAG={"logo"}/>
+            <Header headerTITLE={"Height Converter"} altTAG={"height"}/>
 
-            <div className={"main__link-container"}>
-                <a href={"/"} className={"main__link-a"}>
+            <div className={"header__link-container"}>
+                <a href={"/"} className={"header__link-a"}>
+                    <IoIcons.IoHome className={"header__link-img"}/>
                     Home
                 </a>
 
-                <a href={"/bmi-calculator"} className={"main__link-a"}>
+                <a href={"/bmi-calculator"} className={"header__link-a"}>
+                    <FaHeartbeat className={"header__link-img"}/>
                     BMI Calculator
                 </a>
 
-                <a href={"/weight-converter"} className={"main__link-a"}>
+                <a href={"/weight-converter"} className={"header__link-a"}>
+                    <FaIcons6.FaWeightScale className={"header__link-img"}/>
                     Weight Converter
                 </a>
             </div>
