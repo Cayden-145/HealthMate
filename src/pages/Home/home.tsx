@@ -2,37 +2,13 @@ import React from 'react';
 import Header from "../../components/Header/header";
 import './home.css';
 import Footer from "../../components/Footer/footer";
-import * as IoIcons from "react-icons/io5";
-import * as GiIcons from "react-icons/gi";
-import * as FaIcons6 from "react-icons/fa6";
-import { FaHeartbeat } from "react-icons/fa";
+import Links from "../../components/Links/links";
 
 const Home = () => {
     return (
         <div className={"home"}>
             <Header headerTITLE={"Home"} altTAG={"home img"} />
-
-            <div className={"header__link-container"}>
-                <a href={"/"} className={"header__link-a"}>
-                    <IoIcons.IoHome className={"header__link-img"} />
-                    Home
-                </a>
-
-                <a href={"/bmi-calculator"} className={"header__link-a"}>
-                    <FaHeartbeat className={"header__link-img"}/>
-                    BMI Calculator
-                </a>
-
-                <a href={"/height-converter"} className={"header__link-a"}>
-                    <GiIcons.GiBodyHeight className={"header__link-img"}/>
-                    Height Converter
-                </a>
-
-                <a href={"/weight-converter"} className={"header__link-a"}>
-                    <FaIcons6.FaWeightScale className={"header__link-img"}/>
-                    Weight Converter
-                </a>
-            </div>
+            <Links />
 
             <div className={"about"}>
                 <p className={"bio__paragraph"}>

@@ -2,6 +2,7 @@ body {
     font-family: 'Noto Sans', sans-serif;
     display: flex;
     align-content: center;
+    justify-content: center;
     --return-hover: #0050be;
     --return-background: #137bfd;
 }

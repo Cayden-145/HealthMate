@@ -125,19 +125,6 @@
     margin-bottom: 5vh;
 }
 
-.header__link-container {
-    display: inline;
-    flex-direction: column;
-    text-align: center;
-    margin-top: 40px;
-}
-
-.header__link-a {
-    color: #3a3a3a;
-    padding-left: 2vw;
-    font-size: 18px;
-}
-
 @media screen and (max-width: 1000px) {
     .bio__image {
         width: 50px;
@@ -145,16 +132,5 @@
         rotate: 23deg;
         margin-top: 1vh;
         margin-left: 70vw;
-    }
-
-    .header__link-a {
-        color: #3a3a3a;
-        padding-left: 6vw;
-    }
-}
-
-@media screen and (max-width: 795px) {
-    .header__link-img {
-        display: none;
     }
 }

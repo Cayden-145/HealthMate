@@ -6,10 +6,10 @@ import {
     useFeetState, useInchesState, useKilogramsState, useMetresState, usePoundsState, useStoneState
 } from "../../utils";
 import { useLocation, useNavigate } from 'react-router-dom';
-import * as GiIcons from 'react-icons/gi'
-import * as IoIcons from 'react-icons/io5'
-import * as FaIcons6 from 'react-icons/fa6'
 import Footer from "../../components/Footer/footer";
+import SubmitButton from "../../components/Buttons/submitButton";
+import ResetButton from "../../components/Buttons/resetButton";
+import Links from "../../components/Links/links";
 
 const BMICalculator = () => {
     const location = useLocation();
@@ -344,23 +344,7 @@ const BMICalculator = () => {
         <>
             <div className={"app"}>
                 <Header altTAG={"bmi"} headerTITLE={"BMI Calculator"}/>
-
-                <div className={"header__link-container"}>
-                    <a href={"/"} className={"header__link-a"}>
-                        <IoIcons.IoHome className={"header__link-img"}/>
-                        Home
-                    </a>
-
-                    <a href={"/height-converter"} className={"header__link-a"}>
-                        <GiIcons.GiBodyHeight className={"header__link-img"}/>
-                        Height Converter
-                    </a>
-
-                    <a href={"/weight-converter"} className={"header__link-a"}>
-                        <FaIcons6.FaWeightScale className={"header__link-img"}/>
-                        Weight Converter
-                    </a>
-                </div>
+                <Links />
 
                 <div className={"errors"}>
                     <p>
@@ -520,20 +504,8 @@ const BMICalculator = () => {
                 </div>
 
                 <div className={"buttons"}>
-                    <button
-                        className={"buttons__submit"}
-                        type={"submit"}
-                        onClick={calculate}
-                    >
-                        Calculate
-                    </button>
-
-                    <button
-                        className={"buttons__reset"}
-                        onClick={reset}
-                    >
-                        Reset
-                    </button>
+                    <SubmitButton onClick={calculate} title={"Calculate"} />
+                    <ResetButton onClick={reset} title={"Reset"} />
                 </div>
 
                 <div className={`${isBMIVisible ? 'results' : 'hidden'}`}>

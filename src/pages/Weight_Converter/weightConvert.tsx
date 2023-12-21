@@ -6,9 +6,9 @@ import Toggle from "react-toggle";
 import {
     useKilogramsState, usePoundsState, useStoneState
 } from "../../utils";
-import * as IoIcons from "react-icons/io5";
-import {FaHeartbeat} from "react-icons/fa";
-import * as GiIcons from "react-icons/gi";
+import SubmitButton from "../../components/Buttons/submitButton";
+import ResetButton from "../../components/Buttons/resetButton";
+import Links from "../../components/Links/links";
 
 const WeightConvert = () => {
     const {stone, setStone} = useStoneState();
@@ -138,23 +138,7 @@ const WeightConvert = () => {
     return (
         <div className={"main"}>
             <Header headerTITLE={"Weight Converter"} altTAG={"weight"}/>
-
-            <div className={"header__link-container"}>
-                <a href={"/"} className={"header__link-a"}>
-                    <IoIcons.IoHome className={"header__link-img"}/>
-                    Home
-                </a>
-
-                <a href={"/bmi-calculator"} className={"header__link-a"}>
-                    <FaHeartbeat className={"header__link-img"}/>
-                    BMI Calculator
-                </a>
-
-                <a href={"/height-converter"} className={"header__link-a"}>
-                    <GiIcons.GiBodyHeight className={"header__link-img"}/>
-                    Height Converter
-                </a>
-            </div>
+            <Links />
 
             <div className={"errors"}>
                 <p>
@@ -248,20 +232,8 @@ const WeightConvert = () => {
             </div>
 
             <div className={"buttons"}>
-                <button
-                    className={"buttons__submit"}
-                    type={"submit"}
-                    onClick={calculate}
-                >
-                    Calculate
-                </button>
-
-                <button
-                    className={"buttons__reset"}
-                    onClick={reset}
-                >
-                    Reset
-                </button>
+                <SubmitButton onClick={calculate} title={"Calculate"}/>
+                <ResetButton onClick={reset} title={"Reset"}/>
             </div>
 
             <div className={`${imperialResultsVisible ? 'results' : 'hidden'}`}>
