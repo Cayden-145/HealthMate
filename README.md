@@ -3,7 +3,18 @@ Introducing HealthMate. Your comprehensive health companion designed to empower 
 ___Recent Updates___
 
 ```
-Routing V1.4.1
+ Header Component V1.4.2
+```
+
+- Updated header
+- Fixed styling for header component
+  - Updated styling to header to accommodate for a smaller browser.
+- New color scheme for header component
+- Added login button. (not functional yet)
+
+
+```
+Performance V1.4.1
 ```
 
 - Added lazy loading to pages to resolve loading issues
@@ -12,7 +23,7 @@ Routing V1.4.1
 - Fixed styling issues
 
 ```
- Routing V1.4
+ Parameters V1.4
 ```
 
 - Added params to height and weight converter.
