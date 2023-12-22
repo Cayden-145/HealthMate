@@ -8,7 +8,6 @@ import {
 } from "../../utils";
 import SubmitButton from "../../components/Buttons/submitButton";
 import ResetButton from "../../components/Buttons/resetButton";
-import Links from "../../components/Links/links";
 
 const WeightConvert = () => {
     const {stone, setStone} = useStoneState();
@@ -138,7 +137,6 @@ const WeightConvert = () => {
     return (
         <div className={"main"}>
             <Header headerTITLE={"Weight Converter"} altTAG={"weight"}/>
-            <Links />
 
             <div className={"errors"}>
                 <p>

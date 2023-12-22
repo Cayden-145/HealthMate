@@ -20,14 +20,134 @@ body {
     align-items: center;
     background-color: var(--header-color);
 
-    height: 180px;
+    height: 100px;
     width: 100vw;
 }
 
-.header__image {
-    font-size: 60px;
-    align-items: center;
-    justify-content: center;
+.header__title {
+    margin-right: auto;
+    font-size: 45px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.header__links-container {
+    margin-left: auto;
     display: flex;
-    margin-bottom: 10px;
+    flex-direction: row;
+    text-align: center;
+    margin-right: 28px;
+}
+
+.header__button-container {
+    display: flex;
+    flex-direction: row;
+    margin-right: 28px;
+    margin-bottom: 45px;
+}
+
+.header__links {
+    color: #3a3a3a;
+    font-size: 18px;
+    text-decoration: none;
+    margin-right: 30px;
+    font-weight: 500;
+}
+
+.header__links-groupOne,
+.header__links-groupTwo {
+    margin-bottom: 50px;
+}
+
+.header__links:hover {
+    text-decoration: underline;
+}
+
+.header__button {
+    background-color: #BDE3FF;
+    border: none;
+    color: #3a3a3a;
+    padding: 10px 25px;
+    text-decoration: none;
+    display: inline-block;
+    align-content: center;
+    font-size: 16px;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 120px;
+    height: 40px;
+}
+
+.header__button:hover {
+    background-color: #7AC7FF;
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+
+.header__button:active {
+    transition: 0.3s;
+    transform: scale(0.9);
+}
+
+@media screen and (max-width: 1200px) {
+    .header__links {
+        color: #3a3a3a;
+        margin-top: 5px;
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+
+    .header__button {
+        width: 100px;
+        height: 40px;
+        margin-bottom: 0;
+    }
+
+    .header__links-groupOne {
+        margin-bottom: 20px;
+    }
+
+    .header__links-groupTwo {
+        margin-bottom: 20px;
+    }
+
+    .header__links-container {
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        margin-right: 28px;
+    }
+}
+
+@media screen and (max-width: 795px) {
+    .header__links {
+        color: #3a3a3a;
+        margin-top: 5px;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+
+    .header__button {
+        display: none;
+    }
+
+    .header__links-groupOne {
+        margin-bottom: 20px;
+    }
+
+    .header__links-groupTwo {
+        margin-bottom: 20px;
+    }
+
+    .header__links-container {
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-right: 28px;
+    }
 }

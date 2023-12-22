@@ -2,13 +2,11 @@ import React from 'react';
 import Header from "../../components/Header/header";
 import './home.css';
 import Footer from "../../components/Footer/footer";
-import Links from "../../components/Links/links";
 
 const Home = () => {
     return (
         <div className={"home"}>
             <Header headerTITLE={"Home"} altTAG={"home img"} />
-            <Links />
 
             <div className={"about"}>
                 <p className={"bio__paragraph"}>

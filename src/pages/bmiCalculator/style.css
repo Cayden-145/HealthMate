@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans:wght@300&family=Playpen+Sans:wght@300&display=swap');
 
 :root {
-  --header-color: rgb(162, 232, 162);
+  --header-color: #AFF4C6;
   --information-text-color: rgba(162, 232, 162, 0.4); /* bg color */
   --button-background: #d4a7fc;
   --submit-button-hover: #8f63b6;

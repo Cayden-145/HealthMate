@@ -8,7 +8,6 @@ import {
 } from "../../utils";
 import SubmitButton from "../../components/Buttons/submitButton";
 import ResetButton from "../../components/Buttons/resetButton";
-import Links from "../../components/Links/links";
 
 const HeightConverter = () => {
     const { feet, setFeet } = useFeetState();
@@ -166,7 +165,6 @@ const HeightConverter = () => {
     return (
         <div className={"main"}>
             <Header headerTITLE={"Height Converter"} altTAG={"height"}/>
-            <Links />
 
             <div className={"errors"}>
                 <p>

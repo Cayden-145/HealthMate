@@ -9,7 +9,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from "../../components/Footer/footer";
 import SubmitButton from "../../components/Buttons/submitButton";
 import ResetButton from "../../components/Buttons/resetButton";
-import Links from "../../components/Links/links";
 
 const BMICalculator = () => {
     const location = useLocation();
@@ -344,7 +343,6 @@ const BMICalculator = () => {
         <>
             <div className={"app"}>
                 <Header altTAG={"bmi"} headerTITLE={"BMI Calculator"}/>
-                <Links />
 
                 <div className={"errors"}>
                     <p>
