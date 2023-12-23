@@ -136,7 +136,13 @@ const WeightConvert = () => {
 
     return (
         <div className={"main"}>
-            <Header headerTITLE={"Weight Converter"} altTAG={"weight"}/>
+            <Header buttonVisible={true}/>
+
+            <div className={"page__title"}>
+                <p className={"page__title-text"}>
+                    Weight Converter
+                </p>
+            </div>
 
             <div className={"errors"}>
                 <p>
@@ -163,7 +169,7 @@ const WeightConvert = () => {
                 <button
                     className={"toggle__text"}
                     onClick={handleImperialToggle}>
-                        <span style={{fontWeight: imperialToMetric ? 'bold' : 'normal'}}>
+                        <span style={{fontWeight: imperialToMetric ? '600' : 'normal'}}>
                           Imperial
                         </span>
                 </button>
@@ -178,7 +184,7 @@ const WeightConvert = () => {
                 <button
                     className={"toggle__text"}
                     onClick={handleMetricToggle}>
-                        <span style={{fontWeight: metricToImperial ? 'bold' : 'normal'}}>
+                        <span style={{fontWeight: metricToImperial ? '600' : 'normal'}}>
                           Metric
                         </span>
                 </button>

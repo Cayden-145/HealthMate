@@ -7,6 +7,8 @@ import BmiCalcLoader from "./pages/bmiCalculator/bmiCalcLoader";
 import HeightConvLoader from "./pages/heightConverter/heightConvLoader";
 import NoPage from "./pages/noPage/nopage";
 import WeightConvLazy from "./pages/weightConverter/weightConvLoader";
+import Login from "./pages/login/login";
+import Signup from "./pages/signup/signup";
 
 const App = () => {
 
@@ -19,6 +21,8 @@ const App = () => {
               <Route path="/height-converter" element={<HeightConvLoader />} />
               <Route path="/weight-converter" element={<WeightConvLazy />} />
               <Route path="*" element={<NoPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
           </Routes>
       </BrowserRouter>
   );

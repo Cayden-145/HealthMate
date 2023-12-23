@@ -164,7 +164,13 @@ const HeightConverter = () => {
 
     return (
         <div className={"main"}>
-            <Header headerTITLE={"Height Converter"} altTAG={"height"}/>
+            <Header buttonVisible={true}/>
+
+            <div className={"page__title"}>
+                <p className={"page__title-text"}>
+                    Height Converter
+                </p>
+            </div>
 
             <div className={"errors"}>
                 <p>
@@ -191,7 +197,7 @@ const HeightConverter = () => {
                 <button
                     className={"toggle__text"}
                     onClick={handleImperialToggle}>
-                        <span style={{fontWeight: imperialToMetric ? 'bold' : 'normal'}}>
+                        <span style={{fontWeight: imperialToMetric ? '600' : 'normal'}}>
                           Imperial
                         </span>
                 </button>
@@ -206,7 +212,7 @@ const HeightConverter = () => {
                 <button
                     className={"toggle__text"}
                     onClick={handleMetricToggle}>
-                        <span style={{fontWeight: metricToImperial ? 'bold' : 'normal'}}>
+                        <span style={{fontWeight: metricToImperial ? '600' : 'normal'}}>
                           Metric
                         </span>
                 </button>

@@ -1,37 +1,18 @@
 import React from 'react';
 import './style.css';
-/*import * as IoIcons from "react-icons/io5";
-import * as GiIcons from "react-icons/gi";
-import * as FaIcons6 from "react-icons/fa6";
-import { FaHeartbeat } from "react-icons/fa";*/
+import {Link} from "react-router-dom";
 
 const Header = (
     props: {
-        altTAG: string
-        headerTITLE: string
+        buttonVisible?: boolean
     }) => {
-
-    const logInButtonClicked = () => {
-        console.log("test")
-    }
 
     return (
         <div className={"header"}>
-            {/*<div className={"header__image"}>
-                {props.altTAG === "home img" && <IoIcons.IoHome />}
-                {props.altTAG === "bmi" && <FaHeartbeat />}
-                {props.altTAG === "height" && <GiIcons.GiBodyHeight />}
-                {props.altTAG === "weight" && <FaIcons6.FaWeightScale />}
-            </div>
-
             <div className={"header__title"}>
-                <h1>
-                    {props.headerTITLE}
-                </h1>
-            </div>*/}
-
-            <div className={"header__title"}>
-                HealthMate
+                <a href={"/"} className={"header__title-link"}>
+                    HealthMate
+                </a>
             </div>
 
             <div className={"header__links-container"}>
@@ -56,13 +37,14 @@ const Header = (
                 </div>
             </div>
 
-            <div className={"header__button-container"}>
-                <button
-                    className={"header__button"}
-                    onClick={logInButtonClicked}
-                >
-                    Log In
-                </button>
+            <div className={props.buttonVisible ? "header__button-container" : "hidden"}>
+                <Link to={"/login"}>
+                    <button
+                        className={"header__button"}
+                    >
+                        Log In
+                    </button>
+                </Link>
             </div>
         </div>
     );

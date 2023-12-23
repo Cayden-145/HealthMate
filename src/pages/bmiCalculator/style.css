@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans:wght@300&family=Playpen+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&family=Playpen+Sans:wght@300&display=swap');
 
 :root {
   --header-color: #AFF4C6;
@@ -44,6 +44,18 @@
 .toggle {
   display: flex;
   align-items: center;
+}
+
+.page__title {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin-left: 50px;
+}
+
+.page__title-text {
+  font-size: 30px;
+  font-weight: 500;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {

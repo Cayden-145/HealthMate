@@ -1,0 +1,132 @@
+.login_page {
+    font-family: 'Noto Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    color: #3a3a3a;
+    background-color: white;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: white;
+        color: #3a3a3a;
+    }
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-page__information {
+    width: 450px;
+    height: 100px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.login-page__information-span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.login-page__container {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    margin-top: 10vh;
+}
+
+.login-page__title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 27%;
+}
+
+.login-page__input,
+.login-page__password {
+    margin-bottom: 20px;
+    background-color: #edf5f3;
+    border: none;
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+.login-page__password-container {
+    position: relative;
+}
+
+.login-page__password-visible {
+    background-color: #edf5f3;
+    color: #b7b7b7;
+    border: none;
+    border-radius: 50px;
+    font-size: 25px;
+    position: absolute;
+    right: 10px; /* Adjust the right value as needed */
+    top: 38%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.login-page__button {
+    background-color: #BDE3FF;
+    border: none;
+    color: #3a3a3a;
+    padding: 10px 25px;
+    text-decoration: none;
+    display: inline-block;
+    align-content: center;
+    font-size: 16px;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 100px;
+    height: 35px;
+    margin-left: 40%;
+}
+
+.login-page__button:hover {
+    background-color: #7AC7FF;
+    transition: 0.5s;
+    transform: scale(1.05);
+}
+
+.login-page__button:active {
+    transition: 0.3s;
+    transform: scale(0.9);
+}
+
+.login-page__button:disabled {
+    background-color: #d3d3d3;
+    color: #808080;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.login-page__button:disabled:hover,
+.login-page__button:disabled:active {
+    background-color: #d3d3d3;
+    color: #808080;
+}
+
+.login-page__signup {
+    text-decoration: none;
+    color: #3a3a3a;
+    margin-top: 50px;
+    margin-left: 20%;
+    font-size: 16px;
+}
+
+.signup-text {
+    text-decoration: underline;
+    margin-left: 15px;
+    font-weight: 500;
+}

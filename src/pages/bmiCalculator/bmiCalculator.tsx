@@ -342,7 +342,13 @@ const BMICalculator = () => {
     return (
         <>
             <div className={"app"}>
-                <Header altTAG={"bmi"} headerTITLE={"BMI Calculator"}/>
+                <Header buttonVisible={true}/>
+
+                <div className={"page__title"}>
+                    <p className={"page__title-text"}>
+                        BMI Calculator
+                    </p>
+                </div>
 
                 <div className={"errors"}>
                     <p>
@@ -381,7 +387,7 @@ const BMICalculator = () => {
                     <button
                         className={"toggle__text"}
                         onClick={handleImperialToggle}>
-                        <span style={{fontWeight: imperialToggle ? 'bold' : 'normal'}}>
+                        <span style={{fontWeight: imperialToggle ? '600' : 'normal'}}>
                           Imperial
                         </span>
                     </button>
@@ -396,7 +402,7 @@ const BMICalculator = () => {
                     <button
                         className={"toggle__text"}
                         onClick={handleMetricToggle}>
-                        <span style={{fontWeight: metricToggle ? 'bold' : 'normal'}}>
+                        <span style={{fontWeight: metricToggle ? '600' : 'normal'}}>
                           Metric
                         </span>
                     </button>
@@ -524,21 +530,21 @@ const BMICalculator = () => {
                       </span>
                       <br/>
 
-                      <span style={{fontWeight: range === 'Underweight' ? 'bold' : 'normal'}}>
+                      <span style={{fontWeight: range === 'Underweight' ? '600' : 'normal'}}>
                         Less than 18.5 = Underweight
                       </span>
                                 <br/>
-                      <span style={{fontWeight: range === 'Healthy Weight' ? 'bold' : 'normal'}}>
+                      <span style={{fontWeight: range === 'Healthy Weight' ? '600' : 'normal'}}>
                         Between 18.5 - 24.9 = Healthy Weight
                       </span>
                                 <br/>
-                      <span style={{fontWeight: range === 'Overweight' ? 'bold' : 'normal'}}>
+                      <span style={{fontWeight: range === 'Overweight' ? '600' : 'normal'}}>
                           Between 25 - 29.9 = Overweight
                       </span>
 
                                 <br/>
                       <span
-                          style={{fontWeight: range === 'Obese' ? 'bold' : 'normal'}}
+                          style={{fontWeight: range === 'Obese' ? '600' : 'normal'}}
                       >
                           Over 30 = Obese
                       </span>

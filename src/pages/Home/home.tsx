@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/footer";
 const Home = () => {
     return (
         <div className={"home"}>
-            <Header headerTITLE={"Home"} altTAG={"home img"} />
+            <Header buttonVisible={true}/>
 
             <div className={"about"}>
                 <p className={"bio__paragraph"}>

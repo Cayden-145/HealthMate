@@ -27,7 +27,7 @@
 
 .bio__paragraph-title {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .bio__offers {
@@ -64,12 +64,12 @@
 
 .bio__paragraph-offer {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .bio__title {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .bio__offers {
@@ -95,7 +95,7 @@
 
 .bio__paragraph-features {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .bio__paragraph-list {
@@ -114,7 +114,7 @@
 }
 
 .bio__list-title {
-    font-weight: bold;
+    font-weight: 500;
     font-size: 17px;
     padding-left: 30px;
 }
