@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: process.env.API_KEY,
-    authDomain: process.env.AUTH_DOMAIN,
-    projectId: process.env.PROJECT_ID,
-    storageBucket: process.env.STORAGE_BUCKET,
-    messagingSenderId: process.env.MESSAGING_SENDER_ID,
-    appId: process.env.APP_ID,
-    measurementId: process.env.MEASUREMENT_ID,
+    apiKey: "AIzaSyD3W4pXLVayLT0zQ13M-YGX564YeGragp0",
+    authDomain: "healthmate-c8e5c.firebaseapp.com",
+    projectId: "healthmate-c8e5c",
+    storageBucket: "healthmate-c8e5c.appspot.com",
+    messagingSenderId: "715228782698",
+    appId: "1:715228782698:web:a42075c92fa22db03aea13",
+    measurementId: "G-4SB0X37N3G"
 };
 
 const app = initializeApp(firebaseConfig);
