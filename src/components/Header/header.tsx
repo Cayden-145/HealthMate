@@ -1,52 +1,109 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './style.css';
-import {Link} from "react-router-dom";
+import AuthDetails from "../../pages/auth/details/AuthDetails";
+import { CgProfile } from "react-icons/cg";
+import { CiMenuBurger } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
+import { signOut } from 'firebase/auth';
+import {auth} from "../../firebase/firebase";
 
-const Header = (
-    props: {
-        buttonVisible?: boolean
-    }) => {
+const Header = (props: { buttonVisible?: boolean }) => {
+    const [accountBtnVisible, setAccountBtnVisible] = useState(false);
+    const [menuActive, setMenuActive] = useState(false);
+    const [dropdownActive, setDropdownActive] = useState(false);
+    const navigate = useNavigate();
+
+    const toggleMenu = () => {
+        setMenuActive(!menuActive);
+        setDropdownActive(false); // Close the dropdown when the menu is toggled
+    };
+
+    const toggleDropdown = () => {
+        setDropdownActive(!dropdownActive);
+    };
+
+    const signOutClick = () => {
+        signOut(auth)
+            .then(r => {
+                alert("Successfully signed out.")
+            }) .catch((error => {
+                alert(error)
+        }))
+    }
 
     return (
-        <div className={"header"}>
-            <div className={"header__title"}>
-                <a href={"/"} className={"header__title-link"}>
-                    HealthMate
-                </a>
-            </div>
+        <>
+            <AuthDetails headerVisible={setAccountBtnVisible} />
 
-            <div className={"header__links-container"}>
-                <div className={"header__links-groupOne"}>
-                    <a href={"/"} className={"header__links"}>
-                        Home
-                    </a>
-
-                    <a href={'/bmi-calculator'} className={'header__links'}>
-                        BMI Calculator
+            <div className={'header'}>
+                <div className={'header__title'}>
+                    <a href={'/'} className={'header__title-link'}>
+                        HealthMate
                     </a>
                 </div>
 
-                <div className={"header__links-groupTwo"}>
-                    <a href={"/height-converter"} className={"header__links"}>
-                        Height Converter
-                    </a>
+                <button className={'hamburger-button'} onClick={toggleMenu}>
+                    <CiMenuBurger />
+                </button>
 
-                    <a href={"/weight-converter"} className={"header__links"}>
-                        Weight Converter
-                    </a>
+                <div
+                    className={`menu-overlay ${menuActive ? 'active' : ''}`}
+                    onClick={toggleMenu}
+                ></div>
+
+                <div className={`menu ${menuActive ? 'active' : ''}`}>
+                    <div className="menu-header">
+                        <button className="close-button" onClick={toggleMenu}>
+                            &times;
+                        </button>
+
+                        <p className={'menu-header__text'}>HealthMate</p>
+                    </div>
+
+                    <div className="menu-links">
+                        {accountBtnVisible ? (
+                            <div className="dropdown-container">
+                                <button
+                                    className={`header__button dropdown-button ${
+                                        dropdownActive ? 'active' : ''
+                                    }`}
+                                    onClick={toggleDropdown}
+                                >
+                                    <p className={'header__button-image'}>
+                                        <CgProfile />
+                                    </p>
+                                </button>
+
+                                <div
+                                    className={`dropdown-content ${dropdownActive ? 'active' : 'hidden'}`}
+                                >
+                                    <button onClick={() => navigate('/manage-account')}>
+                                        Manage Account
+                                    </button>
+
+                                    <button onClick={signOutClick}>
+                                        Sign Out
+                                    </button>
+
+                                </div>
+                            </div>
+                        ) : (
+                            <a
+                                href="/login"
+                                className={'menu-links a'}
+                            >
+                                Login
+                            </a>
+                        )}
+
+                        <a href="/home">Home</a>
+                        <a href="/bmi-calculator">BMI Calculator</a>
+                        <a href="/height-converter">Height Converter</a>
+                        <a href="/height-converter">Weight Converter</a>
+                    </div>
                 </div>
             </div>
-
-            <div className={props.buttonVisible ? "header__button-container" : "hidden"}>
-                <Link to={"/login"}>
-                    <button
-                        className={"header__button"}
-                    >
-                        Log In
-                    </button>
-                </Link>
-            </div>
-        </div>
+        </>
     );
 };
 

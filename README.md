@@ -3,6 +3,18 @@ Introducing HealthMate. Your comprehensive health companion designed to empower 
 ___Recent Updates___
 
 ```
+ Authentication V1.5
+```
+
+- Added authentication via firebase.
+  - Account Management Pages
+    - Login
+    - Sign Up
+    - Reset Password
+- Updated header component
+  - Hamburger Menu
+
+```
  Header Component V1.4.2
 ```
 
@@ -50,6 +62,6 @@ Routing V1.3
 
 Note:
 
-- New pages may not function and display as expected on smaller devices. (phones, tablets, other small screens.)
+- Website may not function and display as expected on smaller devices. (phones, tablets, other small screens.)
 
 

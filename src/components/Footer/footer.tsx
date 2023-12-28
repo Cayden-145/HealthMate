@@ -4,21 +4,24 @@ import { FaGithub } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <div className={"footer"}>
-            <p className={"footer-text"}>
-                © HealthMate 2023-24
-            </p>
+        <>
+            <div className={"footer"}>
+                <p className={"footer-text"}>
+                    © HealthMate 2023-24
+                </p>
 
-            <a href={"https://github.com/Cayden-145/HealthMate"} className={"source-code"} target="_blank" rel="noopener noreferrer">
-                <FaGithub />
-            </a>
+                <a href={"https://github.com/Cayden-145/HealthMate"} className={"source-code"} target="_blank"
+                   rel="noopener noreferrer">
+                    <FaGithub/>
+                </a>
 
-            <img
-                src={`${process.env.PUBLIC_URL}/heartLogo.png`}
-                alt={"heart"}
-                className={"footer-img"}
-            />
-        </div>
+                <img
+                    src={`${process.env.PUBLIC_URL}/heartLogo.png`}
+                    alt={"heart"}
+                    className={"footer-img"}
+                />
+            </div>
+        </>
     );
 };
 

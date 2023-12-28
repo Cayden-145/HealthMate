@@ -1,0 +1,40 @@
+.authUser__container {
+    display: flex;
+    margin-top: 3svh;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.authUser__text-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.authUser__container-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.auth-text {
+    font-weight: 600;
+    font-size: 25px;
+    display: flex;
+    margin-top: 4.5svh;
+}
+
+.auth-text__image {
+    font-size: 50px;
+    margin-right: 20px;
+}
+
+.auth-text__email {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
+}

@@ -7,8 +7,10 @@ import BmiCalcLoader from "./pages/bmiCalculator/bmiCalcLoader";
 import HeightConvLoader from "./pages/heightConverter/heightConvLoader";
 import NoPage from "./pages/noPage/nopage";
 import WeightConvLazy from "./pages/weightConverter/weightConvLoader";
-import Login from "./pages/login/login";
-import Signup from "./pages/signup/signup";
+import Login from "./pages/auth/login/login";
+import Signup from "./pages/auth/signup/signup";
+import ManageAccount from "./pages/auth/manageAccount/manageAccount";
+import ResetPassword from "./pages/auth/resetPassword/resetPassword";
 
 const App = () => {
 
@@ -23,6 +25,8 @@ const App = () => {
               <Route path="*" element={<NoPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/manage-account" element={<ManageAccount />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
           </Routes>
       </BrowserRouter>
   );
