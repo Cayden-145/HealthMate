@@ -1,7 +1,6 @@
 import React from 'react';
 import './pages/bmiCalculator/style.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import HomeLoader from "./pages/Home/homeLoader";
 import BmiCalcLoader from "./pages/bmiCalculator/bmiCalcLoader";
 import HeightConvLoader from "./pages/heightConverter/heightConvLoader";
