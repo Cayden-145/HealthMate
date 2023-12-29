@@ -6,11 +6,6 @@
 
     color: var(--text-color);
     background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 100svh, var(--dark-color));
-
-    @media (prefers-color-scheme: dark) {
-        background-color: var(--dark-color);
-        color: var(--text-color);
-    }
 }
 
 .about {
@@ -24,7 +19,7 @@
 .bio__list,
 .bio__list-last {
     width: 500px;
-    height: 250px;
+    height: 270px;
     display: flex;
     flex-direction: row;
     background: linear-gradient(to bottom, #08192FFF, #010810FF);
@@ -59,8 +54,8 @@
 .offer__paragraph-container {
     margin-top: 30px;
     margin-right: 30px;
-    width: 400px;
-    height: 200px;
+    width: 410px;
+    height: 230px;
 }
 
 .offer__title-container,
@@ -206,5 +201,9 @@
     .bio__paragraph-list {
         display: flex;
         flex-direction: column;
+    }
+
+    .home {
+        background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 210svh, var(--dark-color));
     }
 }

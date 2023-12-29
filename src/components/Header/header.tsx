@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { CiMenuBurger } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { signOut } from 'firebase/auth';
-import {auth} from "../../firebase/firebase";
+import {auth} from "../../api/firebase";
 
 const Header = (props: { buttonVisible?: boolean }) => {
     const [accountBtnVisible, setAccountBtnVisible] = useState(false);

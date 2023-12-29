@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './login.css'
 import Header from "../../../components/Header/header";
 import Footer from "../../../components/Footer/footer";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { auth } from "../../../firebase/firebase";
+import { auth } from "../../../api/firebase";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import AuthDetails from "../details/AuthDetails";
 import Confetti from 'react-dom-confetti';
@@ -18,13 +18,23 @@ const Login = () => {
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     const [errorCode, setErrorCode] = useState<string>('');
+    const [demoAccount, setDemoAccount] = useState<boolean>(false);
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const demoParam = urlParams.get('demo');
+
+        if (demoParam && demoParam.toLowerCase() === 'true') {
+            setDemoAccount(true);
+        }
+    }, [setDemoAccount]);
 
     const loginSubmit = (e: { preventDefault: () => void; }) => {
         setErrorCode('')
         e.preventDefault();
 
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(() => {
                 setConfetti(true);
                 setTimeout(() => setConfetti(false), 2000);
             })
@@ -52,7 +62,7 @@ const Login = () => {
                 <div className={"login-page__information"}>
                     <p className={"login-page__information-text"}>
                         <span className={"login-page__information-span"}>
-                            Welcome to HealthMate. <br />
+                            Welcome to HealthMate. <br/>
                         </span>
 
                         Your comprehensive health companion
@@ -124,6 +134,20 @@ const Login = () => {
                             Reset It
                         </span>
                     </a>
+                </div>
+
+                <div className={demoAccount ? "demo__container" : "hidden"}>
+                    <p className={demoAccount ? "demo__paragraph" : "hidden"}>
+                            <span className={demoAccount ? "demo__title" : "hidden"}>
+                                {demoAccount ? "Demo Account" : ""} <br />
+                            </span>
+                        {demoAccount ? "Email: demoAcc@demo.com" : ""} <br/>
+                        {demoAccount ? "Password: demo1234" : ""} <br />
+
+                        <span className={demoAccount ? "demo__important" : "hidden"}>
+                            {demoAccount ? "This account is to be used for demonstration purposes only. The account is not linked to an email that is in use." : ""}
+                        </span>
+                    </p>
                 </div>
 
                 <AuthDetails loginType={'signup'} setIsButtonDisabled={setIsButtonDisabled}/>

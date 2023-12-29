@@ -3,7 +3,7 @@ import './signup.css';
 import Header from '../../../components/Header/header';
 import Footer from '../../../components/Footer/footer';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
-import { auth } from '../../../firebase/firebase';
+import { auth } from '../../../api/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import AuthDetails from '../details/AuthDetails';
 import Confetti from 'react-dom-confetti';

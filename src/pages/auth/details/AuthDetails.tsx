@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { auth } from '../../../firebase/firebase';
+import { auth } from '../../../api/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import './authDetails.css';
 import { GiPartyPopper } from 'react-icons/gi';
