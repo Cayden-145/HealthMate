@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './style.css';
-import Toggle from "react-toggle";
 import Header from "../../components/Header/header";
 import {
     useFeetState, useInchesState, useKilogramsState, useMetresState, usePoundsState, useStoneState
 } from "../../utils";
 import { useLocation, useNavigate } from 'react-router-dom';
-import Footer from "../../components/Footer/footer";
 import SubmitButton from "../../components/Buttons/submitButton";
 import ResetButton from "../../components/Buttons/resetButton";
+import SlidingToggle from "../../components/Toggle/toggle";
 
 const BMICalculator = () => {
     const location = useLocation();
@@ -351,61 +350,55 @@ const BMICalculator = () => {
                 </div>
 
                 <div className={"errors"}>
-                    <p>
+                    <p className={"errors"}>
                         {heightError ? "* You must enter a valid amount of feet." : ""}
                     </p>
 
-                    <p>
+                    <p className={"errors"}>
                         {inchesError ? "* You must enter a valid amount of inches." : ""}
                     </p>
 
-                    <p>
+                    <p className={"errors"}>
                         {stoneError ? "* You must enter a valid amount of stones." : ""}
                     </p>
 
-                    <p>
+                    <p className={"errors"}>
                         {poundsError ? "* You must enter a valid amount of pounds." : ""}
                     </p>
 
-                    <p>
+                    <p className={"errors"}>
                         {kilogramsError ? "* You must enter a valid amount of kilograms." : ""}
                     </p>
 
-                    <p>
+                    <p className={"errors"}>
                         {metresError ? "* You must enter a valid amount of metres." : ""}
                     </p>
                 </div>
 
                 <div className={"toggle"}>
-                    <Toggle
-                        type={"checkbox"}
-                        checked={imperialToggle}
-                        onChange={handleImperialToggle}
-                        className={"toggle__checkbox"}
-                    />
+                    <div className={"toggle__one"}>
+                        <SlidingToggle toggleTrue={imperialToggle} handleLogic={handleImperialToggle} />
 
-                    <button
-                        className={"toggle__text"}
-                        onClick={handleImperialToggle}>
-                        <span style={{fontWeight: imperialToggle ? '600' : 'normal'}}>
-                          Imperial
-                        </span>
-                    </button>
+                        <button
+                            className={"toggle__text"}
+                            onClick={handleImperialToggle}>
+                            <span style={{fontWeight: imperialToggle ? '600' : 'normal'}}>
+                              Imperial
+                            </span>
+                        </button>
+                    </div>
 
-                    <Toggle
-                        type={"checkbox"}
-                        checked={metricToggle}
-                        onChange={handleMetricToggle}
-                        className={"toggle__checkbox"}
-                    />
+                    <div className={"toggle__two"}>
+                        <SlidingToggle toggleTrue={metricToggle} handleLogic={handleMetricToggle} />
 
-                    <button
-                        className={"toggle__text"}
-                        onClick={handleMetricToggle}>
-                        <span style={{fontWeight: metricToggle ? '600' : 'normal'}}>
-                          Metric
-                        </span>
-                    </button>
+                        <button
+                            className={"toggle__text"}
+                            onClick={handleMetricToggle}>
+                            <span style={{fontWeight: metricToggle ? '600' : 'normal'}}>
+                              Metric
+                            </span>
+                        </button>
+                    </div>
                 </div>
 
                 <div className={`${imperialToggle ? 'fields' : 'hidden'}`}>
@@ -565,10 +558,6 @@ const BMICalculator = () => {
                         </a>
                     </div>
                 </div>
-            </div>
-
-            <div className={"bmiFooter"}>
-                <Footer/>
             </div>
         </>
     );

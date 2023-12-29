@@ -9,13 +9,8 @@
     align-items: center;
     min-height: 100vh;
 
-    color: #3a3a3a;
-    background-color: white;
-
-    @media (prefers-color-scheme: dark) {
-        background-color: white;
-        color: #3a3a3a;
-    }
+    color: var(--text-color);
+    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
 }
 
 .main__footer {

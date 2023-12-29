@@ -1,32 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&family=Playpen+Sans:wght@300&display=swap');
 
 :root {
-  --header-color: #AFF4C6;
-  --information-text-color: rgba(162, 232, 162, 0.4); /* bg color */
-  --button-background: #d4a7fc;
-  --submit-button-hover: #8f63b6;
-  --reset-button: #0050be;
-  --reset-button-hover: #137bfd;
-  --weight-text-link: #0050be;
-  --weight-text-link-hover: #137bfd;
-  --error: #fd4646;
+  --dark-color: #3a3a3a;
+  --text-color: #e0e0e0;
+  --grad-color-one: #061325;
+  --grad-color-two: #030f1e;
+  --button-background: #0d2748;
+  --link: #71abff;
+  --link-hover: #137bfd;
+  --error: #dc4a4a;
+  --information-color: rgba(15, 43, 84, 0.34); /* background color */
 }
 
 .app {
-
   font-family: 'Noto Sans', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
 
-  color: #3a3a3a;
-  background-color: white;
-
-  @media (prefers-color-scheme: dark) {
-    background-color: white;
-    color: #3a3a3a;
-  }
+  color: var(--text-color);
+  background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -37,25 +31,38 @@
 }
 
 .errors {
-  color: var(--error);
+  color: #fd4040;
   font-weight: bold;
 }
 
 .toggle {
   display: flex;
   align-items: center;
+  color: var(--dark-color);
+  margin-bottom: 20px;
+}
+
+.toggle__one {
+  display: flex;
+  flex-direction: row;
+  margin-right: 30px;
+}
+
+.toggle__two {
+  display: flex;
+  flex-direction: row;
 }
 
 .page__title {
   display: flex;
   flex-direction: row;
   align-content: center;
-  margin-left: 50px;
 }
 
 .page__title-text {
   font-size: 30px;
   font-weight: 500;
+  color: var(--text-color);
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -81,6 +88,8 @@
   background: none;
   font-family: 'Noto Sans', sans-serif;
   font-size: 20px;
+  color: var(--text-color);
+
 }
 
 .toggle__text:hover {
@@ -92,6 +101,7 @@
   margin-top: 28px;
   margin-left: 50px;
   margin-bottom: 23px;
+  color: transparent;
 
   transition: background-color 0.3s ease;
 }
@@ -119,6 +129,7 @@
 .fields, .metric-fields {
   display: flex;
   margin-left: 40px;
+  color: var(--text-color);
 }
 
 .fields__input {
@@ -128,38 +139,44 @@
   height: 30px;
   display: flex;
   border-radius: 50px;
-  border-style: solid;
   font-size: 17px;
   padding-left: 10px;
+  color: var(--text-color);
+  background-color: var(--dark-color);
+  border: none;
 }
 
 .fields__text {
   padding-left: 20px;
   font-weight: 600;
+  color: var(--text-color);
 }
 
 .fields__text-weight {
   font-weight: 600;
+  color: var(--text-color);
 }
 
 .metric-fields__text-weight {
   font-weight: 600;
   margin-left: 40px;
+  color: var(--text-color);
 }
 
 .information {
   display: flex;
-  width: 320px;
-  height: 180px;
+  width: 350px;
+  height: 240px;
   margin-top: 20px;
   margin-left: 40px;
 }
 
 .information__text {
   display: flex;
-  background-color: var(--information-text-color);
+  background-color: var(--information-color);
   padding: 20px;
   border-radius: 20px;
+  color: var(--text-color);
 }
 
 .results {
@@ -170,20 +187,26 @@
   font-size: 30px;
 }
 
+.results p {
+  color: var(--text-color);
+}
+
 .results__text {
   display: flex;
   margin-left: 20px;
   text-decoration: underline;
+  color: var(--text-color);
 }
 
 .weight {
   display: flex;
   margin-left: 40px;
-  width: 320px;
-  height: 130px;
-  background-color: var(--information-text-color);
+  width: 350px;
+  height: 150px;
+  background-color: var(--information-color);
   border-radius: 20px;
   margin-bottom: 70px;
+  color: var(--text-color);
 }
 
 .weight__text {
@@ -191,13 +214,17 @@
   align-items: center;
 }
 
+.weight__text p {
+  color: var(--text-color);
+}
+
 .weight__text-link {
-  color: var(--weight-text-link);
+  color: var(--link);
   font-weight: 500;
 }
 
 .weight__text-link:hover {
-  color: var(--weight-text-link-hover);
+  color: var(--link-hover);
   font-weight: 600;
 }
 

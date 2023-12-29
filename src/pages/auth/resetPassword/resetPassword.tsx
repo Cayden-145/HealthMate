@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './resetPassword.css'
 import Header from "../../../components/Header/header";
 import Footer from "../../../components/Footer/footer";
-import { sendPasswordResetEmail } from "firebase/auth";
+import {createUserWithEmailAndPassword, sendPasswordResetEmail} from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import AuthDetails from "../details/AuthDetails";
 
@@ -18,8 +18,12 @@ const ResetPassword = () => {
         setErrorCode('')
         e.preventDefault();
 
-        await sendPasswordResetEmail(auth, email);
-        setEmailSentSuccess(true);
+        await sendPasswordResetEmail(auth, email)
+        .then((userCredential) => {
+            setEmailSentSuccess(true);
+        }).catch((error) => {
+            setErrorCode(error.code)
+        });
     };
 
     const goBack = () => {

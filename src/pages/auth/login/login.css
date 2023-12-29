@@ -4,14 +4,11 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+}
 
-    color: #3a3a3a;
-    background-color: white;
-
-    @media (prefers-color-scheme: dark) {
-        background-color: white;
-        color: #3a3a3a;
-    }
+body {
+    color: var(--text-color);
+    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
 }
 
 .login-page {
@@ -28,10 +25,14 @@
     margin-top: 30px;
 }
 
+.login-page__information p {
+    color: var(--text-color);
+}
 
 .login-page__information-span {
     font-size: 20px;
     font-weight: 600;
+    color: var(--text-color);
 }
 
 .login-page__container {
@@ -45,12 +46,14 @@
     font-size: 20px;
     font-weight: 500;
     margin-left: 27%;
+    color: var(--text-color);
 }
 
 .login-page__input,
 .login-page__password {
     margin-bottom: 20px;
-    background-color: #edf5f3;
+    background-color: var(--dark-color);
+    color: var(--text-color);
     border: none;
     width: 400px;
     height: 40px;
@@ -63,22 +66,22 @@
 }
 
 .login-page__password-visible {
-    background-color: #edf5f3;
+    background-color: var(--dark-color);
     color: #b7b7b7;
     border: none;
     border-radius: 50px;
     font-size: 25px;
     position: absolute;
-    right: 10px; /* Adjust the right value as needed */
+    right: 10px;
     top: 38%;
     transform: translateY(-50%);
     cursor: pointer;
 }
 
 .login-page__button {
-    background-color: #BDE3FF;
+    background-color: var(--button-background);
     border: none;
-    color: #3a3a3a;
+    color: var(--text-color);
     padding: 10px 25px;
     text-decoration: none;
     display: inline-block;
@@ -104,7 +107,6 @@
 }
 
 .login-page__button:hover {
-    background-color: #7AC7FF;
     transition: 0.5s;
     transform: scale(1.05);
 }
@@ -115,22 +117,22 @@
 }
 
 .login-page__button:disabled {
-    background-color: #d3d3d3;
+    background-color: #2a2a2a;
     color: #808080;
     cursor: not-allowed;
-    pointer-events: none;
 }
 
 .login-page__button:disabled:hover,
 .login-page__button:disabled:active {
-    background-color: #d3d3d3;
+    background-color: #2a2a2a;
     color: #808080;
+    transform: scale(1);
 }
 
 .login-page__signup,
 .login-page__signup-a {
     text-decoration: none;
-    color: #3a3a3a;
+    color: var(--text-color);
     margin-top: 50px;
     margin-left: 20%;
     font-size: 16px;

@@ -26,7 +26,7 @@ const Header = (props: { buttonVisible?: boolean }) => {
         signOut(auth)
             .then(r => {
                 alert("Successfully signed out.")
-            }) .catch((error => {
+            }).catch((error => {
                 alert(error)
         }))
     }
@@ -99,7 +99,7 @@ const Header = (props: { buttonVisible?: boolean }) => {
                         <a href="/home">Home</a>
                         <a href="/bmi-calculator">BMI Calculator</a>
                         <a href="/height-converter">Height Converter</a>
-                        <a href="/height-converter">Weight Converter</a>
+                        <a href="/weight-converter">Weight Converter</a>
                     </div>
                 </div>
             </div>

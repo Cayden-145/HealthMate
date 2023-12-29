@@ -5,13 +5,8 @@
     align-items: center;
     min-height: 100vh;
 
-    color: #3a3a3a;
-    background-color: white;
-
-    @media (prefers-color-scheme: dark) {
-        background-color: white;
-        color: #3a3a3a;
-    }
+    color: var(--text-color);
+    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
 }
 
 .signup-page {
@@ -28,10 +23,14 @@
     margin-top: 30px;
 }
 
+.signup-page__information p {
+    color: var(--text-color);
+}
 
 .signup-page__information-span {
     font-size: 20px;
     font-weight: 600;
+    color: var(--text-color);
 }
 
 .signup-page__container {
@@ -45,12 +44,14 @@
     font-size: 20px;
     font-weight: 500;
     margin-left: 30%;
+    color: var(--text-color);
 }
 
 .signup-page__input,
 .signup-page__password {
     margin-bottom: 20px;
-    background-color: #edf5f3;
+    background-color: var(--dark-color);
+    color: var(--text-color);
     border: none;
     width: 400px;
     height: 40px;
@@ -58,16 +59,12 @@
     padding-left: 20px;
 }
 
-.signup-page__password {
-
-}
-
 .signup-page__password-container {
     position: relative;
 }
 
 .signup-page__password-visible {
-    background-color: #edf5f3;
+    background-color: var(--dark-color);
     color: #b7b7b7;
     border: none;
     border-radius: 50px;
@@ -80,9 +77,9 @@
 }
 
 .signup-page__button {
-    background-color: #BDE3FF;
+    background-color: var(--button-background);
+    color: var(--text-color);
     border: none;
-    color: #3a3a3a;
     padding: 10px 25px;
     text-decoration: none;
     display: inline-block;
@@ -93,13 +90,12 @@
     cursor: pointer;
     transition: 0.5s;
     width: 180px;
-    height: 35px;
+    height: 38px;
     margin-left: 30%;
     white-space: nowrap;
 }
 
 .signup-page__button:hover {
-    background-color: #7AC7FF;
     transition: 0.5s;
     transform: scale(1.05);
 }
@@ -110,10 +106,16 @@
 }
 
 .signup-page__button:disabled {
-    background-color: #d3d3d3;
+    background-color: #2a2a2a;
     color: #808080;
     cursor: not-allowed;
-    pointer-events: none;
+}
+
+.signup-page__button:disabled:hover,
+.signup-page__button:disabled:active {
+    background-color: #2a2a2a;
+    color: #808080;
+    transform: scale(1);
 }
 
 .login-errors {
@@ -126,15 +128,9 @@
     font-size: 17px;
 }
 
-.signup-page__button:disabled:hover,
-.signup-page__button:disabled:active {
-    background-color: #d3d3d3;
-    color: #808080;
-}
-
 .signup-page__signup {
     text-decoration: none;
-    color: #3a3a3a;
+    color: var(--text-color);
     margin-top: 50px;
     margin-left: 20%;
     font-size: 16px;

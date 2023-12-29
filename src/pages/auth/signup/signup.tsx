@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './signup.css';
 import Header from '../../../components/Header/header';
 import Footer from '../../../components/Footer/footer';

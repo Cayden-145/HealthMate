@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const NoPage = () => {
     return (
-        <div className={"noPage"}>
+        <div className={"pageNotFound"}>
             <div className={"noPage__header"}>
                 <img
                     src={`${process.env.PUBLIC_URL}/warning.png`}

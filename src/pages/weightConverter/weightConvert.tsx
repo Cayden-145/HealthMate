@@ -8,6 +8,7 @@ import {
 } from "../../utils";
 import SubmitButton from "../../components/Buttons/submitButton";
 import ResetButton from "../../components/Buttons/resetButton";
+import SlidingToggle from "../../components/Toggle/toggle";
 
 const WeightConvert = () => {
     const {stone, setStone} = useStoneState();
@@ -159,35 +160,29 @@ const WeightConvert = () => {
             </div>
 
             <div className={"toggle"}>
-                <Toggle
-                    type={"checkbox"}
-                    checked={imperialToMetric}
-                    onChange={handleImperialToggle}
-                    className={"toggle__checkbox"}
-                />
+                <div className={"toggle__one"}>
+                    <SlidingToggle toggleTrue={imperialToMetric} handleLogic={handleImperialToggle}/>
 
-                <button
-                    className={"toggle__text"}
-                    onClick={handleImperialToggle}>
-                        <span style={{fontWeight: imperialToMetric ? '600' : 'normal'}}>
-                          Imperial
-                        </span>
-                </button>
+                    <button
+                        className={"toggle__text"}
+                        onClick={handleImperialToggle}>
+                            <span style={{fontWeight: imperialToMetric ? '600' : 'normal'}}>
+                              Imperial
+                            </span>
+                    </button>
+                </div>
 
-                <Toggle
-                    type={"checkbox"}
-                    checked={metricToImperial}
-                    onChange={handleMetricToggle}
-                    className={"toggle__checkbox"}
-                />
+                <div className={"toggle__two"}>
+                    <SlidingToggle toggleTrue={metricToImperial} handleLogic={handleMetricToggle}/>
 
-                <button
-                    className={"toggle__text"}
-                    onClick={handleMetricToggle}>
-                        <span style={{fontWeight: metricToImperial ? '600' : 'normal'}}>
-                          Metric
-                        </span>
-                </button>
+                    <button
+                        className={"toggle__text"}
+                        onClick={handleMetricToggle}>
+                            <span style={{fontWeight: metricToImperial ? '600' : 'normal'}}>
+                              Metric
+                            </span>
+                    </button>
+                </div>
             </div>
 
             <div className={`${imperialToMetric ? 'fields' : 'hidden'}`}>

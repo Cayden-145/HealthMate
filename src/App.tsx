@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './pages/bmiCalculator/style.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeLoader from "./pages/Home/homeLoader";
 import BmiCalcLoader from "./pages/bmiCalculator/bmiCalcLoader";
 import HeightConvLoader from "./pages/heightConverter/heightConvLoader";
-import NoPage from "./pages/noPage/nopage";
+import NoPage from "./pages/error/pageNotFound/nopage";
 import WeightConvLazy from "./pages/weightConverter/weightConvLoader";
 import Login from "./pages/auth/login/login";
 import Signup from "./pages/auth/signup/signup";
 import ManageAccount from "./pages/auth/manageAccount/manageAccount";
 import ResetPassword from "./pages/auth/resetPassword/resetPassword";
+import UnsupportedDevice from "./pages/error/unsupportedDevice";
 
 const App = () => {
+
+    const [isUnsupportedDevice, setIsUnsupportedDevice] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const isMobile = window.innerWidth <= 720; // Adjust the width as needed
+            setIsUnsupportedDevice(isMobile);
+        };
+
+        handleResize(); // Check on initial render
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    if (isUnsupportedDevice) {
+        return <UnsupportedDevice />;
+    }
 
   return (
       <BrowserRouter>

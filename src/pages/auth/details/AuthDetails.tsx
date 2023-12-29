@@ -25,7 +25,7 @@ const AuthDetails = (props: {
         });
 
         return () => unsubscribe();
-    }, [props.setIsButtonDisabled, props.headerVisible]);
+    }, [props, props.setIsButtonDisabled, props.headerVisible]);
 
     return (
         <>
