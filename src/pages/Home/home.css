@@ -14,6 +14,8 @@
     color: var(--text-color);
 }
 
+/* Container Styles */
+
 .bio__paragraph-container,
 .offer__paragraph-container,
 .bio__list,
@@ -39,23 +41,8 @@
     align-items: center;
 }
 
-.bio__paragraph {
-    padding: 0;
-    margin: 0;
-    color: var(--text-color);
-}
-
-.bio__paragraph-title {
-    font-size: 25px;
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-.offer__paragraph-container {
-    margin-top: 30px;
-    margin-right: 30px;
-    width: 410px;
-    height: 230px;
+.total-container-list {
+    display: grid;
 }
 
 .offer__title-container,
@@ -72,6 +59,29 @@
 
 .offer__title-container-last {
     height: 70px;
+}
+
+/* Introduction */
+
+.bio__paragraph {
+    padding: 0;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.bio__paragraph-title {
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* What we offer */
+
+.offer__paragraph-container {
+    margin-top: 30px;
+    margin-right: 30px;
+    width: 410px;
+    height: 230px;
 }
 
 
@@ -144,10 +154,21 @@
     color: var(--text-color);
 }
 
-.bio__paragraph-list {
-    display: flex;
-    flex-direction: row;
+.bio__paragraph-list,
+.bio__paragraph-list__choosing {
     color: var(--text-color);
+    list-style: none;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, auto);
+    gap: 40px;
+    align-content: center;
+    text-align: center;
+}
+
+.bio__paragraph-list__choosing {
+    display: flex;
+    margin-top: 30px;
 }
 
 .bio__list,

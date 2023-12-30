@@ -89,7 +89,7 @@ const Home = () => {
                     </p>
                 </div>
 
-                <div className={"total-container"}>
+                <div className={"total-container-list"}>
                     <ul className={"bio__paragraph-list"}>
                         <li className={"bio__list"}>
                             <span className={"bio__list-title"}>
@@ -145,7 +145,7 @@ const Home = () => {
                     </p>
                 </div>
 
-                <ul className={"bio__paragraph-list"}>
+                <ul className={"bio__paragraph-list__choosing"}>
                     <li className={"bio__list"}>
                         <span className={"bio__list-title"}>
                             Comprehensive Health Monitoring:
