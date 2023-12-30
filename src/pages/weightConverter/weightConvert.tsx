@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './style.css'
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
-import Toggle from "react-toggle";
 import {
     useKilogramsState, usePoundsState, useStoneState
 } from "../../utils";
