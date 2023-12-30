@@ -64,7 +64,7 @@
 }
 
 .signup-page__password-visible {
-    background-color: var(--dark-color);
+    background-color: transparent;
     color: #b7b7b7;
     border: none;
     border-radius: 50px;
