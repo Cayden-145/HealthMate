@@ -12,6 +12,10 @@
   --information-color: rgba(15, 43, 84, 0.34); /* background color */
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .app {
   font-family: 'Noto Sans', sans-serif;
   display: flex;

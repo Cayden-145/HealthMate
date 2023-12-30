@@ -16,8 +16,8 @@ const Footer = () => {
                 </a>
 
                 <img
-                    src={`${process.env.PUBLIC_URL}/heartLogo.png`}
-                    alt={"heart"}
+                    src={`${process.env.PUBLIC_URL}/HM_logo.png`}
+                    alt={"logo"}
                     className={"footer-img"}
                 />
             </div>

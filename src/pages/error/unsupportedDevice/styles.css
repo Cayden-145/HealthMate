@@ -1,4 +1,5 @@
-/* UnsupportedDevice.css */
+/* Unsupported Device */
+
 .unsupported-device-container {
     display: flex;
     flex-direction: column;
@@ -7,15 +8,15 @@
     height: 100vh;
     text-align: center;
     color: var(--text-color);
-    background-color: var(--dark-color); /* Adjust the background color as needed */
 }
 
 h1 {
     font-size: 2em;
     margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 p {
     font-size: 1.2em;
-    color: #838383;
+    color: var(--text-color);
 }

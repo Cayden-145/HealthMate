@@ -14,15 +14,17 @@ import UnsupportedDevice from "./pages/error/unsupportedDevice";
 
 const App = () => {
 
+    // Check for Unsupported Device (phone)
+
     const [isUnsupportedDevice, setIsUnsupportedDevice] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
-            const isMobile = window.innerWidth <= 720; // Adjust the width as needed
+            const isMobile = window.innerWidth <= 720;
             setIsUnsupportedDevice(isMobile);
         };
 
-        handleResize(); // Check on initial render
+        handleResize();
         window.addEventListener('resize', handleResize);
 
         return () => {
@@ -33,6 +35,8 @@ const App = () => {
     if (isUnsupportedDevice) {
         return <UnsupportedDevice />;
     }
+
+    // If supported device
 
   return (
       <BrowserRouter>
