@@ -1,0 +1,18 @@
+.main {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.title__text {
+    display: flex;
+    flex-direction: row;
+}
