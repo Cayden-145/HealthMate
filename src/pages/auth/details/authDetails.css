@@ -35,6 +35,30 @@
     font-size: 18px;
 }
 
+.manageUser__container {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.manageUser-text__email {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+}
+
+.manageUser__error {
+    font-size: 25px;
+    font-weight: 600;
+    color: #cb4141;
+}
+
+.email {
+    margin-left: 5px;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
 .hidden {
     display: none;
 }

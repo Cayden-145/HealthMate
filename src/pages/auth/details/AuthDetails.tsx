@@ -49,7 +49,7 @@ const AuthDetails = (props: {
                         <div className={'authUser__text-container'}>
                             <div className={'authUser__container-main'}>
                                 <p className={'auth-text__image'}>
-                                    <GiPartyPopper />
+                                    <GiPartyPopper/>
                                 </p>
 
                                 <p className={'auth-text'}>{`Logged In as ${authUser.email}`}</p>
@@ -59,6 +59,27 @@ const AuthDetails = (props: {
                 ) : (
                     <>
                         <p></p>
+                    </>
+                )}
+            </div>
+
+            <div className={props.loginType === 'manage' ? 'manageUser__container' : 'hidden'}>
+                {authUser ? (
+                    <>
+                        <div className={'manageUser__text-container'}>
+                            <p className={'manageUser-text__email'}>
+                                Welcome,
+                                <span className={"email"}>
+                                    {authUser.email}
+                                </span>
+                            </p>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <p className={"manageUser__error"}>
+                            * You must be logged in to access this page!
+                        </p>
                     </>
                 )}
             </div>
