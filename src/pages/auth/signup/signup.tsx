@@ -109,7 +109,7 @@ const Signup = () => {
                     </a>
                 </div>
 
-                <AuthDetails loginType={'signup'} setIsButtonDisabled={setIsButtonDisabled}/>
+                <AuthDetails loginType={'signup'} loggedIn={setIsButtonDisabled}/>
             </div>
 
             <Footer/>

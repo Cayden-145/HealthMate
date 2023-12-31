@@ -6,7 +6,7 @@ import { GiPartyPopper } from 'react-icons/gi';
 
 const AuthDetails = (props: {
     loginType?: string;
-    setIsButtonDisabled?: React.Dispatch<React.SetStateAction<boolean>>;
+    loggedIn?: React.Dispatch<React.SetStateAction<boolean>>;
     headerVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     const [authUser, setAuthUser] = useState<User | null>(null);
@@ -15,17 +15,17 @@ const AuthDetails = (props: {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user);
-                props.setIsButtonDisabled?.(true);
+                props.loggedIn?.(true);
                 props.headerVisible?.(true);
             } else {
                 setAuthUser(null);
-                props.setIsButtonDisabled?.(false);
+                props.loggedIn?.(false);
                 props.headerVisible?.(false);
             }
         });
 
         return () => unsubscribe();
-    }, [props, props.setIsButtonDisabled, props.headerVisible]);
+    }, [props, props.loggedIn, props.headerVisible]);
 
     return (
         <>

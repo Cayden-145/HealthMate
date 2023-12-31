@@ -8,6 +8,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import SubmitButton from "../../components/Buttons/submitButton";
 import ResetButton from "../../components/Buttons/resetButton";
 import SlidingToggle from "../../components/Toggle/toggle";
+import AuthDetails from "../auth/details/AuthDetails";
+import {IoIosArrowDropdown} from "react-icons/io";
+import Confetti from 'react-dom-confetti';
 
 const BMICalculator = () => {
     const location = useLocation();
@@ -32,7 +35,6 @@ const BMICalculator = () => {
 
     const [results, setResults] = useState<number | string>('Unknown');
     const [range, setRange] = useState<string>("")
-    const [isWeightVisible, setIsWeightVisible] = useState<boolean>(false);
     const [isBMIVisible, setisBMIVisible] = useState<boolean>(false);
 
     const [heightError, setHeightError] = useState<boolean>(false);
@@ -41,9 +43,16 @@ const BMICalculator = () => {
     const [poundsError, setPoundsError] = useState<boolean>(false);
     const [metresError, setMetresError] = useState<boolean>(false);
     const [kilogramsError, setKilogramsError] = useState<boolean>(false);
+    const [savingError, setSavingError] = useState<boolean>(false);
 
     const [imperialToggle, setImperialToggle] = useState<boolean>(true);
     const [metricToggle, setMetricToggle] = useState<boolean>(false);
+
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
+    const [dropdownActive, setDropdownActive] = useState<boolean>(false);
+    const [confetti, setConfetti] = useState<boolean>(false);
+    const [hasSaved, setHasSaved] = useState<boolean>(false);
+    const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
 
     useEffect(() => {
         if (typeLocation === "imperial") {
@@ -227,6 +236,8 @@ const BMICalculator = () => {
         setPoundsError(false);
         setKilogramsError(false);
         setMetresError(false);
+        setHasSaved(false);
+        setSavingError(false);
 
         if (imperialToggle) {
             if (feet <= -1 || inches <= -1 || stone <= -1 || pounds <= -1) {
@@ -294,7 +305,6 @@ const BMICalculator = () => {
                 setRange("Obese")
             }
 
-            setIsWeightVisible(true);
             setisBMIVisible(true);
         }
 
@@ -312,7 +322,6 @@ const BMICalculator = () => {
                 setRange("Obese")
             }
 
-            setIsWeightVisible(true);
             setisBMIVisible(true);
         }
     }
@@ -326,8 +335,9 @@ const BMICalculator = () => {
         setKilograms(-1);
         setResults('Unknown');
         setRange("");
-        setIsWeightVisible(false);
         setisBMIVisible(false);
+        setHasSaved(false);
+        setButtonDisabled(false);
 
         setHeightError(false);
         setInchesError(false);
@@ -335,11 +345,42 @@ const BMICalculator = () => {
         setPoundsError(false);
         setKilogramsError(false);
         setMetresError(false);
+        setSavingError(false);
         navigate('/bmi-calculator');
+    }
+
+    const toggleDropDown = () => {
+        setDropdownActive(!dropdownActive);
+    }
+
+    const confettiConfig = {
+        angle: 90,
+        spread: 45,
+        startVelocity: 30,
+        elementCount: 50,
+        decay: 0.9,
+    };
+
+    const saveData = () => {
+        setDropdownActive(!dropdownActive)
+
+        if (!hasSaved) {
+            setHasSaved(true);
+            setButtonDisabled(true);
+            setConfetti(true);
+
+            setTimeout(() => {
+                setConfetti(false);
+            }, 900);
+        } else {
+            setSavingError(true);
+        }
     }
 
     return (
         <>
+            <AuthDetails loggedIn={setIsUserLoggedIn} />
+
             <div className={"app"}>
                 <Header buttonVisible={true}/>
 
@@ -373,11 +414,15 @@ const BMICalculator = () => {
                     <p className={"errors"}>
                         {metresError ? "* You must enter a valid amount of metres." : ""}
                     </p>
+
+                    <p className={"errors"}>
+                        {savingError ? "* You have already saved this data." : ""}
+                    </p>
                 </div>
 
                 <div className={"toggle"}>
                     <div className={"toggle__one"}>
-                        <SlidingToggle toggleTrue={imperialToggle} handleLogic={handleImperialToggle} />
+                        <SlidingToggle toggleTrue={imperialToggle} handleLogic={handleImperialToggle}/>
 
                         <button
                             className={"toggle__text"}
@@ -389,7 +434,7 @@ const BMICalculator = () => {
                     </div>
 
                     <div className={"toggle__two"}>
-                        <SlidingToggle toggleTrue={metricToggle} handleLogic={handleMetricToggle} />
+                        <SlidingToggle toggleTrue={metricToggle} handleLogic={handleMetricToggle}/>
 
                         <button
                             className={"toggle__text"}
@@ -501,8 +546,8 @@ const BMICalculator = () => {
                 </div>
 
                 <div className={"buttons"}>
-                    <SubmitButton onClick={calculate} title={"Calculate"} />
-                    <ResetButton onClick={reset} title={"Reset"} />
+                    <SubmitButton onClick={calculate} title={"Calculate"}/>
+                    <ResetButton onClick={reset} title={"Reset"}/>
                 </div>
 
                 <div className={`${isBMIVisible ? 'results' : 'hidden'}`}>
@@ -513,49 +558,109 @@ const BMICalculator = () => {
                     <p className={"results__text"}>
                         {results > 0 ? results : "unknown"}
                     </p>
-                </div>
 
-                <div className={"information"}>
-                    <p className={"information__text"}>
-                  <span>
-                      <span style={{textDecoration: 'underline'}}>
-                        BMI weight ranges:
-                      </span>
-                      <br/>
-
-                      <span style={{fontWeight: range === 'Underweight' ? '600' : 'normal'}}>
-                        Less than 18.5 = Underweight
-                      </span>
-                                <br/>
-                      <span style={{fontWeight: range === 'Healthy Weight' ? '600' : 'normal'}}>
-                        Between 18.5 - 24.9 = Healthy Weight
-                      </span>
-                                <br/>
-                      <span style={{fontWeight: range === 'Overweight' ? '600' : 'normal'}}>
-                          Between 25 - 29.9 = Overweight
-                      </span>
-
-                                <br/>
-                      <span
-                          style={{fontWeight: range === 'Obese' ? '600' : 'normal'}}
-                      >
-                          Over 30 = Obese
-                      </span>
-                  </span>
-                    </p>
-                </div>
-
-                <div className={`${isWeightVisible ? 'weight' : 'hidden'}`}>
-                    <div className="weight__text">
-                        <p>{range !== "" ? `You are in the ${range} range.` : ""}</p>
-                        <a
-                            href="https://patient.info/healthy-living/obesity-overweight"
-                            className="weight__text-link"
-                            target="_blank"
-                            rel="noreferrer"
+                    <div className={isUserLoggedIn ? "save-data__container" : "hidden"}>
+                        <button
+                            className={isUserLoggedIn ? "save-data__button" : "hidden"}
+                            onClick={toggleDropDown}
                         >
-                            {range !== "" ? "See why this matters" : ""}
-                        </a>
+                            <IoIosArrowDropdown/>
+                        </button>
+
+                        <div className={dropdownActive ? "save-data__dropdown" : "hidden"}>
+                            <button
+                                className={"dropdown__button"}
+                                onClick={saveData}
+                                disabled={buttonDisabled}
+                            >
+                                Save Data
+                            </button>
+                        </div>
+                    </div>
+
+                    <Confetti active={confetti} config={confettiConfig}/>
+                </div>
+
+                <p style={{textDecoration: "underline", color: "#b4ffc6", fontWeight: "600", marginBottom: "3rem"}}>
+                    {hasSaved ? "Saving Data is a beta feature and has no functional purpose yet." : ""}
+                </p>
+
+                <div className={"bottom-container"}>
+                    <div className={"information"}>
+                        <p className={"info-text__title"}>
+                            BMI weight ranges:
+                        </p>
+
+                        <p className={"information__text"}>
+                            <span>
+                              <span style={{
+                                  fontWeight: range === 'Underweight' ? '600' : 'normal',
+                                  color: range === 'Underweight' ? "#c4e7ff" : "var(--text-color)",
+                                  textDecoration: range === 'Underweight' ? "underline" : "none"
+                              }}>
+                                Less than 18.5 = Underweight
+                              </span>
+
+                              <br/>
+
+                              <span style={{
+                                  fontWeight: range === 'Healthy Weight' ? '600' : 'normal',
+                                  color: range === 'Healthy Weight' ? "#c4e7ff" : "var(--text-color)",
+                                  textDecoration: range === 'Healthy Weight' ? "underline" : "none"
+                              }}>
+                                Between 18.5 - 24.9 = Healthy Weight
+                              </span>
+
+                              <br/>
+
+                              <span style={{
+                                  fontWeight: range === 'Overweight' ? '600' : 'normal',
+                                  color: range === 'Overweight' ? "#c4e7ff" : "var(--text-color)",
+                                  textDecoration: range === 'Overweight' ? "underline" : "none"
+                              }}>
+                                  Between 25 - 29.9 = Overweight
+                              </span>
+
+                              <br/>
+
+                              <span style={{
+                                  fontWeight: range === 'Obese' ? '600' : 'normal',
+                                  color: range === 'Obese' ? "#c4e7ff" : "var(--text-color)",
+                                  textDecoration: range === 'Obese' ? "underline" : "none"
+                              }}>
+                                  Over 30 = Obese
+                              </span>
+                          </span>
+                        </p>
+
+                        <div>
+                            <p className={"weight__alt-text"}>
+                                {range !== "" ? `You are in the ${range} range.` : ""}
+                            </p>
+
+                            <a
+                                href="https://patient.info/healthy-living/obesity-overweight"
+                                className="weight__alt-link"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                {range !== "" ? "See why this matters" : ""}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className={`${isBMIVisible ? 'weight' : 'hidden'}`}>
+                        <div className="weight__text">
+                            <p>{range !== "" ? `You are in the ${range} range.` : ""}</p>
+                            <a
+                                href="https://patient.info/healthy-living/obesity-overweight"
+                                className="weight__text-link"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                {range !== "" ? "See why this matters" : ""}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

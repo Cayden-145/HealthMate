@@ -84,7 +84,7 @@ const ResetPassword = () => {
 
             <Footer/>
 
-            <AuthDetails setIsButtonDisabled={setIsButtonDisabled}/>
+            <AuthDetails loggedIn={setIsButtonDisabled}/>
         </>
     );
 };

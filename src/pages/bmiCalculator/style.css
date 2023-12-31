@@ -2,7 +2,7 @@
 
 :root {
   --dark-color: #3a3a3a;
-  --text-color: #e0e0e0;
+  --text-color: #FFFAFA;
   --grad-color-one: #061325;
   --grad-color-two: #030f1e;
   --button-background: #0d2748;
@@ -25,13 +25,6 @@ body {
 
   color: var(--text-color);
   background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
-}
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .results,
-  .information {
-    height: 200px;
-  }
 }
 
 .errors {
@@ -132,15 +125,14 @@ body {
 
 .fields, .metric-fields {
   display: flex;
-  margin-left: 40px;
   color: var(--text-color);
 }
 
 .fields__input {
   margin-left: 40px;
   margin-top: 10px;
-  width: 70px;
-  height: 30px;
+  width: 65px;
+  height: 40px;
   display: flex;
   border-radius: 50px;
   font-size: 17px;
@@ -167,22 +159,6 @@ body {
   color: var(--text-color);
 }
 
-.information {
-  display: flex;
-  width: 350px;
-  height: 240px;
-  margin-top: 20px;
-  margin-left: 40px;
-}
-
-.information__text {
-  display: flex;
-  background-color: var(--information-color);
-  padding: 20px;
-  border-radius: 20px;
-  color: var(--text-color);
-}
-
 .results {
   display: flex;
   margin-left: 40px;
@@ -202,14 +178,35 @@ body {
   color: var(--text-color);
 }
 
-.weight {
-  display: flex;
-  margin-left: 40px;
+.information {
   width: 350px;
-  height: 150px;
+  height: 180px;
+  background-color: var(--information-color);
+  padding: 20px;
+  border-radius: 20px;
+  color: var(--text-color);
+}
+
+.information__text {
+  color: var(--text-color);
+}
+
+.info-text__title {
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+.bottom-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.weight {
+  margin-left: 2rem;
+  width: 350px;
+  height: 220px;
   background-color: var(--information-color);
   border-radius: 20px;
-  margin-bottom: 70px;
   color: var(--text-color);
 }
 
@@ -251,42 +248,83 @@ input[type="number"] {
   display: none;
 }
 
-.header__link-container {
-  display: inline;
-  flex-direction: column;
-  text-align: center;
-  margin-top: 40px;
+/* Save Data Button (only when logged in) */
+
+.save-data__container {
+  position: relative;
 }
 
-.header__link-a {
-  color: #3a3a3a;
-  padding-left: 2vw;
-  font-size: 18px;
-}
-
-.header__link-a:hover {
-  color: #2d2d2d;
-  font-weight: bold;
-}
-
-.header__link-img {
-  color: #3a3a3a;
-  margin-right: 10px;
+.save-data__button {
+  width: 40px;
+  height: 30px;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: 0.5s ease;
+  margin-top: 28px;
   margin-left: 10px;
 }
 
-@media screen and (max-width: 1000px) {
-  .header__link-a {
-    color: #3a3a3a;
-    padding-left: 10vw;
-  }
+.save-data__button:hover {
+  color: #d5d5d5;
 }
 
-@media screen and (max-width: 1000px) {
-  .header__link-a {
-    color: #3a3a3a;
-    padding-left: 6vw;
-  }
+.save-data__button:active {
+  color: #b7b7b7;
+}
+
+/* Save Data Dropdown */
+
+.save-data__dropdown {
+  z-index: 2;
+  position: absolute;
+  text-align: center;
+  margin-left: 1rem;
+}
+
+.dropdown__button {
+  background-color: #052b4d;
+  color: var(--text-color);
+  width: 120px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+  position: relative;
+  font-weight: 500;
+  font-size: 17px;
+  animation: dropdown-show 0.3s ease forwards;
+ }
+
+.dropdown__button:hover {
+  background-color: #031628;
+}
+
+.dropdown__button:active {
+  transition: 0.5s ease;
+  transform: scale(0.9);
+}
+
+.dropdown__button:disabled {
+  background-color: #2a2a2a;
+  color: #808080;
+  cursor: not-allowed;
+}
+
+.weight__alt-text,
+.weight__alt-link {
+  display: none;
+}
+
+.dropdown__button:disabled:hover,
+.dropdown__button:disabled:active {
+  background-color: #2a2a2a;
+  color: #808080;
+  transform: scale(1);
 }
 
 @media screen and (max-width: 795px) {
@@ -295,7 +333,7 @@ input[type="number"] {
   }
 }
 
-/* Phones */
+/* Smaller windows */
 
 @media only screen and (max-width: 767px) {
   .source__img-link {
@@ -305,17 +343,34 @@ input[type="number"] {
 }
 
 @media only screen and (max-width: 767px) {
-  .header__image {
-    margin-top: 10px;
-    margin-left: 10px;
-    width: 60px;
-    height: 60px;
+  .bottom-container {
+    display: flex;
+    flex-direction: column;
   }
 
-  .header__title {
-    margin-inline: 20px;
-    margin-top: 10px;
-    font-size: 18px;
+  .information {
+    height: 240px;
+    margin-top: -2rem;
+  }
+
+  .weight {
+    display: none;
+  }
+
+  .weight__alt-text {
+    display: flex;
+  }
+
+  .weight__alt-link {
+    display: flex;
+    color: var(--link);
+    font-weight: 500;
+    margin-top: -10px;
+  }
+
+  .weight__alt-link:hover {
+    color: var(--link-hover);
+    font-weight: 600;
   }
 
   .fields, .metric-fields {
@@ -327,18 +382,8 @@ input[type="number"] {
 
   .fields__input {
     margin-left: 15px;
-    margin-top: 10px;
+    margin-top: 0.7rem;
     width: 65px;
     height: 40px;
-  }
-
-  .toggle__checkbox {
-    display: flex;
-    margin-bottom: 20px;
-  }
-
-  .toggle__text {
-    margin-top: 20px;
-    margin-bottom: 38px;
   }
 }
