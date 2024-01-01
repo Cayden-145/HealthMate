@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '../../../api/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import './authDetails.css';
-import { GiPartyPopper } from 'react-icons/gi';
 
 const AuthDetails = (props: {
     loginType?: string;
     loggedIn?: React.Dispatch<React.SetStateAction<boolean>>;
     headerVisible?: React.Dispatch<React.SetStateAction<boolean>>;
+    displayName?: React.Dispatch<React.SetStateAction<string>>;
+    displayNameVisible?: boolean;
 }) => {
     const [authUser, setAuthUser] = useState<User | null>(null);
 
@@ -17,10 +18,14 @@ const AuthDetails = (props: {
                 setAuthUser(user);
                 props.loggedIn?.(true);
                 props.headerVisible?.(true);
+                if (user.displayName) {
+                    props.displayName?.(user.displayName);
+                }
             } else {
                 setAuthUser(null);
                 props.loggedIn?.(false);
                 props.headerVisible?.(false);
+                props.displayName?.('')
             }
         });
 
@@ -29,31 +34,18 @@ const AuthDetails = (props: {
 
     return (
         <>
-            <div className={props.loginType === 'signup' ? 'authUser__container' : 'hidden'}>
+            <div className={props.displayNameVisible ? 'display-name' : 'hidden'}>
                 {authUser ? (
                     <>
                         <div className={'authUser__text-container'}>
-                            <p className={'auth-text__email'}>{`You are logged in as ${authUser.email}`}</p>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <p></p>
-                    </>
-                )}
-            </div>
-
-            <div className={props.loginType === 'login' ? 'authUser-container' : 'hidden'}>
-                {authUser ? (
-                    <>
-                        <div className={'authUser__text-container'}>
-                            <div className={'authUser__container-main'}>
-                                <p className={'auth-text__image'}>
-                                    <GiPartyPopper/>
-                                </p>
-
-                                <p className={'auth-text'}>{`Logged In as ${authUser.email}`}</p>
-                            </div>
+                            <a href={"/"} className={'auth-text__email'}>
+                                {`Welcome, ${authUser.displayName}.`}
+                                <span
+                                    style={{textDecoration: "underline", fontSize: "18px", marginLeft: "20px"}}
+                                >
+                                    Navigate Home
+                                </span>
+                            </a>
                         </div>
                     </>
                 ) : (

@@ -32,7 +32,10 @@
 
 .auth-text__email {
     font-weight: 600;
-    font-size: 18px;
+    color: var(--text-color);
+    margin-top: 40px;
+    text-decoration: none;
+    font-size: 17px;
 }
 
 .manageUser__container {

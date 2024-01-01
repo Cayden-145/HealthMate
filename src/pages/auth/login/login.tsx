@@ -136,12 +136,14 @@ const Login = () => {
                     </a>
                 </div>
 
+                <AuthDetails loggedIn={setIsButtonDisabled} displayNameVisible={true}/>
+
                 <div className={demoAccount ? "demo__container" : "hidden"}>
                     <p className={demoAccount ? "demo__paragraph" : "hidden"}>
                             <span className={demoAccount ? "demo__title" : "hidden"}>
                                 {demoAccount ? "Demo Account" : ""} <br />
                             </span>
-                        {demoAccount ? "Email: demoAcc@demo.com" : ""} <br/>
+                        {demoAccount ? "Email: demoacc@demo.com" : ""} <br/>
                         {demoAccount ? "Password: demo1234" : ""} <br />
 
                         <span className={demoAccount ? "demo__important" : "hidden"}>
@@ -149,8 +151,6 @@ const Login = () => {
                         </span>
                     </p>
                 </div>
-
-                <AuthDetails loginType={'signup'} loggedIn={setIsButtonDisabled}/>
             </div>
 
             <Footer/>

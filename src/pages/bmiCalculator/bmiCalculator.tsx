@@ -238,6 +238,8 @@ const BMICalculator = () => {
         setMetresError(false);
         setHasSaved(false);
         setSavingError(false);
+        setButtonDisabled(false);
+        setDropdownActive(false);
 
         if (imperialToggle) {
             if (feet <= -1 || inches <= -1 || stone <= -1 || pounds <= -1) {
@@ -337,7 +339,9 @@ const BMICalculator = () => {
         setRange("");
         setisBMIVisible(false);
         setHasSaved(false);
+        setSavingError(false);
         setButtonDisabled(false);
+        setDropdownActive(false);
 
         setHeightError(false);
         setInchesError(false);
@@ -347,10 +351,6 @@ const BMICalculator = () => {
         setMetresError(false);
         setSavingError(false);
         navigate('/bmi-calculator');
-    }
-
-    const toggleDropDown = () => {
-        setDropdownActive(!dropdownActive);
     }
 
     const confettiConfig = {
@@ -562,7 +562,7 @@ const BMICalculator = () => {
                     <div className={isUserLoggedIn ? "save-data__container" : "hidden"}>
                         <button
                             className={isUserLoggedIn ? "save-data__button" : "hidden"}
-                            onClick={toggleDropDown}
+                            onClick={() => {setDropdownActive(!dropdownActive)}}
                         >
                             <IoIosArrowDropdown/>
                         </button>

@@ -5,6 +5,22 @@ Introducing HealthMate. Your comprehensive health companion designed to empower 
 ___Recent Updates___
 
 ```
+Display Name Feature + Styling Issues Addressed V1.5.2
+```
+
+- Added a display name field upon sign up.
+  - Field is required when signing up.
+  - All accounts without a display name have been reset.
+- Added a new logo to footer component
+- Fixed styling issues for home page
+  - When working with a smaller window, "key features" presented an issue causing items to load off of screen.
+- Fixed styling issues for BMI Calculator
+  - When working with a smaller window, "/bmi-calculator" page presented an issue causing items to load off of screen.
+
+- Started work on saving data.
+  - **Not Yet Functional**
+
+```
  UI/UX Overhaul V1.5.1
 ```
 

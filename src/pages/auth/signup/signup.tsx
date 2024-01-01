@@ -4,7 +4,7 @@ import Header from '../../../components/Header/header';
 import Footer from '../../../components/Footer/footer';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { auth } from '../../../api/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import AuthDetails from '../details/AuthDetails';
 import Confetti from 'react-dom-confetti';
 
@@ -13,6 +13,7 @@ const Signup = () => {
     const [confetti, setConfetti] = useState(false);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
+    const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [errorCode, setErrorCode] = useState<string>('');
@@ -23,13 +24,25 @@ const Signup = () => {
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                const user = userCredential.user;
+
                 setConfetti(true);
                 setTimeout(() => setConfetti(false), 2000);
+                return user?.uid ? updateProfile(user, { displayName: name }) : null;
             })
             .catch((error) => {
                 setErrorCode(error.code)
                 console.log(error.code)
             });
+
+        // firebase.auth().createUserWithEmailAndPassword(email, password)
+        //     .then(function(result) {
+        //         return result.user.updateProfile({
+        //             displayName: document.getElementById("name").value
+        //         })
+        //     }).catch(function(error) {
+        //     console.log(error);
+        // });
     };
 
     const confettiConfig = {
@@ -63,10 +76,19 @@ const Signup = () => {
                         <p className={errorCode !== '' ? "login-errors__text" : 'hidden'}>
                             {errorCode === 'auth/invalid-email' ? <> * Invalid Email. <br/> </> : ""}
                             {errorCode === 'auth/email-already-in-use' ? <> * Email already Exists. <br/> </> : ""}
-                            {errorCode === 'auth/internal-error' ? <> * Unable to connect to authentication server. <br/> </> : ""}
+                            {errorCode === 'auth/internal-error' ? <> * Unable to connect to authentication
+                                server. <br/> </> : ""}
                             {errorCode === 'auth/weak-password' ? <> * Weak Password. <br/> </> : ""}
                         </p>
                     </div>
+
+                    <input
+                        type={'text'}
+                        placeholder={'Display Name'}
+                        className={'signup-page__input'}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
 
                     <input
                         type={'email'}
@@ -94,7 +116,7 @@ const Signup = () => {
 
                     <button
                         className={'signup-page__button'}
-                        disabled={isButtonDisabled || !email || !password}
+                        disabled={isButtonDisabled || !email || !password || !name}
                         onClick={signUpEvent}
                     >
                         Create Account
@@ -109,7 +131,7 @@ const Signup = () => {
                     </a>
                 </div>
 
-                <AuthDetails loginType={'signup'} loggedIn={setIsButtonDisabled}/>
+                <AuthDetails loggedIn={setIsButtonDisabled} displayNameVisible={true} />
             </div>
 
             <Footer/>
