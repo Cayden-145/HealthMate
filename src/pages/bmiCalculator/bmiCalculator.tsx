@@ -457,7 +457,7 @@ const BMICalculator = () => {
                         id={"heightInput"}
                         value={feet === -1 ? '' : feet}
                         onChange={heightInputChange}
-                        className={"fields__input"}
+                        className={`fields__input ${heightError ? 'error' : ''}`}
                     />
 
                     <p className={"fields__text"}>
@@ -469,7 +469,7 @@ const BMICalculator = () => {
                         id={"inchesInput"}
                         value={inches === -1 ? '' : inches}
                         onChange={inchesInputChange}
-                        className={"fields__input"}
+                        className={`fields__input ${inchesError ? 'error' : ''}`}
                     />
 
                     <p className={"fields__text"}>
@@ -484,10 +484,10 @@ const BMICalculator = () => {
 
                     <input
                         type={"numeric"}
-                        id={"heightInput"}
+                        id={"stoneInput"}
                         value={stone === -1 ? '' : stone}
                         onChange={stoneInputChange}
-                        className={"fields__input"}
+                        className={`fields__input ${stoneError ? 'error' : ''}`}
                     />
 
                     <p className={"fields__text"}>
@@ -496,10 +496,10 @@ const BMICalculator = () => {
 
                     <input
                         type={"numeric"}
-                        id={"inchesInput"}
+                        id={"poundsInput"}
                         value={pounds === -1 ? '' : pounds}
                         onChange={poundsInputChange}
-                        className={"fields__input"}
+                        className={`fields__input ${poundsError ? 'error' : ''}`}
                     />
 
                     <p className={"fields__text"}>
@@ -518,7 +518,7 @@ const BMICalculator = () => {
                         id={"heightInput"}
                         value={metres === -1 ? '' : metres}
                         onChange={metresInputChange}
-                        className={"fields__input"}
+                        className={`fields__input ${metresError ? 'error' : ''}`}
                     />
 
                     <p className={"fields__text"}>
@@ -536,7 +536,7 @@ const BMICalculator = () => {
                         id={"heightInput"}
                         value={kilograms === -1 ? '' : kilograms}
                         onChange={kilogramsInputChange}
-                        className={"fields__input"}
+                        className={`fields__input ${kilogramsError ? 'error' : ''}`}
                     />
 
                     <p className={"fields__text"}>

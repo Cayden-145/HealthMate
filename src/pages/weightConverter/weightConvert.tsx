@@ -145,15 +145,15 @@ const WeightConvert = () => {
             </div>
 
             <div className={"errors"}>
-                <p>
+                <p className={"errors"}>
                     {kilogramsError ? "* You must enter a valid amount of kilograms." : ""}
                 </p>
 
-                <p>
+                <p className={"errors"}>
                     {poundsError ? "* You must enter a valid amount of pounds." : ""}
                 </p>
 
-                <p>
+                <p className={"errors"}>
                     {stoneError ? "* You must enter a valid amount of stone." : ""}
                 </p>
             </div>
@@ -193,7 +193,7 @@ const WeightConvert = () => {
                     type={"numeric"}
                     value={stone === -1 ? '' : stone}
                     onChange={stoneInputChange}
-                    className={"fields__input"}
+                    className={`fields__input ${stoneError ? 'error' : ''}`}
                 />
 
                 <p className={"fields__text"}>
@@ -204,7 +204,7 @@ const WeightConvert = () => {
                     type={"numeric"}
                     value={pounds === -1 ? '' : pounds}
                     onChange={poundsInputChange}
-                    className={"fields__input"}
+                    className={`fields__input ${poundsError ? 'error' : ''}`}
                 />
 
                 <p className={"fields__text"}>
@@ -221,7 +221,7 @@ const WeightConvert = () => {
                     type={"number"}
                     value={kilograms === -1 ? '' : kilograms}
                     onChange={kilogramsInputChange}
-                    className={"fields__input"}
+                    className={`fields__input ${kilogramsError ? 'error' : ''}`}
                 />
 
                 <p className={"fields__text"}>

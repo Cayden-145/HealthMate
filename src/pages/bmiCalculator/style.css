@@ -142,6 +142,10 @@ body {
   border: none;
 }
 
+.fields__input.error {
+  border: 3px solid var(--error);
+}
+
 .fields__text {
   padding-left: 20px;
   font-weight: 600;
@@ -176,6 +180,13 @@ body {
   margin-left: 20px;
   text-decoration: underline;
   color: var(--text-color);
+}
+
+.results-title__text {
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 20px;
+  margin-top: -1svh;
 }
 
 .information {

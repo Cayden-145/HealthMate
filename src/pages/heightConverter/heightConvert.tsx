@@ -173,15 +173,15 @@ const HeightConverter = () => {
             </div>
 
             <div className={"errors"}>
-                <p>
+                <p className={"errors"}>
                     {feetError ? "* You must enter a valid amount of feet." : ""}
                 </p>
 
-                <p>
+                <p className={"errors"}>
                     {inchesError ? "* You must enter a valid amount of inches." : ""}
                 </p>
 
-                <p>
+                <p className={"errors"}>
                     {metresError ? "* You must enter a valid amount of metres." : ""}
                 </p>
             </div>
@@ -221,7 +221,7 @@ const HeightConverter = () => {
                     type={"numeric"}
                     value={feet === -1 ? '' : feet}
                     onChange={feetInputChange}
-                    className={"fields__input"}
+                    className={`fields__input ${feetError ? 'error' : ''}`}
                 />
 
                 <p className={"fields__text"}>
@@ -232,7 +232,7 @@ const HeightConverter = () => {
                     type={"numeric"}
                     value={inches === -1 ? '' : inches}
                     onChange={inchesInputChange}
-                    className={"fields__input"}
+                    className={`fields__input ${inchesError ? 'error' : ''}`}
                 />
 
                 <p className={"fields__text"}>
@@ -249,7 +249,7 @@ const HeightConverter = () => {
                     type={"number"}
                     value={metres === -1 ? '' : metres}
                     onChange={metresInputChange}
-                    className={"fields__input"}
+                    className={`fields__input ${metresError ? 'error' : ''}`}
                 />
 
                 <p className={"fields__text"}>
