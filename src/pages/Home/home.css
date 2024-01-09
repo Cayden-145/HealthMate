@@ -16,7 +16,6 @@
 
 .bio__paragraph-container,
 .offer__paragraph-container,
-.bio__list,
 .bio__list-last {
     width: 500px;
     height: 270px;
@@ -169,21 +168,10 @@
     margin-top: 30px;
 }
 
-.bio__list,
 .bio__list-last {
     height: 80px;
     color: var(--text-color);
-}
-
-.bio__list {
-    margin-bottom: 15px;
-    font-size: 15px;
-    padding-left: 30px;
-    margin-right: 20px;
-    color: var(--text-color);
-}
-
-.bio__list-last {
+    margin-top: 1.5em;
     font-size: 15px;
     padding-left: 30px;
 }
@@ -218,8 +206,7 @@
 @media screen and (max-width: 1800px) {
     .total-container,
     .bio__paragraph-list,
-    .bio__paragraph-list__choosing,
-    .bio__list {
+    .bio__paragraph-list__choosing {
         display: flex;
         flex-direction: column;
         gap: 5px;

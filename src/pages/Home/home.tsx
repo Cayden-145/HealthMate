@@ -91,7 +91,7 @@ const Home = () => {
 
                 <div className={"total-container-list"}>
                     <ul className={"bio__paragraph-list"}>
-                        <li className={"bio__list"}>
+                        <li className={"bio__list-last"}>
                             <span className={"bio__list-title"}>
                                 User-Friendly Interface:
                             </span>
@@ -101,7 +101,7 @@ const Home = () => {
                             making health monitoring accessible to everyone.
                         </li>
 
-                        <li className={"bio__list"}>
+                        <li className={"bio__list-last"}>
                             <span className={"bio__list-title"}>
                                 Personalized Insights:
                             </span>
@@ -111,7 +111,7 @@ const Home = () => {
                             informed decisions about your health and fitness.
                         </li>
 
-                        <li className={"bio__list"}>
+                        <li className={"bio__list-last"}>
                             <span className={"bio__list-title"}>
                                 Progress Tracking:
                             </span>
@@ -146,7 +146,7 @@ const Home = () => {
                 </div>
 
                 <ul className={"bio__paragraph-list__choosing"}>
-                    <li className={"bio__list"}>
+                    <li className={"bio__list-last"}>
                         <span className={"bio__list-title"}>
                             Comprehensive Health Monitoring:
                         </span>
@@ -155,7 +155,7 @@ const Home = () => {
                         offering a suite of tools for a holistic approach to health management.
                     </li>
 
-                    <li className={"bio__list"}>
+                    <li className={"bio__list-last"}>
                         <span className={"bio__list-title"}>
                             Privacy and Security:
                         </span>
