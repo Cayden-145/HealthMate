@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from '../../../api/firebase';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import './authDetails.css';
 
 const AuthDetails = (props: {
@@ -8,6 +8,7 @@ const AuthDetails = (props: {
     loggedIn?: React.Dispatch<React.SetStateAction<boolean>>;
     headerVisible?: React.Dispatch<React.SetStateAction<boolean>>;
     displayName?: React.Dispatch<React.SetStateAction<string>>;
+    userId?: React.Dispatch<React.SetStateAction<string>>;
     displayNameVisible?: boolean;
 }) => {
     const [authUser, setAuthUser] = useState<User | null>(null);
@@ -18,14 +19,18 @@ const AuthDetails = (props: {
                 setAuthUser(user);
                 props.loggedIn?.(true);
                 props.headerVisible?.(true);
+
                 if (user.displayName) {
                     props.displayName?.(user.displayName);
                 }
+
+                props.userId?.(user.uid);
             } else {
                 setAuthUser(null);
                 props.loggedIn?.(false);
                 props.headerVisible?.(false);
-                props.displayName?.('')
+                props.displayName?.('');
+                props.userId?.('');
             }
         });
 
@@ -65,6 +70,9 @@ const AuthDetails = (props: {
                                     {authUser.email}
                                 </span>
                             </p>
+                        </div>
+
+                        <div className={"manageUser__information-container"}>
                         </div>
                     </>
                 ) : (

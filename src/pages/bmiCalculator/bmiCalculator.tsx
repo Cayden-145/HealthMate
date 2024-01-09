@@ -11,6 +11,9 @@ import SlidingToggle from "../../components/Toggle/toggle";
 import AuthDetails from "../auth/details/AuthDetails";
 import {IoIosArrowDropdown} from "react-icons/io";
 import Confetti from 'react-dom-confetti';
+import { Toaster, toast } from 'sonner';
+import { db } from '../../api/firebase';
+import { collection, addDoc, deleteDoc, doc, Timestamp } from "firebase/firestore";
 
 const BMICalculator = () => {
     const location = useLocation();
@@ -43,7 +46,6 @@ const BMICalculator = () => {
     const [poundsError, setPoundsError] = useState<boolean>(false);
     const [metresError, setMetresError] = useState<boolean>(false);
     const [kilogramsError, setKilogramsError] = useState<boolean>(false);
-    const [savingError, setSavingError] = useState<boolean>(false);
 
     const [imperialToggle, setImperialToggle] = useState<boolean>(true);
     const [metricToggle, setMetricToggle] = useState<boolean>(false);
@@ -51,8 +53,8 @@ const BMICalculator = () => {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
     const [dropdownActive, setDropdownActive] = useState<boolean>(false);
     const [confetti, setConfetti] = useState<boolean>(false);
-    const [hasSaved, setHasSaved] = useState<boolean>(false);
     const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
+    const [authUserID, setAuthUserID] = useState<string>('');
 
     useEffect(() => {
         if (typeLocation === "imperial") {
@@ -236,8 +238,6 @@ const BMICalculator = () => {
         setPoundsError(false);
         setKilogramsError(false);
         setMetresError(false);
-        setHasSaved(false);
-        setSavingError(false);
         setButtonDisabled(false);
         setDropdownActive(false);
 
@@ -338,8 +338,6 @@ const BMICalculator = () => {
         setResults('Unknown');
         setRange("");
         setisBMIVisible(false);
-        setHasSaved(false);
-        setSavingError(false);
         setButtonDisabled(false);
         setDropdownActive(false);
 
@@ -349,7 +347,6 @@ const BMICalculator = () => {
         setPoundsError(false);
         setKilogramsError(false);
         setMetresError(false);
-        setSavingError(false);
         navigate('/bmi-calculator');
     }
 
@@ -361,25 +358,64 @@ const BMICalculator = () => {
         decay: 0.9,
     };
 
-    const saveData = () => {
+    const saveData = async () => {
         setDropdownActive(!dropdownActive)
+        try {
+            const docRef = await addDoc(collection(db, "savedData"), {
+                bmi: results,
+                date: Timestamp.now(),
+                user: authUserID
+            });
 
-        if (!hasSaved) {
-            setHasSaved(true);
+            const savedDocId = docRef.id;
+
+            toast.success("Success", {
+                description: `Your BMI, ${results}, has been saved.`,
+                action: {
+                    label: "Undo",
+                    onClick: () => undoSaveData(savedDocId),
+                },
+            })
+
             setButtonDisabled(true);
             setConfetti(true);
 
             setTimeout(() => {
                 setConfetti(false);
             }, 900);
-        } else {
-            setSavingError(true);
+
+        } catch (error) {
+            toast.error("Error Occurred whilst Saving", {
+                description: `An error has occurred: ${error}`
+            })
+
+            console.log(error)
+        }
+    }
+
+    const undoSaveData = async (docId: string) => {
+        try {
+            await deleteDoc(doc(db, "savedData", docId));
+
+            toast.success("Undo Successful", {
+                description: `Your BMI data has been successfully undone.`,
+            });
+
+            setButtonDisabled(false);
+            setConfetti(false);
+        } catch (error) {
+            toast.error("Error Occurred while Undoing", {
+                description: `An error has occurred: ${error}`,
+            });
+
+            console.log(error);
         }
     }
 
     return (
         <>
-            <AuthDetails loggedIn={setIsUserLoggedIn} />
+            <AuthDetails loggedIn={setIsUserLoggedIn} userId={setAuthUserID} />
+            <Toaster richColors expand={false} position={"bottom-right"}/>
 
             <div className={"app"}>
                 <Header buttonVisible={true}/>
@@ -413,10 +449,6 @@ const BMICalculator = () => {
 
                     <p className={"errors"}>
                         {metresError ? "* You must enter a valid amount of metres." : ""}
-                    </p>
-
-                    <p className={"errors"}>
-                        {savingError ? "* You have already saved this data." : ""}
                     </p>
                 </div>
 
@@ -577,13 +609,8 @@ const BMICalculator = () => {
                             </button>
                         </div>
                     </div>
-
                     <Confetti active={confetti} config={confettiConfig}/>
                 </div>
-
-                <p style={{textDecoration: "underline", color: "#b4ffc6", fontWeight: "600", marginBottom: "3rem"}}>
-                    {hasSaved ? "Saving Data is a beta feature and has no functional purpose yet." : ""}
-                </p>
 
                 <div className={"bottom-container"}>
                     <div className={"information"}>

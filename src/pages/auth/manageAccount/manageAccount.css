@@ -1,10 +1,12 @@
 .main {
     font-family: 'Noto Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    align-content: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    color: var(--text-color);
+    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
 }
 
 .title-container {
@@ -15,4 +17,85 @@
 .title__text {
     display: flex;
     flex-direction: row;
+}
+
+.body__container {
+    background: linear-gradient(to bottom, rgba(4, 14, 28, 0.47), rgba(2, 7, 12, 0.47));
+    height: 80%;
+    width: 95%;
+    border-radius: 30px;
+    box-shadow: -13px 12px 6px rgba(241, 241, 241, 0.13);
+    align-content: center;
+    text-align: center;
+}
+
+.data__container {
+    display: flex;
+    flex-direction: row;
+}
+
+.data__information {
+    margin-left: 1.3rem;
+    margin-top: 2em;
+    background: linear-gradient(to bottom, #0c437a, #072342);
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--text-color);
+}
+
+.data__information-delete {
+    border: none;
+    background-color: #cb4141;
+    padding: 5px;
+    color: var(--text-color);
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-radius 1s;
+}
+
+.data__information-delete:hover {
+    border-radius: 30px;
+}
+
+.data__information-delete:active {
+    transform: scale(0.9);
+}
+
+.data__error {
+    margin-top: 1em;
+    margin-left: 2em;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.personal__information {
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+}
+
+.sign-out__button {
+    border: none;
+    background-color: var(--button-background);
+    color: var(--text-color);
+    font-size: 20px;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-radius 1s;
+}
+
+.sign-out__button:hover {
+    border-radius: 50px;
+}
+
+.sign-out__button:active {
+    transform: scale(0.9);
+}
+
+.hidden {
+    display: none;
 }

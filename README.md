@@ -1,8 +1,27 @@
 Introducing HealthMate. Your comprehensive health companion designed to empower you on your wellness journey. Whether you're striving for fitness goals, monitoring your health, or simply making lifestyle changes, HealthMate is here to support you every step of the way.
 
-- [Check out V1.5.2 here](https://healthmate-c8e5c.web.app)
+- [Check out V1.6 here](https://healthmate-c8e5c.web.app)
 
 ___Recent Updates___
+
+```
+Saving Feature V1.6
+```
+
+- Implemented firestore cloud database
+  - Users that are logged in can now save their BMI calculators to their account
+  - Saved data follows the structure of:
+    - BMI: 0.00
+    - Date: dd/mm/yyyy
+    - User: user ID (not displayed)
+  - Data can be deleted by the user
+  - Data can be tracked on the /manage-account page
+  - Saved data is not tracked, and fully secure via firestore cloud service
+- Implemented toast notifications for updated components & pages
+- Further updates to styling on specific pages
+- New button animations for /manage-account
+- GitHub Repository now has an MIT licence
+- Added styles to inputs upon error
 
 ```
 Display Name Feature + Styling Issues Addressed V1.5.2

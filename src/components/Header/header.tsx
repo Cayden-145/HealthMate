@@ -6,6 +6,7 @@ import { CiMenuBurger } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { signOut } from 'firebase/auth';
 import {auth} from "../../api/firebase";
+import {toast} from "sonner";
 
 const Header = (props: { buttonVisible?: boolean }) => {
     const [accountBtnVisible, setAccountBtnVisible] = useState(false);
@@ -25,9 +26,11 @@ const Header = (props: { buttonVisible?: boolean }) => {
     const signOutClick = () => {
         signOut(auth)
             .then(r => {
-                alert("Successfully signed out.")
+                toast.success("Successfully signed out.");
             }).catch((error => {
-                alert(error)
+                toast.error("An error occurred whilst signing out.", {
+                    description: error
+            })
         }))
     }
 
