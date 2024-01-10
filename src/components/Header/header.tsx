@@ -73,7 +73,7 @@ const Header = (props: { buttonVisible?: boolean }) => {
                                     onClick={toggleDropdown}
                                 >
                                     <p className={'header__button-image'}>
-                                        <CgProfile />
+                                        <CgProfile/>
                                     </p>
                                 </button>
 
@@ -103,7 +103,12 @@ const Header = (props: { buttonVisible?: boolean }) => {
                         <a href="/bmi-calculator">BMI Calculator</a>
                         <a href="/height-converter">Height Converter</a>
                         <a href="/weight-converter">Weight Converter</a>
+
                     </div>
+
+                    <p className={"version"}>
+                        Current Version: <span className={"version-extra"}> 1.6 </span>
+                    </p>
                 </div>
             </div>
         </>

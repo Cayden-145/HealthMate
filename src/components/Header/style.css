@@ -168,6 +168,19 @@ body {
     font-size: 17px;
 }
 
+.version {
+    font-size: 16px;
+    margin-top: auto;
+    margin-left: 20px;
+    position: fixed;
+    bottom: 0;
+}
+
+.version-extra {
+    font-size: 18px;
+    font-weight: 600;
+}
+
 .dropdown-content button:nth-child(1) {
     margin-top: 5px;
 }

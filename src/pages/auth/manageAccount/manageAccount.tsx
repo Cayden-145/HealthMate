@@ -113,75 +113,83 @@ const ManageAccount = () => {
                 <AuthDetails loginType={"manage"} loggedIn={setLoggedInState}/>
             </div>
 
-            <div className={loggedInState ? "body__container" : "hidden"}>
-                {loading ? (
-                    <SpinningCircles/>
-                ) : (
-                    <div className={"data__container"}>
-                        {userData.length > 0 ? (
-                            userData.map((data) => (
-                                <div key={data.id} className={"data__information"}>
-                                    <p>
-                                        {`BMI: ${data.bmi}`}
-                                    </p>
-
-                                    <p>
-                                        {`Date: ${formatToDdMmYyyy(data.date.toDate())}`}
-                                    </p>
-
-                                    <div className={data.feet && data.inches && data.stone && data.pounds ? "data__imperial-container" : "hidden"}>
-                                        {data.feet !== undefined && data.inches !== undefined && (
-                                            <p className={"data__height-text"}>
-                                                {`Height: ${data.feet} ft ${data.inches} in`}
+            {loggedInState && (
+                <div className={loggedInState ? "body__container" : "hidden"}>
+                    {loading ? (
+                        <SpinningCircles/>
+                    ) : (
+                        <div className={"data__container"}>
+                            {userData.length > 0 ? (
+                                userData.map((data) => (
+                                    <div key={data.id} className={loggedInState ? "data__information" : "hidden"}>
+                                        {loggedInState && (
+                                            <p>
+                                                {`BMI: ${data.bmi}`}
                                             </p>
                                         )}
 
-                                        {data.stone !== undefined && data.pounds !== undefined && (
-                                            <p className={"data__weight-text"}>
-                                                {`Weight: ${data.stone} st ${data.pounds} lbs`}
+                                        {loggedInState && (
+                                            <p>
+                                                {`Date: ${formatToDdMmYyyy(data.date.toDate())}`}
                                             </p>
                                         )}
+
+                                        <div className={data.feet && data.inches && data.stone && data.pounds ? "data__imperial-container" : "hidden"}>
+                                            {data.feet !== undefined && data.inches !== undefined && (
+                                                <p className={"data__height-text"}>
+                                                    {`Height: ${data.feet} ft ${data.inches} in`}
+                                                </p>
+                                            )}
+
+                                            {data.stone !== undefined && data.pounds !== undefined && (
+                                                <p className={"data__weight-text"}>
+                                                    {`Weight: ${data.stone} st ${data.pounds} lbs`}
+                                                </p>
+                                            )}
+                                        </div>
+
+                                        <div className={data.metres && data.kilograms ? "data__metric-container" : "hidden"}>
+                                            {data.metres !== undefined && (
+                                                <p className={"data__height-text"}>
+                                                    {`Height: ${data.metres} m`}
+                                                </p>
+                                            )}
+
+                                            {data.kilograms !== undefined && (
+                                                <p className={"data__weight-text"}>
+                                                    {`Weight: ${data.kilograms} kg`}
+                                                </p>
+                                            )}
+                                        </div>
+
+                                        <button
+                                            className={"data__information-delete"}
+                                            onClick={() => deleteData(data.id)}
+                                        >
+                                            <MdDeleteOutline/>
+                                        </button>
                                     </div>
+                                ))
+                            ) : (
+                                <p className={"data__error"}>
+                                    Unable to find data associated with this account.
+                                </p>
+                            )}
+                        </div>
+                    )}
+                </div>
+            )}
 
-                                    <div className={data.metres && data.kilograms ? "data__metric-container" : "hidden"}>
-                                        {data.metres !== undefined && (
-                                            <p className={"data__height-text"}>
-                                                {`Height: ${data.metres} m`}
-                                            </p>
-                                        )}
-
-                                        {data.kilograms !== undefined && (
-                                            <p className={"data__weight-text"}>
-                                                {`Weight: ${data.kilograms} kg`}
-                                            </p>
-                                        )}
-                                    </div>
-
-                                    <button
-                                        className={"data__information-delete"}
-                                        onClick={() => deleteData(data.id)}
-                                    >
-                                        <MdDeleteOutline/>
-                                    </button>
-                                </div>
-                            ))
-                        ) : (
-                            <p className={"data__error"}>
-                                Unable to find data associated with this account.
-                            </p>
-                        )}
-                    </div>
-                )}
-            </div>
-
-            <div className={loggedInState ? "personal__information" : "hidden"}>
-                <button
-                    className={"sign-out__button"}
-                    onClick={signOutClick}
-                >
-                    Log Out
-                </button>
-            </div>
+            {loggedInState && (
+                <div className={loggedInState ? "personal__information" : "hidden"}>
+                    <button
+                        className={"sign-out__button"}
+                        onClick={signOutClick}
+                    >
+                        Log Out
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
