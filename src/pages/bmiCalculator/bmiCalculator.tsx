@@ -13,7 +13,7 @@ import {IoIosArrowDropdown} from "react-icons/io";
 import Confetti from 'react-dom-confetti';
 import { Toaster, toast } from 'sonner';
 import { db } from '../../api/firebase';
-import { collection, addDoc, deleteDoc, doc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, deleteDoc, doc, Timestamp, DocumentReference } from "firebase/firestore";
 
 const BMICalculator = () => {
     const location = useLocation();
@@ -361,28 +361,56 @@ const BMICalculator = () => {
     const saveData = async () => {
         setDropdownActive(!dropdownActive)
         try {
-            const docRef = await addDoc(collection(db, "savedData"), {
-                bmi: results,
-                date: Timestamp.now(),
-                user: authUserID
-            });
+            let docRef: DocumentReference | undefined;
 
-            const savedDocId = docRef.id;
+            if (metricToggle) {
+                docRef = await addDoc(collection(db, "savedData"), {
+                    metres: metres,
+                    kilograms: kilograms,
+                    bmi: results,
+                    date: Timestamp.now(),
+                    user: authUserID
+                });
+            } else if (imperialToggle) {
+                docRef = await addDoc(collection(db, "savedData"), {
+                    feet: feet,
+                    inches: inches,
+                    stone: stone,
+                    pounds: pounds,
+                    bmi: results,
+                    date: Timestamp.now(),
+                    user: authUserID
+                });
+            } else {
+                docRef = await addDoc(collection(db, "savedData"), {
+                    bmi: results,
+                    date: Timestamp.now(),
+                    user: authUserID
+                });
+            }
 
-            toast.success("Success", {
-                description: `Your BMI, ${results}, has been saved.`,
-                action: {
-                    label: "Undo",
-                    onClick: () => undoSaveData(savedDocId),
-                },
-            })
+            if (docRef) {
+                const savedDocId = docRef.id;
 
-            setButtonDisabled(true);
-            setConfetti(true);
+                toast.success("Success", {
+                    description: `Your BMI, ${results}, has been saved.`,
+                    action: {
+                        label: "Undo",
+                        onClick: () => undoSaveData(savedDocId),
+                    },
+                })
 
-            setTimeout(() => {
-                setConfetti(false);
-            }, 900);
+                setButtonDisabled(true);
+                setConfetti(true);
+
+                setTimeout(() => {
+                    setConfetti(false);
+                }, 900);
+            } else {
+                toast.error("Error Occurred whilst Saving", {
+                    description: `Unable to find document reference, try again later.`
+                })
+            }
 
         } catch (error) {
             toast.error("Error Occurred whilst Saving", {
@@ -661,6 +689,18 @@ const BMICalculator = () => {
                         </p>
 
                         <div>
+                            <div className={"divider-alt"}></div>
+
+                            <div className='hw-results__container-alt'>
+                                <p className={"hw-results__height"}>
+                                    {metricToggle ? `Height: ${metres} m` : `Height: ${feet} ft, ${inches} in`}
+                                </p>
+
+                                <p className={"hw-results__weight"}>
+                                    {metricToggle ? `Weight: ${kilograms} kg` : `Weight: ${stone} st, ${pounds} lbs`}
+                                </p>
+                            </div>
+
                             <p className={"weight__alt-text"}>
                                 {range !== "" ? `You are in the ${range} range.` : ""}
                             </p>
@@ -677,6 +717,16 @@ const BMICalculator = () => {
                     </div>
 
                     <div className={`${isBMIVisible ? 'weight' : 'hidden'}`}>
+                        <div className='hw-results__container'>
+                            <p className={"hw-results__height"}>
+                                {metricToggle ? `Height: ${metres} m` : `Height: ${feet} ft, ${inches} in`}
+                            </p>
+
+                            <p className={"hw-results__weight"}>
+                                {metricToggle ? `Weight: ${kilograms} kg` : `Weight: ${stone} st, ${pounds} lbs`}
+                            </p>
+                        </div>
+
                         <div className="weight__text">
                             <p>{range !== "" ? `You are in the ${range} range.` : ""}</p>
                             <a

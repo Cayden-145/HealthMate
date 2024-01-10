@@ -12,16 +12,20 @@ Saving Feature V1.6
   - Users that are logged in can now save their BMI calculators to their account
   - Saved data follows the structure of:
     - BMI: 0.00
+    - Feet, Inches / Metres
+    - Stone, Pounds / Kilograms
     - Date: dd/mm/yyyy
     - User: user ID (not displayed)
   - Data can be deleted by the user
   - Data can be tracked on the /manage-account page
-  - Saved data is not tracked, and fully secure via firestore cloud service
+  - Saved data is not accessed by anyone other than the logged-in user, and fully secure via firestore cloud service
 - Implemented toast notifications for updated components & pages
 - Further updates to styling on specific pages
 - New button animations for /manage-account
 - GitHub Repository now has an MIT licence
 - Added styles to inputs upon error
+- Results stying on /bmi-calculator page has been updated to include the inputted height and weight.
+- Improved styling for /bmi-calculator on smaller screens
 
 ```
 Display Name Feature + Styling Issues Addressed V1.5.2

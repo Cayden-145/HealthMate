@@ -34,6 +34,17 @@
     flex-direction: row;
 }
 
+.data__height-text {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: -10px;
+}
+
+.data__weight-text {
+    font-weight: 600;
+    font-size: 16px;
+}
+
 .data__information {
     margin-left: 1.3rem;
     margin-top: 2em;
@@ -41,6 +52,12 @@
     padding: 10px;
     border-radius: 10px;
     color: var(--text-color);
+}
+
+.data__imperial-container,
+.data__metric-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .data__information-delete {

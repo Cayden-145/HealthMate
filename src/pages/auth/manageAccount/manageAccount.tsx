@@ -14,6 +14,14 @@ interface SavedData {
     bmi: number;
     date: Timestamp;
     user: string;
+
+    feet?: string;
+    inches?: string;
+    pounds?: string;
+    stone?: string;
+
+    metres?: string;
+    kilograms?: string;
 }
 
 const ManageAccount = () => {
@@ -120,6 +128,34 @@ const ManageAccount = () => {
                                     <p>
                                         {`Date: ${formatToDdMmYyyy(data.date.toDate())}`}
                                     </p>
+
+                                    <div className={data.feet && data.inches && data.stone && data.pounds ? "data__imperial-container" : "hidden"}>
+                                        {data.feet !== undefined && data.inches !== undefined && (
+                                            <p className={"data__height-text"}>
+                                                {`Height: ${data.feet} ft ${data.inches} in`}
+                                            </p>
+                                        )}
+
+                                        {data.stone !== undefined && data.pounds !== undefined && (
+                                            <p className={"data__weight-text"}>
+                                                {`Weight: ${data.stone} st ${data.pounds} lbs`}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    <div className={data.metres && data.kilograms ? "data__metric-container" : "hidden"}>
+                                        {data.metres !== undefined && (
+                                            <p className={"data__height-text"}>
+                                                {`Height: ${data.metres} m`}
+                                            </p>
+                                        )}
+
+                                        {data.kilograms !== undefined && (
+                                            <p className={"data__weight-text"}>
+                                                {`Weight: ${data.kilograms} kg`}
+                                            </p>
+                                        )}
+                                    </div>
 
                                     <button
                                         className={"data__information-delete"}

@@ -190,21 +190,22 @@ body {
 }
 
 .information {
-  width: 350px;
-  height: 180px;
+  width: 400px;
+  height: 220px;
   background-color: var(--information-color);
-  padding: 20px;
   border-radius: 20px;
   color: var(--text-color);
 }
 
 .information__text {
   color: var(--text-color);
+  margin-left: 20px;
 }
 
 .info-text__title {
   text-decoration: underline;
   margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 .bottom-container {
@@ -224,7 +225,6 @@ body {
 
 .weight__text {
   padding: 20px;
-  align-items: center;
 }
 
 .weight__text p {
@@ -339,6 +339,32 @@ input[type="number"] {
   transform: scale(1);
 }
 
+.hw-results__container,
+.hw-results__container-alt {
+  display: flex;
+  padding-left: 20px;
+  margin-bottom: -2em;
+}
+
+.hw-results__container-alt {
+  display: none;
+}
+
+.hw-results__height {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.hw-results__weight {
+  margin-left: 45px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.divider-alt {
+  display: none;
+}
+
 @media screen and (max-width: 795px) {
   .header__link-img {
     display: none;
@@ -360,9 +386,23 @@ input[type="number"] {
     flex-direction: column;
   }
 
+  .divider-alt {
+    display: block;
+    width: 98%;
+    margin-left: 4px;
+    height: 1px;
+    background-color: #ccc;
+    margin-bottom: 2svh;
+  }
+
   .information {
-    height: 240px;
+    height: 320px;
     margin-top: -2rem;
+  }
+
+  .hw-results__container-alt {
+    margin-top: -1em;
+    display: flex;
   }
 
   .weight {
@@ -371,6 +411,8 @@ input[type="number"] {
 
   .weight__alt-text {
     display: flex;
+    margin-left: 20px;
+    margin-top: 1.5em;
   }
 
   .weight__alt-link {
@@ -378,6 +420,7 @@ input[type="number"] {
     color: var(--link);
     font-weight: 500;
     margin-top: -10px;
+    margin-left: 20px;
   }
 
   .weight__alt-link:hover {
