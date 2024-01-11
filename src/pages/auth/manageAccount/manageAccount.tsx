@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import AuthDetails from '../details/AuthDetails';
 import Header from '../../../components/Header/header';
 import './manageAccount.css';
-import { collection, query, where, getDocs, Timestamp, deleteDoc, doc } from 'firebase/firestore';
+import { collection, query, where, getDocs, Timestamp, deleteDoc, doc, orderBy } from 'firebase/firestore';
 import { db, auth } from '../../../api/firebase';
 import { MdDeleteOutline } from "react-icons/md";
 import { toast, Toaster } from "sonner";
 import { SpinningCircles } from 'react-loading-icons'
 import {signOut} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 interface SavedData {
     id: string;
@@ -29,9 +30,12 @@ const ManageAccount = () => {
     const [loggedInState, setLoggedInState] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
 
+    const navigate = useNavigate();
+
     const signOutClick = () => {
         signOut(auth)
             .then(() => {
+                navigate("/")
                 toast.success("Successfully signed out.");
             }).catch((error => {
             toast.error("An error occurred whilst signing out.", {
@@ -84,7 +88,7 @@ const ManageAccount = () => {
             const user = auth.currentUser;
 
             if (user) {
-                const q = query(collection(db, "savedData"), where("user", "==", user.uid));
+                const q = query(collection(db, "savedData"), where("user", "==", user.uid), orderBy("date", "asc"));
 
                 const querySnapshot = await getDocs(q);
 
@@ -101,6 +105,8 @@ const ManageAccount = () => {
             toast.error("Unable to load user data", {
                 description: "Try again later."
             });
+
+            console.log(error)
         }
     }
 
