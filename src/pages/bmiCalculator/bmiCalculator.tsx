@@ -446,7 +446,7 @@ const BMICalculator = () => {
             <Toaster richColors expand={false} position={"bottom-right"}/>
 
             <div className={"app"}>
-                <Header buttonVisible={true}/>
+                <Header/>
 
                 <div className={"page__title"}>
                     <p className={"page__title-text"}>

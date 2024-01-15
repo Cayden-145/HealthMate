@@ -9,7 +9,7 @@ const Home = () => {
 
     return (
         <div className={"home"}>
-            <Header buttonVisible={true}/>
+            <Header />
 
             <div className={"about"}>
                 <div className={"bio__paragraph-container"}>

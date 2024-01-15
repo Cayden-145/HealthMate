@@ -54,7 +54,7 @@ const Login = () => {
 
     return (
         <>
-            <Header buttonVisible={false} />
+            <Header/>
 
 
             <div className={"login-page"}>

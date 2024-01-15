@@ -8,7 +8,7 @@ import { signOut } from 'firebase/auth';
 import {auth} from "../../api/firebase";
 import {toast} from "sonner";
 
-const Header = (props: { buttonVisible?: boolean }) => {
+const Header = () => {
     const [accountBtnVisible, setAccountBtnVisible] = useState(false);
     const [menuActive, setMenuActive] = useState(false);
     const [dropdownActive, setDropdownActive] = useState(false);
@@ -16,7 +16,7 @@ const Header = (props: { buttonVisible?: boolean }) => {
 
     const toggleMenu = () => {
         setMenuActive(!menuActive);
-        setDropdownActive(false); // Close the dropdown when the menu is toggled
+        setDropdownActive(false);
     };
 
     const toggleDropdown = () => {
@@ -25,7 +25,7 @@ const Header = (props: { buttonVisible?: boolean }) => {
 
     const signOutClick = () => {
         signOut(auth)
-            .then(r => {
+            .then(() => {
                 toast.success("Successfully signed out.");
             }).catch((error => {
                 toast.error("An error occurred whilst signing out.", {
@@ -36,7 +36,7 @@ const Header = (props: { buttonVisible?: boolean }) => {
 
     return (
         <>
-            <AuthDetails headerVisible={setAccountBtnVisible} />
+            <AuthDetails headerVisible={setAccountBtnVisible}/>
 
             <div className={'header'}>
                 <div className={'header__title'}>
@@ -46,7 +46,7 @@ const Header = (props: { buttonVisible?: boolean }) => {
                 </div>
 
                 <button className={'hamburger-button'} onClick={toggleMenu}>
-                    <CiMenuBurger />
+                    <CiMenuBurger/>
                 </button>
 
                 <div

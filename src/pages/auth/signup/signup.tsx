@@ -34,15 +34,6 @@ const Signup = () => {
                 setErrorCode(error.code)
                 console.log(error.code)
             });
-
-        // firebase.auth().createUserWithEmailAndPassword(email, password)
-        //     .then(function(result) {
-        //         return result.user.updateProfile({
-        //             displayName: document.getElementById("name").value
-        //         })
-        //     }).catch(function(error) {
-        //     console.log(error);
-        // });
     };
 
     const confettiConfig = {
@@ -55,7 +46,7 @@ const Signup = () => {
 
     return (
         <>
-            <Header buttonVisible={false} />
+            <Header/>
 
             <div className={'signup-page'}>
                 <div className={'signup-page__information'}>

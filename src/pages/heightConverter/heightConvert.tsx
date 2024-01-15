@@ -164,7 +164,7 @@ const HeightConverter = () => {
 
     return (
         <div className={"main"}>
-            <Header buttonVisible={true}/>
+            <Header />
 
             <div className={"page__title"}>
                 <p className={"page__title-text"}>
