@@ -95,6 +95,6 @@ Routing V1.3
 
 Note:
 
-- Website may not function and display as expected on smaller devices. (phones, tablets, other small screens.)
+- HealthMate isn't avaiable on phones at the moment. We have plans to support mobile devices in the future.
 
 
