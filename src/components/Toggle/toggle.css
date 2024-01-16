@@ -24,14 +24,13 @@
 .sliding-thumb {
     width: 28px;
     height: 28px;
-    background-color: #1a406e; /* Default color */
-    margin-left: 3px;
+    background-color: #1a406e;
+    margin-left: 2px;
     border-radius: 50%;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Transition both transform and background-color */
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .sliding-toggle.toggled .sliding-thumb {
     transform: translateX(30px);
-    margin-left: 0;
-    background-color: #4286ec; /* Green color when toggled */
+    background-color: #4286ec;
 }

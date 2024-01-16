@@ -3,7 +3,6 @@ import './style.css';
 
 const ResetButton = (props: {
     onClick: MouseEventHandler<HTMLButtonElement>
-    // type: string
     title: string
 }) => {
     return (

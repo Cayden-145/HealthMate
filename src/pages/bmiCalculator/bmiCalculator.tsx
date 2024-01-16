@@ -688,7 +688,7 @@ const BMICalculator = () => {
                           </span>
                         </p>
 
-                        <div>
+                        <div className={isBMIVisible ? "results__container-small" : "hidden"}>
                             <div className={"divider-alt"}></div>
 
                             <div className='hw-results__container-alt'>
