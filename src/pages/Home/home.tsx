@@ -37,13 +37,9 @@ const Home = () => {
                             <span className={"bio__title"}>
                                 &#8226; BMI Calculator
                             </span>
-                            Our BMI calculator is a powerful tool that helps you assess your body mass index
-                            effortlessly.
-                            Simply input your height and weight, and HealthMate will provide you with an accurate BMI
-                            reading.
-                            This information serves as a valuable indicator of your overall health and aids in setting
-                            realistic
-                            fitness targets.
+                            Effortlessly evaluate your BMI with our powerful calculator.
+                            Input your height and weight, and HealthMate delivers precise results, offering a valuable gauge of overall health and aiding in the
+                            establishment of realistic fitness goals.
                         </p>
                     </div>
 
@@ -65,21 +61,12 @@ const Home = () => {
                             <span className={"bio__title"}>
                                 &#8226; Weight Converter
                             </span>
-                            Whether you're tracking your progress in kilograms, pounds & stones,
-                            HealthMate's weight converter simplifies the process.
-                            Convert your weight effortlessly and stay on top of your fitness journey without the hassle
-                            of
-                            manual calculations.
+                            Track your progress effortlessly with HealthMate's weight converter,
+                            whether in kilograms or pounds & stones. Simplify the conversion process, ensuring seamless monitoring of your
+                            fitness journey without the need for manual calculations.
                         </p>
                     </div>
                 </div>
-
-
-                {/*<img
-                    src={`${process.env.PUBLIC_URL}/heartLogo.png`}
-                    alt={"heart"}
-                    className={"bio__image"}
-                />*/}
 
                 <div className="divider"></div>
 
@@ -116,8 +103,8 @@ const Home = () => {
                                 Progress Tracking:
                             </span>
                             {' '}
-                            Monitor your progress over time with easy-to-read charts and graphs,
-                            allowing you to celebrate achievements and stay motivated.
+                            Effortlessly track and preserve your health journey with our comprehensive feature.
+                            Securely store and monitor weight, BMI, and height in your account, enhancing fitness progress.
                         </li>
 
                         <li className={"bio__list-last"}>
@@ -130,12 +117,6 @@ const Home = () => {
                         </li>
                     </ul>
                 </div>
-
-                {/*<img
-                    src={`${process.env.PUBLIC_URL}/layout.png`}
-                    alt={"layout"}
-                    className={"bio__image"}
-                />*/}
 
                 <div className="divider"></div>
 
@@ -173,12 +154,6 @@ const Home = () => {
                         making it easy to track your health no matter where life takes you.
                     </li>
                 </ul>
-
-                {/*<img*/}
-                {/*    src={`${process.env.PUBLIC_URL}/whyChoose.png`}*/}
-                {/*    alt={"features"}*/}
-                {/*    className={"bio__image"}*/}
-                {/*/>*/}
 
                 <div className={"divider"}></div>
 
