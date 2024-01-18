@@ -443,7 +443,7 @@ const BMICalculator = () => {
     return (
         <>
             <AuthDetails loggedIn={setIsUserLoggedIn} userId={setAuthUserID} />
-            <Toaster richColors expand={false} position={"bottom-right"}/>
+            <Toaster richColors expand={false} position={"top-center"}/>
 
             <div className={"app"}>
                 <Header/>

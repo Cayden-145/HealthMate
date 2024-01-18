@@ -113,7 +113,7 @@ const ManageAccount = () => {
     return (
         <div className={"main"}>
             <Header/>
-            <Toaster richColors expand={false} position={"bottom-right"} duration={2000}/>
+            <Toaster richColors expand={false} position={"top-center"} duration={2000}/>
 
             <div className={"title__container"}>
                 <AuthDetails loginType={"manage"} loggedIn={setLoggedInState}/>
