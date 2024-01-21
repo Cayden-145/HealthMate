@@ -62,6 +62,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/marked": "^6.0.0",
     "@types/react-slick": "^0.23.13",
     "@types/react-toggle": "^4.0.5",
