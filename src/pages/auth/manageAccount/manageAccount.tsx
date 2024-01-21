@@ -140,7 +140,8 @@ const ManageAccount = () => {
                                             </p>
                                         )}
 
-                                        <div className={data.feet && data.inches && data.stone && data.pounds ? "data__imperial-container" : "hidden"}>
+                                        <div
+                                            className={data.feet && data.inches && data.stone && data.pounds ? "data__imperial-container" : "hidden"}>
                                             {data.feet !== undefined && data.inches !== undefined && (
                                                 <p className={"data__height-text"}>
                                                     {`Height: ${data.feet} ft ${data.inches} in`}
@@ -152,9 +153,22 @@ const ManageAccount = () => {
                                                     {`Weight: ${data.stone} st ${data.pounds} lbs`}
                                                 </p>
                                             )}
+
+                                            <p className={"data__range-text"}>
+                                                Range: {data.bmi < 18.5
+                                                ? "Underweight"
+                                                : data.bmi >= 18.5 && data.bmi <= 24.9
+                                                    ? "Healthy"
+                                                    : data.bmi >= 25 && data.bmi <= 29.9
+                                                        ? "Overweight"
+                                                        : data.bmi >= 30
+                                                            ? "Obese"
+                                                            : "N/A"}
+                                            </p>
                                         </div>
 
-                                        <div className={data.metres && data.kilograms ? "data__metric-container" : "hidden"}>
+                                        <div
+                                            className={data.metres && data.kilograms ? "data__metric-container" : "hidden"}>
                                             {data.metres !== undefined && (
                                                 <p className={"data__height-text"}>
                                                     {`Height: ${data.metres} m`}
@@ -163,9 +177,21 @@ const ManageAccount = () => {
 
                                             {data.kilograms !== undefined && (
                                                 <p className={"data__weight-text"}>
-                                                    {`Weight: ${data.kilograms} kg`}
+                                                {`Weight: ${data.kilograms} kg`}
                                                 </p>
                                             )}
+
+                                            <p className={"data__range-text"}>
+                                                Range: {data.bmi < 18.5
+                                                ? "Underweight"
+                                                : data.bmi >= 18.5 && data.bmi <= 24.9
+                                                    ? "Healthy"
+                                                    : data.bmi >= 25 && data.bmi <= 29.9
+                                                        ? "Overweight"
+                                                        : data.bmi >= 30
+                                                            ? "Obese"
+                                                            : "N/A"}
+                                            </p>
                                         </div>
 
                                         <button

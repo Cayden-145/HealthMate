@@ -43,6 +43,12 @@
 .data__weight-text {
     font-weight: 600;
     font-size: 16px;
+    margin-bottom: -10px;
+}
+
+.data__range-text {
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .data__information {
@@ -55,7 +61,8 @@
 }
 
 .data__imperial-container,
-.data__metric-container {
+.data__metric-container,
+.data__range-container {
     display: flex;
     flex-direction: column;
 }
