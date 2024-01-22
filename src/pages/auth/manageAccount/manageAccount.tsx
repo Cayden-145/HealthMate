@@ -140,59 +140,53 @@ const ManageAccount = () => {
                                             </p>
                                         )}
 
-                                        <div
-                                            className={data.feet && data.inches && data.stone && data.pounds ? "data__imperial-container" : "hidden"}>
-                                            {data.feet !== undefined && data.inches !== undefined && (
+                                        {((data.feet ?? 0) > 0 || (data.inches ?? 0) > 0 || (data.stone ?? 0) > 0 || (data.pounds ?? 0) > 0) && (
+                                            <div className="data__imperial-container">
                                                 <p className={"data__height-text"}>
                                                     {`Height: ${data.feet} ft ${data.inches} in`}
                                                 </p>
-                                            )}
 
-                                            {data.stone !== undefined && data.pounds !== undefined && (
                                                 <p className={"data__weight-text"}>
                                                     {`Weight: ${data.stone} st ${data.pounds} lbs`}
                                                 </p>
-                                            )}
 
-                                            <p className={"data__range-text"}>
-                                                Range: {data.bmi < 18.5
-                                                ? "Underweight"
-                                                : data.bmi >= 18.5 && data.bmi <= 24.9
-                                                    ? "Healthy"
-                                                    : data.bmi >= 25 && data.bmi <= 29.9
-                                                        ? "Overweight"
-                                                        : data.bmi >= 30
-                                                            ? "Obese"
-                                                            : "N/A"}
-                                            </p>
-                                        </div>
+                                                <p className={"data__range-text"}>
+                                                    Range: {data.bmi < 18.5
+                                                    ? "Underweight"
+                                                    : data.bmi >= 18.5 && data.bmi <= 24.9
+                                                        ? "Healthy"
+                                                        : data.bmi >= 25 && data.bmi <= 29.9
+                                                            ? "Overweight"
+                                                            : data.bmi >= 30
+                                                                ? "Obese"
+                                                                : "N/A"}
+                                                </p>
+                                            </div>
+                                        )}
 
-                                        <div
-                                            className={data.metres && data.kilograms ? "data__metric-container" : "hidden"}>
-                                            {data.metres !== undefined && (
+                                        {((data.metres ?? 0) > 0 || (data.kilograms ?? 0) > 0) && (
+                                            <div className="data__metric-container">
                                                 <p className={"data__height-text"}>
                                                     {`Height: ${data.metres} m`}
                                                 </p>
-                                            )}
 
-                                            {data.kilograms !== undefined && (
                                                 <p className={"data__weight-text"}>
-                                                {`Weight: ${data.kilograms} kg`}
+                                                    {`Weight: ${data.kilograms} kg`}
                                                 </p>
-                                            )}
 
-                                            <p className={"data__range-text"}>
-                                                Range: {data.bmi < 18.5
-                                                ? "Underweight"
-                                                : data.bmi >= 18.5 && data.bmi <= 24.9
-                                                    ? "Healthy"
-                                                    : data.bmi >= 25 && data.bmi <= 29.9
-                                                        ? "Overweight"
-                                                        : data.bmi >= 30
-                                                            ? "Obese"
-                                                            : "N/A"}
-                                            </p>
-                                        </div>
+                                                <p className={"data__range-text"}>
+                                                    Range: {data.bmi < 18.5
+                                                    ? "Underweight"
+                                                    : data.bmi >= 18.5 && data.bmi <= 24.9
+                                                        ? "Healthy"
+                                                        : data.bmi >= 25 && data.bmi <= 29.9
+                                                            ? "Overweight"
+                                                            : data.bmi >= 30
+                                                                ? "Obese"
+                                                                : "N/A"}
+                                                </p>
+                                            </div>
+                                        )}
 
                                         <button
                                             className={"data__information-delete"}
