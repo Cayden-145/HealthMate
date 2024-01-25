@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './style.css'
 import Header from "../../components/Header/header";
-import Footer from "../../components/Footer/footer";
 import {
     useFeetState, useInchesState, useMetresState
 } from "../../utils";
@@ -297,10 +296,6 @@ const HeightConverter = () => {
                 >
                     Use this to find out your <span className={"results__info-span"}>BMI</span>
                 </a>
-            </div>
-
-            <div className={"main__footer"}>
-                <Footer/>
             </div>
         </div>
     );

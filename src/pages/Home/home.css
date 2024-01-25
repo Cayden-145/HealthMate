@@ -216,3 +216,68 @@
         background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 210svh, var(--dark-color));
     }
 }
+
+@media screen and (max-width: 792px) {
+    .about {
+        width: 100svw;
+    }
+
+    .divider {
+        width: 100svw;
+    }
+
+    .bio__paragraph-container {
+        width: 300px;
+    }
+
+    .home__download-text {
+        font-size: 17px;
+        width: 70%;
+    }
+
+    .bio__paragraph-title {
+        font-size: 22px;
+    }
+
+    .total-container {
+        width: 300px;
+        margin-left: 1.8rem;
+    }
+
+    .offer__paragraph-container {
+        width: 100%;
+    }
+
+    .total-container-list {
+        width: 330px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 5.5rem;
+    }
+
+    .bio__paragraph-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .bio__list-last {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .bio__list-title {
+        margin: 0;
+        padding-left: 0;
+        display: flex;
+        text-decoration: underline;
+    }
+
+    .bio__paragraph-list__choosing {
+        width: 300px;
+        gap: 0;
+        margin-right: 5.7rem;
+    }
+}

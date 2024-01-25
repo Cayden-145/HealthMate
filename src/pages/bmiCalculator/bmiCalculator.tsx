@@ -510,7 +510,7 @@ const BMICalculator = () => {
                     <>
                         <div className={'fields'}>
 
-                            <p className={"fields__text"}>
+                            <p className={"fields__text-height"}>
                                 Height:
                             </p>
 

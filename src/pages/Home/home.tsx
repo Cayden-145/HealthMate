@@ -162,10 +162,9 @@ const Home = () => {
                     Your well-being is our priority, and HealthMate is here to
                     guide you towards a lifestyle that promotes vitality and longevity.
                 </p>
-
-                <Footer/>
-
             </div>
+
+            <Footer/>
         </div>
     );
 };

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './style.css'
 import Header from "../../components/Header/header";
-import Footer from "../../components/Footer/footer";
 import {
     useKilogramsState, usePoundsState, useStoneState
 } from "../../utils";
@@ -269,10 +268,6 @@ const WeightConvert = () => {
                 >
                     Use this to find out your <span className={"results__info-span"}>BMI</span>
                 </a>
-            </div>
-
-            <div className={"main__footer"}>
-                <Footer/>
             </div>
         </div>
     );

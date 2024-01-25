@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './login.css'
 import Header from "../../../components/Header/header";
-import Footer from "../../../components/Footer/footer";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { auth } from "../../../api/firebase";
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -138,22 +137,22 @@ const Login = () => {
 
                 <AuthDetails loggedIn={setIsButtonDisabled} displayNameVisible={true}/>
 
-                <div className={demoAccount ? "demo__container" : "hidden"}>
-                    <p className={demoAccount ? "demo__paragraph" : "hidden"}>
+                {demoAccount && (
+                    <div className={"demo__container"}>
+                        <p className={"demo__paragraph"}>
                             <span className={demoAccount ? "demo__title" : "hidden"}>
-                                {demoAccount ? "Demo Account" : ""} <br />
+                                {demoAccount ? "Demo Account" : ""} <br/>
                             </span>
-                        {demoAccount ? "Email: demoacc@demo.com" : ""} <br/>
-                        {demoAccount ? "Password: demo1234" : ""} <br />
+                            {demoAccount ? "Email: demoacc@demo.com" : ""} <br/>
+                            {demoAccount ? "Password: demo1234" : ""} <br/>
 
-                        <span className={demoAccount ? "demo__important" : "hidden"}>
+                            <span className={demoAccount ? "demo__important" : "hidden"}>
                             {demoAccount ? "This account is to be used for demonstration purposes only. The account is not linked to an email that is in use." : ""}
                         </span>
-                    </p>
-                </div>
+                        </p>
+                    </div>
+                )}
             </div>
-
-            <Footer/>
         </>
     );
 };

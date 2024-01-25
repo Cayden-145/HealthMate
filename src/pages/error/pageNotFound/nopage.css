@@ -64,3 +64,28 @@ body {
         margin-left: 0;
     }
 }
+
+@media screen and (max-width: 792px) {
+    .pageNotFound {
+        justify-content: center;
+    }
+
+    .noPage__header {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 6.5em;
+    }
+
+    .noPage__header-title {
+        margin: 0 0 0 15px;
+    }
+
+    .noPage__paragraph {
+        width: 90%;
+        margin: 10svh 0 0 30px;
+    }
+
+    .noPage__button {
+        margin: 50px 0 30svh 7rem;
+    }
+}

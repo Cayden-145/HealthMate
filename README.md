@@ -1,8 +1,16 @@
 Introducing HealthMate. Your comprehensive health companion designed to empower you on your wellness journey. Whether you're striving for fitness goals, monitoring your health, or simply making lifestyle changes, HealthMate is here to support you every step of the way.
 
-- [Check out V1.6 here](https://healthmate-c8e5c.web.app)
+- [Check out V1.6.2 here](https://healthmate-c8e5c.web.app)
 
 ___Recent Updates___
+
+```
+Phone Support V1.6.2
+```
+
+- HealthMate can now be used on the go, through a browser on your phone!
+- Multiple css issues have been addressed, and fixed accordingly.
+- All pages support phones.
 
 ```
 Dashboard V1.6.1
@@ -51,75 +59,17 @@ Saving Feature V1.6
 - Added styles to inputs upon error
 - Results stying on /bmi-calculator page has been updated to include the inputted height and weight.
 - Improved styling for /bmi-calculator on smaller screens
+  
 
 ```
 Display Name Feature + Styling Issues Addressed V1.5.2
-```
-
-- Added a display name field upon sign up.
-  - Field is required when signing up.
-  - All accounts without a display name have been reset.
-- Added a new logo to footer component
-- Fixed styling issues for home page
-  - When working with a smaller window, "key features" presented an issue causing items to load off of screen.
-- Fixed styling issues for BMI Calculator
-  - When working with a smaller window, "/bmi-calculator" page presented an issue causing items to load off of screen.
-
-```
- UI/UX Overhaul V1.5.1
-```
-
-- Frontend
-  - Updated UI for all pages
-  - Added unsupported device page (mobile devices)
-  - Improved UX
-    - Fixed issues with signup and login page
-    - Custom Component
-- Backend
-  - Updated Firebase API
-  - Updated parameters for certain pages
-  - Addressed issues when logging in
-  - Addressed performance issues
-  - New Component
-    - Custom toggle button
-    - Accessible using the following pages:
-      - BMI Calculator
-      - Height Converter
-      - Weight Converter
-    - Animated
-  - Addressed issues with parameters
-
-```
- Authentication V1.5
-```
-
-- Added authentication via firebase.
-  - Account Management Pages
-    - Login
-    - Sign Up
-    - Reset Password
-- Updated header component
-  - Hamburger Menu
-
-```
- Header Component V1.4.2
-```
-
-- Updated header
-- Fixed styling for header component
-  - Updated styling to header to accommodate for a smaller browser.
-- New color scheme for header component
-- Added login button. (not functional yet)
-
-
-```
+UI/UX Overhaul V1.5.1
+Authentication V1.5
+Header Component V1.4.2
 Performance V1.4.1
 Parameters V1.4
 Routing V1.3
+...
 ```
-
-Note:
-
-- HealthMate isn't avaiable on phones at the moment. We have plans to support mobile devices in the future.
 
 

@@ -7,9 +7,10 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    margin-top: 1vh;
+    margin-top: 1svh;
     position: relative;
     z-index: 3000;
+    max-width: none;
 }
 
 .footer-text {
@@ -35,3 +36,30 @@
     transform: translateY(-50%);
 }
 
+@media screen and (max-width: 792px) {
+    .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: normal;
+        width: 100svw;
+    }
+
+    .footer-text {
+        font-size: 20px;
+        margin-left: 10px;
+        height: 6svh;
+    }
+
+    .footer-img {
+        display: none;
+    }
+
+    .source-code {
+        display: none;
+        right: 0;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './signup.css';
 import Header from '../../../components/Header/header';
-import Footer from '../../../components/Footer/footer';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { auth } from '../../../api/firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -124,8 +123,6 @@ const Signup = () => {
 
                 <AuthDetails loggedIn={setIsButtonDisabled} displayNameVisible={true} />
             </div>
-
-            <Footer/>
         </>
     );
 };

@@ -227,3 +227,36 @@
 .popup__goal--remove {
     margin-left: 3em;
 }
+
+@media screen and (max-width: 792px) {
+    .dashboard__recent {
+        width: 340px;
+    }
+
+    .dashboard__goal {
+        width: 340px;
+    }
+
+    .popup__goal {
+        width: 340px;
+        margin-top: 30px;
+    }
+
+    .popup__goal--toggle {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toggle__one {
+        margin-right: auto;
+    }
+
+    .toggle__two {
+        margin-top: 20px;
+        margin-right: auto;
+    }
+
+    .dashboard__goal--btn {
+        font-size: 16px;
+    }
+}

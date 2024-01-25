@@ -3,10 +3,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    min-height: 100vh;
 
     color: var(--text-color);
     background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 .title-container {
@@ -28,7 +30,7 @@
 
 .body__container {
     background: linear-gradient(to bottom, rgba(4, 14, 28, 0.47), rgba(2, 7, 12, 0.47));
-    height: 80%;
+    min-height: 80%;
     width: 95%;
     border-radius: 30px;
     box-shadow: -13px 12px 6px rgba(241, 241, 241, 0.13);
@@ -160,4 +162,19 @@
 
 .hidden {
     display: none;
+}
+
+@media screen and (max-width: 792px) {
+    .body__container {
+        width: 330px;
+    }
+
+    .data__information {
+        flex: 0 0 60%;
+        margin-left: 1rem;
+    }
+
+    .personal__information {
+        margin-bottom: 10em;
+    }
 }

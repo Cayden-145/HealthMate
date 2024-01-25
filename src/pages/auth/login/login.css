@@ -182,3 +182,34 @@ body {
     font-weight: 600;
     color: #cb4141;
 }
+
+@media screen and (max-width: 792px) {
+    .login-page__information {
+        width: 85%;
+        height: auto;
+    }
+
+    .login-page__container {
+        margin-top: 5svh;
+    }
+
+    .login-page__input {
+        width: 320px;
+        font-size: 17px;
+    }
+
+    .login-page__password {
+        width: 320px;
+        font-size: 17px;
+    }
+
+    .login-page__title {
+        margin-left: 20%;
+    }
+
+    .login-page__signup,
+    .login-page__signup-a {
+        margin: 30px 0 0 40px;
+        font-size: 17px;
+    }
+}

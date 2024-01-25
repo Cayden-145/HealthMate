@@ -49,3 +49,9 @@
 .buttons__reset:active {
     transform: scale(0.9);
 }
+
+@media screen and (max-width: 792px) {
+    .buttons {
+        margin-left: 0;
+    }
+}

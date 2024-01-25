@@ -275,52 +275,7 @@ const Dashboard = () => {
             <AuthDetails userId={setAuthUserID} />
 
             <div className="dashboard__container">
-                <div className="dashboard__recent">
-                    <div className="dashboard__title">Recent BMI</div>
-
-                    {userData.slice(0, 3).map((entry, index) => (
-                        <div key={index} className={`dashboard__recent--text ${goal !== 'none' ? 'visible' : ''}`}>
-                            <span className="dashboard__recent--bmi"> BMI: {entry.bmi} </span> <br/>
-                            <span
-                                className="dashboard__recent--date"> {entry.date.toDate().toLocaleDateString()} </span>
-                        </div>
-                    ))}
-                </div>
-
-                <div className={`dashboard__goal  ${goal === "none" ? 'none' : ''}`}>
-                    <div className="dashboard__title">Goal <span
-                        className={"dashboard__title--alt"}>{goal === "none" ? `none` : ``}</span></div>
-
-                    {goal !== "none" ? (
-                        <div className={"dashboard__goal--container"}>
-                            <p className={"dashboard__goal--text"}>
-                                Current Goal: <span className={"dashboard__goal--span"}> {goal} </span>
-                            </p>
-
-                            <div className={"dashboard__button--container"}>
-                                <button className={"dashboard__goal--btn"} onClick={() => {
-                                    setUpdateGoalVisible(!updateGoalVisible)
-                                }}>
-                                    Change goal
-                                </button>
-
-                                <button className={"dashboard__goal--btn"} onClick={removeGoal}>
-                                    Remove Goal
-                                </button>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className={"dashboard__goal--none"}>
-                            <button className={"dashboard__goal--btn"} onClick={() => {
-                                setUpdateGoalVisible(!updateGoalVisible)
-                            }}>
-                                Set goal
-                            </button>
-                        </div>
-                    )}
-                </div>
-
-                {updateGoalVisible && (
+                {updateGoalVisible ? (
                     <div className={`popup__goal`}>
                         <div className="dashboard__title">New Goal</div>
 
@@ -409,6 +364,54 @@ const Dashboard = () => {
                             }} title={"Cancel"}/>
                         </div>
                     </div>
+                ) : (
+                    <>
+                        <div className="dashboard__recent">
+                            <div className="dashboard__title">Recent BMI</div>
+
+                            {userData.slice(0, 3).map((entry, index) => (
+                                <div key={index}
+                                     className={`dashboard__recent--text ${goal !== 'none' ? 'visible' : ''}`}>
+                                    <span className="dashboard__recent--bmi"> BMI: {entry.bmi} </span> <br/>
+                                    <span
+                                        className="dashboard__recent--date"> {entry.date.toDate().toLocaleDateString()} </span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className={`dashboard__goal  ${goal === "none" ? 'none' : ''}`}>
+                            <div className="dashboard__title">Goal <span
+                                className={"dashboard__title--alt"}>{goal === "none" ? `none` : ``}</span></div>
+
+                            {goal !== "none" ? (
+                                <div className={"dashboard__goal--container"}>
+                                    <p className={"dashboard__goal--text"}>
+                                        Current Goal: <span className={"dashboard__goal--span"}> {goal} </span>
+                                    </p>
+
+                                    <div className={"dashboard__button--container"}>
+                                        <button className={"dashboard__goal--btn"} onClick={() => {
+                                            setUpdateGoalVisible(!updateGoalVisible)
+                                        }}>
+                                            Change goal
+                                        </button>
+
+                                        <button className={"dashboard__goal--btn"} onClick={removeGoal}>
+                                            Remove Goal
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className={"dashboard__goal--none"}>
+                                    <button className={"dashboard__goal--btn"} onClick={() => {
+                                        setUpdateGoalVisible(!updateGoalVisible)
+                                    }}>
+                                        Set goal
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </>
                 )}
             </div>
         </>

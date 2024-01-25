@@ -105,10 +105,6 @@ const Header = () => {
                         <a href="/weight-converter">Weight Converter</a>
 
                     </div>
-
-                    <p className={"version"}>
-                        Current Version: <span className={"version-extra"}> 1.6.1 </span>
-                    </p>
                 </div>
             </div>
         </>

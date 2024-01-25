@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './resetPassword.css'
 import Header from "../../../components/Header/header";
-import Footer from "../../../components/Footer/footer";
 import {sendPasswordResetEmail} from "firebase/auth";
 import { auth } from "../../../api/firebase";
 import AuthDetails from "../details/AuthDetails";
@@ -81,8 +80,6 @@ const ResetPassword = () => {
                     </button>
                 </div>
             </div>
-
-            <Footer/>
 
             <AuthDetails loggedIn={setIsButtonDisabled}/>
         </>

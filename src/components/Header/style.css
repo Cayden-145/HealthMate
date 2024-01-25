@@ -14,7 +14,7 @@ body {
     background: linear-gradient(to bottom, #062f59, #001f3f);
 
     height: 100px;
-    width: 100vw;
+    width: 100svw;
 }
 
 .header__title {
@@ -168,19 +168,6 @@ body {
     font-size: 17px;
 }
 
-.version {
-    font-size: 16px;
-    margin-top: auto;
-    margin-left: 20px;
-    position: fixed;
-    bottom: 0;
-}
-
-.version-extra {
-    font-size: 18px;
-    font-weight: 600;
-}
-
 .dropdown-content button:nth-child(1) {
     margin-top: 5px;
 }
@@ -206,4 +193,22 @@ body {
 
 .hidden {
     display: none;
+}
+
+@media screen and (max-width: 792px) {
+    .header {
+        margin: 0;
+        padding: 0;
+    }
+
+    .header__title {
+        font-size: 35px;
+        margin-right: auto;
+    }
+
+    .hamburger-button {
+        padding: 0;
+        margin-right: 2rem;
+        font-size: 45px;
+    }
 }
