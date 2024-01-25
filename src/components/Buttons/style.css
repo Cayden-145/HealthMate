@@ -5,7 +5,7 @@
 }
 
 .buttons__submit {
-    background-color: var(--button-background);
+    background: linear-gradient(to right, #041426, #082342);
     border: none;
     color: var(--text-color);
     font-weight: 500;
@@ -14,18 +14,16 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    border-radius: 50px;
     cursor: pointer;
-    transition: 0.5s
+    border-radius: 50px;
+    transition: border-radius 1s;
 }
 
 .buttons__submit:hover {
-    transition: 0.5s;
-    transform: scale(1.1);
+    background: linear-gradient(to right, #020810, #06192d);
 }
 
 .buttons__submit:active {
-    transition: 0.3s;
     transform: scale(0.9);
 }
 

@@ -9,6 +9,7 @@ import { toast, Toaster } from "sonner";
 import { SpinningCircles } from 'react-loading-icons'
 import {signOut} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Dashboard from "../../../components/dashboard/dashboard";
 
 interface SavedData {
     id: string;
@@ -88,7 +89,7 @@ const ManageAccount = () => {
             const user = auth.currentUser;
 
             if (user) {
-                const q = query(collection(db, "savedData"), where("user", "==", user.uid), orderBy("date", "asc"));
+                const q = query(collection(db, "savedData"), where("user", "==", user.uid), orderBy("date", "desc"));
 
                 const querySnapshot = await getDocs(q);
 
@@ -120,13 +121,17 @@ const ManageAccount = () => {
             </div>
 
             {loggedInState && (
+                <Dashboard />
+            )}
+
+            {loggedInState && (
                 <div className={loggedInState ? "body__container" : "hidden"}>
                     {loading ? (
                         <SpinningCircles/>
                     ) : (
                         <div className={"data__container"}>
                             {userData.length > 0 ? (
-                                userData.map((data) => (
+                                userData.map((data: SavedData) => (
                                     <div key={data.id} className={loggedInState ? "data__information" : "hidden"}>
                                         {loggedInState && (
                                             <p>

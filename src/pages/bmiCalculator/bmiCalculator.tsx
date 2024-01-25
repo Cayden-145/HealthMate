@@ -487,7 +487,7 @@ const BMICalculator = () => {
                         <button
                             className={"toggle__text"}
                             onClick={handleImperialToggle}>
-                            <span style={{fontWeight: imperialToggle ? '600' : 'normal'}}>
+                            <span style={{fontWeight: imperialToggle ? '600' : 'normal', cursor: "pointer"}}>
                               Imperial
                             </span>
                         </button>
@@ -499,111 +499,119 @@ const BMICalculator = () => {
                         <button
                             className={"toggle__text"}
                             onClick={handleMetricToggle}>
-                            <span style={{fontWeight: metricToggle ? '600' : 'normal'}}>
+                            <span style={{fontWeight: metricToggle ? '600' : 'normal', cursor: "pointer"}}>
                               Metric
                             </span>
                         </button>
                     </div>
                 </div>
 
-                <div className={`${imperialToggle ? 'fields' : 'hidden'}`}>
+                {imperialToggle && (
+                    <>
+                        <div className={'fields'}>
 
-                    <p className={"fields__text"}>
-                        Height:
-                    </p>
+                            <p className={"fields__text"}>
+                                Height:
+                            </p>
 
-                    <input
-                        type={"numeric"}
-                        id={"heightInput"}
-                        value={feet === -1 ? '' : feet}
-                        onChange={heightInputChange}
-                        className={`fields__input ${heightError ? 'error' : ''}`}
-                    />
+                            <input
+                                type={"numeric"}
+                                id={"heightInput"}
+                                value={feet === -1 ? '' : feet}
+                                onChange={heightInputChange}
+                                className={`fields__input ${heightError ? 'error' : ''}`}
+                            />
 
-                    <p className={"fields__text"}>
-                        ft
-                    </p>
+                            <p className={"fields__text"}>
+                                ft
+                            </p>
 
-                    <input
-                        type={"numeric"}
-                        id={"inchesInput"}
-                        value={inches === -1 ? '' : inches}
-                        onChange={inchesInputChange}
-                        className={`fields__input ${inchesError ? 'error' : ''}`}
-                    />
+                            <input
+                                type={"numeric"}
+                                id={"inchesInput"}
+                                value={inches === -1 ? '' : inches}
+                                onChange={inchesInputChange}
+                                className={`fields__input ${inchesError ? 'error' : ''}`}
+                            />
 
-                    <p className={"fields__text"}>
-                        inch
-                    </p>
-                </div>
+                            <p className={"fields__text"}>
+                                inch
+                            </p>
+                        </div>
 
-                <div className={`${imperialToggle ? 'fields' : 'hidden'}`}>
-                    <p className={"fields__text-weight"}>
-                        Weight:
-                    </p>
+                        <div className={"fields"}>
+                            <p className={"fields__text-weight"}>
+                                Weight:
+                            </p>
 
-                    <input
-                        type={"numeric"}
-                        id={"stoneInput"}
-                        value={stone === -1 ? '' : stone}
-                        onChange={stoneInputChange}
-                        className={`fields__input ${stoneError ? 'error' : ''}`}
-                    />
+                            <input
+                                type={"numeric"}
+                                id={"stoneInput"}
+                                value={stone === -1 ? '' : stone}
+                                onChange={stoneInputChange}
+                                className={`fields__input ${stoneError ? 'error' : ''}`}
+                            />
 
-                    <p className={"fields__text"}>
-                        st
-                    </p>
+                            <p className={"fields__text"}>
+                                st
+                            </p>
 
-                    <input
-                        type={"numeric"}
-                        id={"poundsInput"}
-                        value={pounds === -1 ? '' : pounds}
-                        onChange={poundsInputChange}
-                        className={`fields__input ${poundsError ? 'error' : ''}`}
-                    />
+                            <input
+                                type={"numeric"}
+                                id={"poundsInput"}
+                                value={pounds === -1 ? '' : pounds}
+                                onChange={poundsInputChange}
+                                className={`fields__input ${poundsError ? 'error' : ''}`}
+                            />
 
-                    <p className={"fields__text"}>
-                        lbs
-                    </p>
+                            <p className={"fields__text"}>
+                                lbs
+                            </p>
 
-                </div>
+                        </div>
+                    </>
+                )}
 
-                <div className={`${metricToggle ? 'metric-fields' : 'hidden'}`}>
-                    <p className={"fields__text"}>
-                        Height:
-                    </p>
+                {metricToggle && (
+                    <>
+                        <div className={'metric-fields'}>
+                            <p className={"fields__text"}>
+                                Height:
+                            </p>
 
-                    <input
-                        type={"number"}
-                        id={"heightInput"}
-                        value={metres === -1 ? '' : metres}
-                        onChange={metresInputChange}
-                        className={`fields__input ${metresError ? 'error' : ''}`}
-                    />
+                            <input
+                                type={"number"}
+                                id={"heightInput"}
+                                value={metres === -1 ? '' : metres}
+                                onChange={metresInputChange}
+                                className={`fields__input ${metresError ? 'error' : ''}`}
+                            />
 
-                    <p className={"fields__text"}>
-                        metres
-                    </p>
-                </div>
+                            <p className={"fields__text"}>
+                                metres
+                            </p>
+                        </div>
 
-                <div className={`${metricToggle ? 'metric-fields' : 'hidden'}`}>
-                    <p className={"metric-fields__text-weight"}>
-                        Weight:
-                    </p>
+                        <div className={'metric-fields'}>
+                            <p className={"metric-fields__text-weight"}>
+                                Weight:
+                            </p>
 
-                    <input
-                        type={"number"}
-                        id={"heightInput"}
-                        value={kilograms === -1 ? '' : kilograms}
-                        onChange={kilogramsInputChange}
-                        className={`fields__input ${kilogramsError ? 'error' : ''}`}
-                    />
+                            <input
+                                type={"number"}
+                                id={"heightInput"}
+                                value={kilograms === -1 ? '' : kilograms}
+                                onChange={kilogramsInputChange}
+                                className={`fields__input ${kilogramsError ? 'error' : ''}`}
+                            />
 
-                    <p className={"fields__text"}>
-                        kilograms
-                    </p>
+                            <p className={"fields__text"}>
+                                kilograms
+                            </p>
 
-                </div>
+                        </div>
+                    </>
+                )}
 
                 <div className={"buttons"}>
                     <SubmitButton onClick={calculate} title={"Calculate"}/>
@@ -622,7 +630,9 @@ const BMICalculator = () => {
                     <div className={isUserLoggedIn ? "save-data__container" : "hidden"}>
                         <button
                             className={isUserLoggedIn ? "save-data__button" : "hidden"}
-                            onClick={() => {setDropdownActive(!dropdownActive)}}
+                            onClick={() => {
+                                setDropdownActive(!dropdownActive)
+                            }}
                         >
                             <IoIosArrowDropdown/>
                         </button>

@@ -13,9 +13,7 @@ import ResetPassword from "./pages/auth/resetPassword/resetPassword";
 import UnsupportedDevice from "./pages/error/unsupportedDevice";
 
 const App = () => {
-
     // Check for Unsupported Device (phone)
-
     const [isUnsupportedDevice, setIsUnsupportedDevice] = useState(false);
 
     useEffect(() => {
@@ -37,23 +35,24 @@ const App = () => {
     }
 
     // If supported device
-
-  return (
-      <BrowserRouter>
-          <Routes>
-              <Route path="/" element={<HomeLoader />} />
-              <Route path="/home" element={<HomeLoader />} />
-              <Route path="/bmi-calculator" element={<BmiCalcLoader />} />
-              <Route path="/height-converter" element={<HeightConvLoader />} />
-              <Route path="/weight-converter" element={<WeightConvLazy />} />
-              <Route path="*" element={<NoPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/manage-account" element={<ManageAccount />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
-          </Routes>
-      </BrowserRouter>
-  );
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<HomeLoader />}/>
+                    <Route path="/home" element={<HomeLoader />}/>
+                    <Route path="/bmi-calculator" element={<BmiCalcLoader />} />
+                    <Route path="/height-converter" element={<HeightConvLoader />} />
+                    <Route path="/weight-converter" element={<WeightConvLazy />} />
+                    <Route path="*" element={<NoPage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/manage-account" element={<ManageAccount />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;

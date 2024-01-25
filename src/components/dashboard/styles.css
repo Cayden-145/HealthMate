@@ -1,0 +1,229 @@
+.dashboard__container {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 925px) {
+    .dashboard__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .dashboard__goal {
+        margin-bottom: 3rem;
+    }
+}
+
+/* Recent BMI */
+
+.dashboard__recent {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    width: 395px;
+    padding: 15px 10px;
+    text-align: center;
+    background: linear-gradient(to bottom, #0c437a, #072342);
+    color: var(--text-color);
+    border-radius: 10px;
+    font-size: 20px;
+    position: relative;
+}
+
+.dashboard__title {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    background-color: #072342;
+    color: var(--text-color);
+    padding: 0 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.dashboard__title--alt {
+    color: #bebdbd;
+    font-size: 15px;
+}
+
+.dashboard__recent--text {
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.dashboard__recent--text.visible {
+    margin-top: 18px;
+}
+
+.dashboard__recent--bmi {
+    font-weight: 600;
+}
+
+.dashboard__recent--date {
+    color: #bebdbd;
+    font-size: 17px;
+}
+
+/* Divider */
+
+.dashboard__divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin-bottom: 2vh;
+}
+
+.dashboard__divider--vertical {
+    height: 100%;
+    width: 1px;
+    background-color: #ccc;
+}
+
+/* Goal */
+
+.dashboard__goal {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    width: 395px;
+    padding: 15px 10px;
+    text-align: center;
+    background: linear-gradient(to bottom, #0c437a, #072342);
+    color: var(--text-color);
+    border-radius: 10px;
+    font-size: 20px;
+    position: relative;
+}
+
+.dashboard__goal.none {
+    margin-top: 3rem;
+}
+
+.dashboard__goal--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard__goal--text {
+    font-size: 16px;
+}
+
+.dashboard__goal--span {
+    font-weight: 600;
+    font-size: 19px;
+}
+
+.dashboard__goal--btn {
+    color: var(--text-color);
+    width: 130px;
+    height: 40px;
+    font-size: 18px;
+    background: linear-gradient(to right, #041426, #082342);
+    border-radius: 10px;
+    border: none;
+    transition: border-radius 1s;
+    cursor: pointer;
+}
+
+.dashboard__goal--btn:hover {
+    border-radius: 50px;
+}
+
+.dashboard__goal--btn:active {
+    transform: scale(0.9);
+}
+
+.dashboard__button--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Update Goal Pop-up */
+
+.popup__goal {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    width: 395px;
+    padding: 15px 10px;
+    text-align: center;
+    background: linear-gradient(to bottom, #0c437a, #072342);
+    color: var(--text-color);
+    border-radius: 10px;
+    font-size: 20px;
+    position: relative;
+}
+
+
+.popup__goal--toggle {
+    display: flex;
+    align-items: center;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.toggle__one {
+    display: flex;
+    flex-direction: row;
+    margin-right: 30px;
+}
+
+.toggle__two {
+    display: flex;
+    flex-direction: row;
+}
+
+.popup__fields--input,
+.popup__fields--last {
+    text-align: center;
+    margin-top: 20px;
+    width: 65px;
+    height: 40px;
+    display: flex;
+    border-radius: 50px;
+    font-size: 17px;
+    padding-left: 10px;
+    color: var(--text-color);
+    background: linear-gradient(to right, #020911, #05182c);
+    border: none;
+}
+
+.popup__fields--last {
+    margin-left: 20px;
+}
+
+.popup__fields--input.error,
+.popup__fields--last.error {
+    border: 3px solid var(--error);
+}
+
+.popup__field--text {
+    margin-left: 20px;
+    font-weight: 600;
+    color: #d7d7d7;
+    font-size: 17px;
+    margin-top: 2rem;
+}
+
+.popup__goal--buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 4%;
+}
+
+.popup__goal--remove {
+    margin-left: 3em;
+}

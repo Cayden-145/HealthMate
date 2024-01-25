@@ -107,7 +107,7 @@ const Header = () => {
                     </div>
 
                     <p className={"version"}>
-                        Current Version: <span className={"version-extra"}> 1.6 </span>
+                        Current Version: <span className={"version-extra"}> 1.6.1 </span>
                     </p>
                 </div>
             </div>

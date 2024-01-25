@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+
 
     color: var(--text-color);
     background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
@@ -12,6 +12,13 @@
 .title-container {
     display: flex;
     flex-direction: row;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 31, 31, 0.29);
+    z-index: 30;
 }
 
 .title__text {
@@ -28,6 +35,7 @@
     align-content: center;
     text-align: center;
     overflow-y: auto;
+    overflow-x: auto;
 }
 
 .data__container {

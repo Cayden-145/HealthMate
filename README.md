@@ -5,6 +5,31 @@ Introducing HealthMate. Your comprehensive health companion designed to empower 
 ___Recent Updates___
 
 ```
+Dashboard V1.6.1
+```
+
+- Dashboard Component
+  - Visible via `/manage-account`
+  - Users can set their own goal, which is saved to a secure cloud database
+  - Access to a clean view of their 3 most recent BMI saves
+- **Plans have been made to add more to the dashboard, once we have more data.**
+- Changes to other files throughout the codebase, mostly cleaning up and removing the `hidden` classname.
+- Updated account security to prevent possible information leaks via inspect element.
+- Fixed data not showing if one or more values are 0 on page `/manage-account`
+- Added a range property to your saved data, visible on `/manage-account`
+  - The range depends on your BMI, which follows the structure:
+    - Less than 18.5: Underweight
+    - Between 18.5 and 24.9: Healthy Weight
+    - Between 25 and 29.9: Overweight
+    - Over 30: Obese
+- Fixed issue with the footer, which was present when shrinking the browser height; content no longer overflows.
+- Updated position of toasts, now visible in the top-middle of the screen.
+- Improved layout of text on `/home`, lengths of paragraphs have been changed to further improve the UI.
+- Fixed bouncing on toggles
+- Data visible on `/manage-account` is now shown in chronological order.
+- Addressed the issue of being able to see saved data via inspect element whilst not logged in.
+
+```
 Saving Feature V1.6
 ```
 

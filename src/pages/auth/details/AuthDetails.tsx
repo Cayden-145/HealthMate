@@ -39,50 +39,54 @@ const AuthDetails = (props: {
 
     return (
         <>
-            <div className={props.displayNameVisible ? 'display-name' : 'hidden'}>
-                {authUser ? (
-                    <>
-                        <div className={'authUser__text-container'}>
-                            <a href={"/"} className={'auth-text__email'}>
-                                {`Welcome, ${authUser.displayName}.`}
-                                <span
-                                    style={{textDecoration: "underline", fontSize: "18px", marginLeft: "20px"}}
-                                >
+            {props.displayNameVisible && (
+                <div className={props.displayNameVisible ? 'display-name' : 'hidden'}>
+                    {authUser ? (
+                        <>
+                            <div className={'authUser__text-container'}>
+                                <a href={"/"} className={'auth-text__email'}>
+                                    {`Welcome, ${authUser.displayName}.`}
+                                    <span
+                                        style={{textDecoration: "underline", fontSize: "18px", marginLeft: "20px"}}
+                                    >
                                     Navigate Home
                                 </span>
-                            </a>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <p></p>
-                    </>
-                )}
-            </div>
+                                </a>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <p></p>
+                        </>
+                    )}
+                </div>
+            )}
 
-            <div className={props.loginType === 'manage' ? 'manageUser__container' : 'hidden'}>
-                {authUser ? (
-                    <>
-                        <div className={'manageUser__text-container'}>
-                            <p className={'manageUser-text__email'}>
-                                Welcome,
-                                <span className={"email"}>
+            {props.loginType && (
+                <div className={props.loginType === 'manage' ? 'manageUser__container' : 'hidden'}>
+                    {authUser ? (
+                        <>
+                            <div className={'manageUser__text-container'}>
+                                <p className={'manageUser-text__email'}>
+                                    Welcome,
+                                    <span className={"email"}>
                                     {authUser.email}
                                 </span>
-                            </p>
-                        </div>
+                                </p>
+                            </div>
 
-                        <div className={"manageUser__information-container"}>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <p className={"manageUser__error"}>
-                            * You must be logged in to access this page!
-                        </p>
-                    </>
-                )}
-            </div>
+                            <div className={"manageUser__information-container"}>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <p className={"manageUser__error"}>
+                                * You must be logged in to access this page!
+                            </p>
+                        </>
+                    )}
+                </div>
+            )}
         </>
     );
 };
