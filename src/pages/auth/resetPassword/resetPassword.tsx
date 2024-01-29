@@ -18,7 +18,7 @@ const ResetPassword = () => {
         e.preventDefault();
 
         await sendPasswordResetEmail(auth, email)
-        .then((userCredential) => {
+        .then(() => {
             setEmailSentSuccess(true);
         }).catch((error) => {
             setErrorCode(error.code)

@@ -25,6 +25,7 @@ import {
 import { db, auth } from '../../api/firebase';
 import { toast } from 'sonner';
 import AuthDetails from '../../pages/auth/details/AuthDetails';
+import { FaLock } from "react-icons/fa6";
 
 interface SavedData {
     id: string;
@@ -367,8 +368,40 @@ const Dashboard = () => {
                 ) : (
                     <>
                         <div className="dashboard__recent">
-                            <div className="dashboard__title">Recent BMI</div>
+                            <div className="dashboard__title">Recent Weight</div>
 
+                            {userData.slice(0, 3).map((entry, index) => (
+                                <div key={index}
+                                     className={`dashboard__recent--text ${goal !== 'none' ? 'visible' : ''}`}>
+                                    {((entry.stone ?? 0) > 0 || (entry.pounds ?? 0) > 0) ? (
+                                        <div>
+                                            <span className="dashboard__recent--weight">
+                                                {entry.stone} st, {entry.pounds} lbs
+                                            </span> <br/>
+                                        </div>
+                                    ) : ((entry.kilograms ?? 0) > 0) ? (
+                                        <div>
+                                            <span className="dashboard__recent--weight">
+                                                {entry.kilograms} kg
+                                            </span> <br/>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <span className="dashboard__recent--weight">
+                                                Unable to find recent weight.
+                                            </span> <br/>
+                                        </div>
+                                    )}
+
+                                    <span className="dashboard__recent--date">
+                                        {entry.date.toDate().toLocaleDateString()}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="dashboard__recent">
+                            <div className="dashboard__title">Recent BMI</div>
                             {userData.slice(0, 3).map((entry, index) => (
                                 <div key={index}
                                      className={`dashboard__recent--text ${goal !== 'none' ? 'visible' : ''}`}>
@@ -410,6 +443,20 @@ const Dashboard = () => {
                                     </button>
                                 </div>
                             )}
+                        </div>
+
+                        <div className="dashboard__soon">
+                            <div className="dashboard__title">Coming Soon</div>
+                            <div className={"dashboard__soon--background"}>
+                                <p className={"dashboard__soon--text"}>
+                                    Expected Release Date: Version 1.6.4 <br />
+                                    This feature is coming soon... <br />
+                                    very soon..... <br />
+                                </p>
+                            </div>
+                            <div className={"dashboard__soon--lock"}>
+                                <FaLock/>
+                            </div>
                         </div>
                     </>
                 )}

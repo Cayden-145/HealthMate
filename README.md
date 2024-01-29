@@ -2,7 +2,22 @@ Introducing HealthMate. Your comprehensive health companion designed to empower 
 
 - [Check out V1.6.2 here](https://healthmate-c8e5c.web.app)
 
+```
+Performance Results
+```
+
+- Best Practices across All Pages: `100`
+- Average Performance across all pages: `99`
+- Average SEO across all pages: `90`
+
 ___Recent Updates___
+
+```
+Recent Weight V1.6.3
+```
+- Added `Recent Weight` to dashboard component
+  - Works with both stone + pounds & kilograms
+- Updated styling for `/manage-account` when not logged in to suite smaller screens
 
 ```
 Phone Support V1.6.2

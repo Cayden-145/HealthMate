@@ -36,7 +36,7 @@ const ManageAccount = () => {
     const signOutClick = () => {
         signOut(auth)
             .then(() => {
-                navigate("/")
+                navigate("/login")
                 toast.success("Successfully signed out.");
             }).catch((error => {
             toast.error("An error occurred whilst signing out.", {

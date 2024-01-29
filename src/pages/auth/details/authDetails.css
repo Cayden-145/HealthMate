@@ -65,3 +65,10 @@
 .hidden {
     display: none;
 }
+
+@media screen and (max-width: 792px) {
+    .manageUser__error {
+        width: 300px;
+        font-size: 20px;
+    }
+}
