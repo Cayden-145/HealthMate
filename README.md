@@ -6,10 +6,6 @@ Introducing HealthMate. Your comprehensive health companion designed to empower 
 Performance Results
 ```
 
-- Best Practices across All Pages: `100`
-- Average Performance across all pages: `99`
-- Average SEO across all pages: `90`
-
 ___Recent Updates___
 
 ```
