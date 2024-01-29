@@ -2,6 +2,14 @@ Introducing HealthMate. Your comprehensive health companion designed to empower 
 
 - [Check out V1.6.2 here](https://healthmate-c8e5c.web.app)
 
+```
+Performance Results
+```
+
+- Best Practices accross All Pages: `100`
+- Average Performance accross all pages: `99`
+- Average SEO accross all pages: `90`
+
 ___Recent Updates___
 
 ```
