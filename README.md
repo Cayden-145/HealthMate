@@ -6,6 +6,13 @@ Introducing HealthMate. Your comprehensive health companion designed to empower 
 Performance Results
 ```
 
+- Best Practices across All Pages: `100`
+- Average Performance across all pages: `99`
+- Average SEO across all pages: `90`
+- Best Practices accross All Pages: `100`
+- Average Performance accross all pages: `99`
+- Average SEO accross all pages: `90`
+
 ___Recent Updates___
 
 ```
@@ -70,7 +77,7 @@ Saving Feature V1.6
 - Added styles to inputs upon error
 - Results stying on /bmi-calculator page has been updated to include the inputted height and weight.
 - Improved styling for /bmi-calculator on smaller screens
-  
+
 
 ```
 Display Name Feature + Styling Issues Addressed V1.5.2
@@ -82,5 +89,3 @@ Parameters V1.4
 Routing V1.3
 ...
 ```
-
-
