@@ -9,9 +9,7 @@ Performance Results
 - Best Practices across All Pages: `100`
 - Average Performance across all pages: `99`
 - Average SEO across all pages: `90`
-- Best Practices accross All Pages: `100`
-- Average Performance accross all pages: `99`
-- Average SEO accross all pages: `90`
+
 
 ___Recent Updates___
 

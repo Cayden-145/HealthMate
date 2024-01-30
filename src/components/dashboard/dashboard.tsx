@@ -26,6 +26,7 @@ import { db, auth } from '../../api/firebase';
 import { toast } from 'sonner';
 import AuthDetails from '../../pages/auth/details/AuthDetails';
 import { FaLock } from "react-icons/fa6";
+import { TailSpin } from 'react-loading-icons';
 
 interface SavedData {
     id: string;
@@ -44,6 +45,7 @@ const Dashboard = () => {
     const [goal, setGoal] = useState<string>('none');
     const [updateGoalVisible, setUpdateGoalVisible] = useState<boolean>(false);
     const [userData, setUserData] = useState<SavedData[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     const { stone, setStone } = useStoneState();
     const { pounds, setPounds } = usePoundsState();
@@ -59,19 +61,23 @@ const Dashboard = () => {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
+            setLoading(true);
             try {
                 if (user) {
                     await downloadData();
                     await firestoreManagement();
-                    console.log("fetching user data");
+                    setLoading(false);
                 } else {
                     console.log("user not authenticated");
+                    setLoading(false);
                 }
             } catch (error) {
                 console.error("Error fetching user data:", error);
                 toast.loading("Unable to load user data", {
                     description: "Try again later.",
                 });
+
+                setLoading(false);
             }
         });
 
@@ -133,6 +139,8 @@ const Dashboard = () => {
     };
 
     const downloadData = async () => {
+        setLoading(true);
+
         try {
             const user = auth.currentUser;
 
@@ -145,15 +153,21 @@ const Dashboard = () => {
                     const goalData = doc.data().goal;
                     setGoal(goalData);
                 });
+
+                setLoading(false);
             }
         } catch (error) {
             toast.error("Error Occurred whilst Saving", {
                 description: `An error has occurred: ${error}`,
             });
+
+            setLoading(false);
         }
     };
 
     const firestoreManagement = async () => {
+        setLoading(true);
+
         try {
             const user = auth.currentUser;
 
@@ -173,6 +187,7 @@ const Dashboard = () => {
                 });
 
                 setUserData(userDataArray);
+                setLoading(false);
             }
         } catch (error) {
             toast.error('Unable to load user data', {
@@ -180,6 +195,7 @@ const Dashboard = () => {
             });
 
             console.log(error);
+            setLoading(false);
         }
     };
 
@@ -369,84 +385,106 @@ const Dashboard = () => {
                     <>
                         <div className="dashboard__recent">
                             <div className="dashboard__title">Recent Weight</div>
-
-                            {userData.slice(0, 3).map((entry, index) => (
-                                <div key={index}
-                                     className={`dashboard__recent--text ${goal !== 'none' ? 'visible' : ''}`}>
-                                    {((entry.stone ?? 0) > 0 || (entry.pounds ?? 0) > 0) ? (
-                                        <div>
+                            {loading ? (
+                                <div className={"dashboard__loading"}>
+                                    <TailSpin/>
+                                </div>
+                            ) : (
+                                <>
+                                    {userData.slice(0, 3).map((entry, index) => (
+                                        <div key={index}
+                                             className={`dashboard__recent--text ${goal !== 'none' ? 'visible' : ''}`}>
+                                            {((entry.stone ?? 0) > 0 || (entry.pounds ?? 0) > 0) ? (
+                                                <div>
                                             <span className="dashboard__recent--weight">
                                                 {entry.stone} st, {entry.pounds} lbs
                                             </span> <br/>
-                                        </div>
-                                    ) : ((entry.kilograms ?? 0) > 0) ? (
-                                        <div>
+                                                </div>
+                                            ) : ((entry.kilograms ?? 0) > 0) ? (
+                                                <div>
                                             <span className="dashboard__recent--weight">
                                                 {entry.kilograms} kg
                                             </span> <br/>
-                                        </div>
-                                    ) : (
-                                        <div>
+                                                </div>
+                                            ) : (
+                                                <div>
                                             <span className="dashboard__recent--weight">
                                                 Unable to find recent weight.
                                             </span> <br/>
-                                        </div>
-                                    )}
+                                                </div>
+                                            )}
 
-                                    <span className="dashboard__recent--date">
+                                            <span className="dashboard__recent--date">
                                         {entry.date.toDate().toLocaleDateString()}
                                     </span>
-                                </div>
-                            ))}
+                                        </div>
+                                    ))}
+                                </>
+                            )}
                         </div>
 
                         <div className="dashboard__recent">
                             <div className="dashboard__title">Recent BMI</div>
-                            {userData.slice(0, 3).map((entry, index) => (
-                                <div key={index}
-                                     className={`dashboard__recent--text ${goal !== 'none' ? 'visible' : ''}`}>
-                                    <span className="dashboard__recent--bmi"> BMI: {entry.bmi} </span> <br/>
-                                    <span
-                                        className="dashboard__recent--date"> {entry.date.toDate().toLocaleDateString()} </span>
+                            {loading? (
+                                <div className={"dashboard__loading"}>
+                                    <TailSpin />
                                 </div>
-                            ))}
+                            ) : (
+                                <>
+                                    {userData.slice(0, 3).map((entry, index) => (
+                                        <div key={index}
+                                             className={`dashboard__recent--text ${goal !== 'none' ? 'visible' : ''}`}>
+                                            <span className="dashboard__recent--bmi"> BMI: {entry.bmi} </span> <br/>
+                                            <span
+                                                className="dashboard__recent--date"> {entry.date.toDate().toLocaleDateString()} </span>
+                                        </div>
+                                    ))}
+                                </>
+                            )}
                         </div>
 
                         <div className={`dashboard__goal  ${goal === "none" ? 'none' : ''}`}>
-                            <div className="dashboard__title">Goal <span
-                                className={"dashboard__title--alt"}>{goal === "none" ? `none` : ``}</span></div>
+                            <div className="dashboard__title">Goal <span className={"dashboard__title--alt"}>{goal === "none" ? `none` : ``}</span></div>
 
-                            {goal !== "none" ? (
-                                <div className={"dashboard__goal--container"}>
-                                    <p className={"dashboard__goal--text"}>
-                                        Current Goal: <span className={"dashboard__goal--span"}> {goal} </span>
-                                    </p>
-
-                                    <div className={"dashboard__button--container"}>
-                                        <button className={"dashboard__goal--btn"} onClick={() => {
-                                            setUpdateGoalVisible(!updateGoalVisible)
-                                        }}>
-                                            Change goal
-                                        </button>
-
-                                        <button className={"dashboard__goal--btn"} onClick={removeGoal}>
-                                            Remove Goal
-                                        </button>
-                                    </div>
+                            {loading ? (
+                                <div className={"dashboard__loading--goal"}>
+                                    <TailSpin />
                                 </div>
                             ) : (
-                                <div className={"dashboard__goal--none"}>
-                                    <button className={"dashboard__goal--btn"} onClick={() => {
-                                        setUpdateGoalVisible(!updateGoalVisible)
-                                    }}>
-                                        Set goal
-                                    </button>
-                                </div>
+                                <>
+                                    {goal !== "none" ? (
+                                        <div className={"dashboard__goal--container"}>
+                                            <p className={"dashboard__goal--text"}>
+                                                Current Goal: <span className={"dashboard__goal--span"}> {goal} </span>
+                                            </p>
+
+                                            <div className={"dashboard__button--container"}>
+                                                <button className={"dashboard__goal--btn"} onClick={() => {
+                                                    setUpdateGoalVisible(!updateGoalVisible)
+                                                }}>
+                                                    Change goal
+                                                </button>
+
+                                                <button className={"dashboard__goal--btn"} onClick={removeGoal}>
+                                                    Remove Goal
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className={"dashboard__goal--none"}>
+                                            <button className={"dashboard__goal--btn"} onClick={() => {
+                                                setUpdateGoalVisible(!updateGoalVisible)
+                                            }}>
+                                                Set goal
+                                            </button>
+                                        </div>
+                                    )}
+                                </>
                             )}
                         </div>
 
                         <div className="dashboard__soon">
-                            <div className="dashboard__title">Coming Soon</div>
+                        <div className="dashboard__title">Coming Soon</div>
                             <div className={"dashboard__soon--background"}>
                                 <p className={"dashboard__soon--text"}>
                                     Expected Release Date: Version 1.6.4 <br />

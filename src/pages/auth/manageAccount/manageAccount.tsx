@@ -6,7 +6,7 @@ import { collection, query, where, getDocs, Timestamp, deleteDoc, doc, orderBy }
 import { db, auth } from '../../../api/firebase';
 import { MdDeleteOutline } from "react-icons/md";
 import { toast, Toaster } from "sonner";
-import { SpinningCircles } from 'react-loading-icons'
+import { TailSpin } from 'react-loading-icons'
 import {signOut} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "../../../components/dashboard/dashboard";
@@ -127,7 +127,7 @@ const ManageAccount = () => {
             {loggedInState && (
                 <div className={loggedInState ? "body__container" : "hidden"}>
                     {loading ? (
-                        <SpinningCircles/>
+                        <TailSpin />
                     ) : (
                         <div className={"data__container"}>
                             {userData.length > 0 ? (

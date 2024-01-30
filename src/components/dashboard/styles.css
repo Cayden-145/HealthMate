@@ -1,8 +1,19 @@
 .dashboard__container {
     display: flex;
     flex-direction: row;
-    gap: 5rem;
+    gap: 3.5rem;
     margin-bottom: 2rem;
+}
+
+/* Loader */
+
+.dashboard__loading {
+    margin-left: 11rem;
+    margin-top: 1rem;
+}
+
+.dashboard__loading--goal {
+    margin-top: 1rem;
 }
 
 /* Recent BMI */
@@ -250,7 +261,7 @@
 
 @media screen and (max-width: 1900px) {
     .dashboard__container {
-        gap: 3.5rem;
+        gap: 3rem;
     }
 }
 
