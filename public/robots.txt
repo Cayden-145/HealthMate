@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /private/
+Disallow: /manage-account
+Crawl-delay: 5
