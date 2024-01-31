@@ -7,7 +7,7 @@ const NoPage = () => {
         <div className={"pageNotFound"}>
             <div className={"noPage__header"}>
                 <img
-                    src={`${process.env.PUBLIC_URL}/warning.png`}
+                    src={`${process.env.PUBLIC_URL}/warning.svg`}
                     alt={"features"}
                     className={"noPage__header-image"}
                 />
