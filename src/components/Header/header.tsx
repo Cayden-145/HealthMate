@@ -45,18 +45,17 @@ const Header = () => {
                     </a>
                 </div>
 
-                <button className={'hamburger-button'} onClick={toggleMenu}>
+                <button className={'hamburger-button'} onClick={toggleMenu} aria-label={"Menu"}>
                     <CiMenuBurger/>
                 </button>
 
                 <div
                     className={`menu-overlay ${menuActive ? 'active' : ''}`}
-                    onClick={toggleMenu}
-                ></div>
+                    onClick={toggleMenu}></div>
 
                 <div className={`menu ${menuActive ? 'active' : ''}`}>
                     <div className="menu-header">
-                        <button className="close-button" onClick={toggleMenu}>
+                        <button className="close-button" onClick={toggleMenu} aria-label={"Close Menu"}>
                             &times;
                         </button>
 
@@ -67,6 +66,7 @@ const Header = () => {
                         {accountBtnVisible ? (
                             <div className="dropdown-container">
                                 <button
+                                    aria-label={"Profile"}
                                     className={`header__button dropdown-button ${
                                         dropdownActive ? 'active' : ''
                                     }`}
@@ -80,11 +80,11 @@ const Header = () => {
                                 <div
                                     className={`dropdown-content ${dropdownActive ? 'active' : 'hidden'}`}
                                 >
-                                    <button onClick={() => navigate('/manage-account')}>
+                                    <button aria-label={"Manage Account"} onClick={() => navigate('/manage-account')}>
                                         Manage Account
                                     </button>
 
-                                    <button onClick={signOutClick}>
+                                    <button onClick={signOutClick} aria-label={"Sign Out"}>
                                         Sign Out
                                     </button>
 
@@ -92,6 +92,7 @@ const Header = () => {
                             </div>
                         ) : (
                             <a
+                                aria-label={"Login"}
                                 href="/login"
                                 className={'menu-links a'}
                             >

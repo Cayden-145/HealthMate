@@ -191,6 +191,7 @@ const HeightConverter = () => {
 
                     <button
                         className={"toggle__text"}
+                        aria-label={"Imperial Toggle"}
                         onClick={handleImperialToggle}>
                             <span style={{fontWeight: imperialToMetric ? '600' : 'normal'}}>
                               Imperial
@@ -203,6 +204,7 @@ const HeightConverter = () => {
 
                     <button
                         className={"toggle__text"}
+                        aria-label={"Metric Toggle"}
                         onClick={handleMetricToggle}>
                             <span style={{fontWeight: metricToImperial ? '600' : 'normal'}}>
                               Metric
@@ -287,6 +289,7 @@ const HeightConverter = () => {
 
             <div className={`${metricResultsVisible || imperialResultsVisible ? 'results__info' : 'hidden'}`}>
                 <a
+                    aria-label={"Use This To Calculate Your BMI"}
                     href={
                         metricResultsVisible
                             ? `/bmi-calculator?metres=${metresResults}&type=metric`

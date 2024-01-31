@@ -486,6 +486,7 @@ const BMICalculator = () => {
 
                         <button
                             className={"toggle__text"}
+                            aria-label={"Imperial Toggle"}
                             onClick={handleImperialToggle}>
                             <span style={{fontWeight: imperialToggle ? '600' : 'normal', cursor: "pointer"}}>
                               Imperial
@@ -498,6 +499,7 @@ const BMICalculator = () => {
 
                         <button
                             className={"toggle__text"}
+                            aria-label={"Metric Toggle"}
                             onClick={handleMetricToggle}>
                             <span style={{fontWeight: metricToggle ? '600' : 'normal', cursor: "pointer"}}>
                               Metric
@@ -517,6 +519,7 @@ const BMICalculator = () => {
                             <input
                                 type={"numeric"}
                                 id={"heightInput"}
+                                aria-label={"Input Feet"}
                                 value={feet === -1 ? '' : feet}
                                 onChange={heightInputChange}
                                 className={`fields__input ${heightError ? 'error' : ''}`}
@@ -529,6 +532,7 @@ const BMICalculator = () => {
                             <input
                                 type={"numeric"}
                                 id={"inchesInput"}
+                                aria-label={"Input Inches"}
                                 value={inches === -1 ? '' : inches}
                                 onChange={inchesInputChange}
                                 className={`fields__input ${inchesError ? 'error' : ''}`}
@@ -547,6 +551,7 @@ const BMICalculator = () => {
                             <input
                                 type={"numeric"}
                                 id={"stoneInput"}
+                                aria-label={"Input Stone"}
                                 value={stone === -1 ? '' : stone}
                                 onChange={stoneInputChange}
                                 className={`fields__input ${stoneError ? 'error' : ''}`}
@@ -559,6 +564,7 @@ const BMICalculator = () => {
                             <input
                                 type={"numeric"}
                                 id={"poundsInput"}
+                                aria-label={"Input Pounds"}
                                 value={pounds === -1 ? '' : pounds}
                                 onChange={poundsInputChange}
                                 className={`fields__input ${poundsError ? 'error' : ''}`}
@@ -582,6 +588,7 @@ const BMICalculator = () => {
                             <input
                                 type={"number"}
                                 id={"heightInput"}
+                                aria-label={"Input Metres"}
                                 value={metres === -1 ? '' : metres}
                                 onChange={metresInputChange}
                                 className={`fields__input ${metresError ? 'error' : ''}`}
@@ -600,6 +607,7 @@ const BMICalculator = () => {
                             <input
                                 type={"number"}
                                 id={"heightInput"}
+                                aria-label={"Input Kilograms"}
                                 value={kilograms === -1 ? '' : kilograms}
                                 onChange={kilogramsInputChange}
                                 className={`fields__input ${kilogramsError ? 'error' : ''}`}
@@ -629,6 +637,7 @@ const BMICalculator = () => {
 
                     <div className={isUserLoggedIn ? "save-data__container" : "hidden"}>
                         <button
+                            aria-label={"Save Data"}
                             className={isUserLoggedIn ? "save-data__button" : "hidden"}
                             onClick={() => {
                                 setDropdownActive(!dropdownActive)
@@ -639,6 +648,7 @@ const BMICalculator = () => {
 
                         <div className={dropdownActive ? "save-data__dropdown" : "hidden"}>
                             <button
+                                aria-label={"Dropdown Button"}
                                 className={"dropdown__button"}
                                 onClick={saveData}
                                 disabled={buttonDisabled}
@@ -716,6 +726,7 @@ const BMICalculator = () => {
                             </p>
 
                             <a
+                                aria-label={"Why This Matters"}
                                 href="https://patient.info/healthy-living/obesity-overweight"
                                 className="weight__alt-link"
                                 target="_blank"
@@ -740,6 +751,7 @@ const BMICalculator = () => {
                         <div className="weight__text">
                             <p>{range !== "" ? `You are in the ${range} range.` : ""}</p>
                             <a
+                                aria-label={"Why This Matters"}
                                 href="https://patient.info/healthy-living/obesity-overweight"
                                 className="weight__text-link"
                                 target="_blank"

@@ -11,7 +11,9 @@ const Footer = () => {
                 </p>
 
                 <a href={"https://github.com/Cayden-145/HealthMate"} className={"source-code"} target="_blank"
-                   rel="noopener noreferrer">
+                   rel="noopener noreferrer"
+                   aria-label={"Source Code"}
+                >
                     <FaGithub/>
                 </a>
 

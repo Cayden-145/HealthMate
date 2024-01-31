@@ -194,6 +194,7 @@ const ManageAccount = () => {
                                         )}
 
                                         <button
+                                            aria-label={"Delete"}
                                             className={"data__information-delete"}
                                             onClick={() => deleteData(data.id)}
                                         >
@@ -214,6 +215,7 @@ const ManageAccount = () => {
             {loggedInState && (
                 <div className={loggedInState ? "personal__information" : "hidden"}>
                     <button
+                        aria-label={"Sign Out"}
                         className={"sign-out__button"}
                         onClick={signOutClick}
                     >

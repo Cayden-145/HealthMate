@@ -8,6 +8,7 @@ const ResetButton = (props: {
     return (
         <div className={"buttons"}>
             <button
+                aria-label={"Rest"}
                 className={"buttons__reset"}
                 onClick={props.onClick}
             >

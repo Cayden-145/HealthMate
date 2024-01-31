@@ -73,6 +73,7 @@ const Signup = () => {
                     </div>
 
                     <input
+                        aria-label={"Input Display Name"}
                         type={'text'}
                         placeholder={'Display Name'}
                         className={'signup-page__input'}
@@ -81,6 +82,7 @@ const Signup = () => {
                     />
 
                     <input
+                        aria-label={"Input Email"}
                         type={'email'}
                         placeholder={'Email'}
                         className={'signup-page__input'}
@@ -90,6 +92,7 @@ const Signup = () => {
 
                     <div className={'signup-page__password-container'}>
                         <input
+                            aria-label={"Input Password"}
                             type={passwordVisible ? 'text' : 'password'}
                             placeholder={'Password'}
                             className={'signup-page__password'}
@@ -97,6 +100,7 @@ const Signup = () => {
                         />
 
                         <button
+                            aria-label={"Password Visible"}
                             className={'signup-page__password-visible'}
                             onClick={() => setPasswordVisible(!passwordVisible)}
                         >
@@ -105,6 +109,7 @@ const Signup = () => {
                     </div>
 
                     <button
+                        aria-label={"Create Account"}
                         className={'signup-page__button'}
                         disabled={isButtonDisabled || !email || !password || !name}
                         onClick={signUpEvent}
@@ -113,7 +118,7 @@ const Signup = () => {
                         <Confetti active={confetti} config={confettiConfig}/>
                     </button>
 
-                    <a href={'/login'} className={'signup-page__signup'}>
+                    <a href={'/login'} className={'signup-page__signup'} aria-label={"Go To Login"}>
                         Already have an account?
                         <span className={'signup-text'}>
                             Log In.

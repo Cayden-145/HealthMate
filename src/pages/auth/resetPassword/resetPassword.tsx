@@ -52,6 +52,7 @@ const ResetPassword = () => {
                     </div>
 
                     <input
+                        aria-label={"Input Email"}
                         type={"email"}
                         placeholder={"Email"}
                         className={"reset-page__input"}
@@ -59,6 +60,7 @@ const ResetPassword = () => {
                     />
 
                     <button
+                        aria-label={"Submit Reset Password"}
                         className={"reset-page__button"}
                         type={"submit"}
                         disabled={isButtonDisabled || !email}
@@ -72,6 +74,7 @@ const ResetPassword = () => {
                     </p>
 
                     <button
+                        aria-label={"Return To Previous Page"}
                         className={'reset-page__signup'}
                         onClick={goBack}
                     >

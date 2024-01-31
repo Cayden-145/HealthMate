@@ -88,6 +88,7 @@ const Login = () => {
                     </div>
 
                     <input
+                        aria-label={"Input Email"}
                         type={"email"}
                         placeholder={"Email"}
                         className={"login-page__input"}
@@ -96,6 +97,7 @@ const Login = () => {
 
                     <div className={"login-page__password-container"}>
                         <input
+                            aria-label={"Input Password"}
                             type={passwordVisible ? 'text' : 'password'}
                             placeholder={"Password"}
                             className={"login-page__password"}
@@ -103,6 +105,7 @@ const Login = () => {
                         />
 
                         <button
+                            aria-label={"Password Visible"}
                             className={"login-page__password-visible"}
                             onClick={() => setPasswordVisible(!passwordVisible)}
                         >
@@ -111,6 +114,7 @@ const Login = () => {
                     </div>
 
                     <button
+                        aria-label={"Log In"}
                         className={"login-page__button"}
                         type={"submit"}
                         disabled={isButtonDisabled || !email || !password}
@@ -120,14 +124,14 @@ const Login = () => {
                         <Confetti active={confetti} config={confettiConfig}/>
                     </button>
 
-                    <a href={"/signup"} className={"login-page__signup"}>
+                    <a href={"/signup"} className={"login-page__signup"} aria-label={"Sign Up"}>
                         Don't have an account?
                         <span className={"signup-text"}>
                             Sign Up
                         </span>
                     </a>
 
-                    <a href={"/reset-password"} className={"login-page__signup-a"}>
+                    <a href={"/reset-password"} className={"login-page__signup-a"} aria-label={"Reset Password"}>
                         Forgot your password?
                         <span className={"signup-text"}>
                             Reset It

@@ -26,6 +26,7 @@ const NoPage = () => {
 
             <Link to="/">
                 <button
+                    aria-label={"Return Home"}
                     className={"noPage__button"}
                 >
                     Return Home

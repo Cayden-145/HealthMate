@@ -9,6 +9,7 @@ const SubmitButton = (
     return (
         <div className={"buttons"}>
             <button
+                aria-label={"Submit"}
                 className={"buttons__submit"}
                 onClick={props.onClick}
             >

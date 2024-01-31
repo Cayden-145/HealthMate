@@ -45,6 +45,7 @@ const AuthDetails = (props: {
                         <>
                             <div className={'authUser__text-container'}>
                                 <a href={"/"} className={'auth-text__email'}>
+                                    aria-label={"Go Home"}
                                     {`Welcome, ${authUser.displayName}.`}
                                     <span
                                         style={{textDecoration: "underline", fontSize: "18px", marginLeft: "20px"}}
