@@ -25,7 +25,7 @@ import {
 import { db, auth } from '../../api/firebase';
 import { toast } from 'sonner';
 import AuthDetails from '../../pages/auth/details/AuthDetails';
-import { FaLock } from "react-icons/fa6";
+import { FaArrowUpLong, FaArrowDownLong, FaBan } from "react-icons/fa6";
 import { TailSpin } from 'react-loading-icons';
 
 interface SavedData {
@@ -35,16 +35,19 @@ interface SavedData {
     user: string;
     feet?: string;
     inches?: string;
-    pounds?: string;
-    stone?: string;
+    pounds?: number;
+    stone?: number;
     metres?: string;
-    kilograms?: string;
+    kilograms?: number;
 }
-
 const Dashboard = () => {
     const [goal, setGoal] = useState<string>('none');
     const [updateGoalVisible, setUpdateGoalVisible] = useState<boolean>(false);
     const [userData, setUserData] = useState<SavedData[]>([]);
+    const [trendData, setTrendData] = useState<SavedData[]>([]);
+    const [trendArrow, setTrendArrow] = useState<string>('none');
+    const [trend, setTrend] = useState<string>('none');
+
     const [loading, setLoading] = useState<boolean>(true);
 
     const { stone, setStone } = useStoneState();
@@ -83,6 +86,13 @@ const Dashboard = () => {
 
         return () => unsubscribe();
     }, []);
+
+    useEffect(() => {
+        downloadTrendData()
+            .then(() => console.log("downloading trend data"));
+
+        calculateTrend();
+    }, [userData]);
 
     const handleImperialToggle = () => {
         setImperialToggle(!imperialToggle);
@@ -146,7 +156,6 @@ const Dashboard = () => {
 
             if (user) {
                 const q = query(collection(db, 'Dashboard'), where('user', '==', user.uid));
-
                 const querySnapshot = await getDocs(q);
 
                 querySnapshot.forEach((doc) => {
@@ -157,10 +166,11 @@ const Dashboard = () => {
                 setLoading(false);
             }
         } catch (error) {
-            toast.error("Error Occurred whilst Saving", {
-                description: `An error has occurred: ${error}`,
+            toast.error("Unable to load user data", {
+                description: `Download Dashboard Data: Try again later.`,
             });
 
+            console.log(error);
             setLoading(false);
         }
     };
@@ -191,13 +201,100 @@ const Dashboard = () => {
             }
         } catch (error) {
             toast.error('Unable to load user data', {
-                description: 'Try again later.',
+                description: 'Download General Data: Try again later.',
             });
 
             console.log(error);
             setLoading(false);
         }
     };
+
+    const downloadTrendData = async () => {
+        setLoading(true);
+
+        try {
+            const user = auth.currentUser;
+
+            if (user) {
+                const q = query(collection(db, "savedData"), where("user", "==", user.uid), orderBy("date", "desc"));
+
+                const querySnapshot = await getDocs(q);
+
+                const userDataArray: SavedData[] = [];
+                querySnapshot.forEach((doc) => {
+                    userDataArray.push({ id: doc.id, ...doc.data() } as SavedData);
+                });
+
+                setTrendData(userDataArray);
+                setLoading(false);
+            }
+        } catch (error) {
+            toast.error('Unable to load user data', {
+                description: 'Download Trend Data: Try again later.',
+            });
+
+            console.log(error);
+            setLoading(false);
+        }
+    };
+
+    const convertKilogramsToPounds = (kilograms: number | undefined) => {
+        const pounds = kilograms ? kilograms * 2.20462 : 0;
+        return parseFloat(pounds.toFixed(2))
+    }
+
+    const calculateTrend = () => {
+        if (trendData.length >= 2) {
+            const latestData = trendData[0];
+            const oldestData = trendData[trendData.length - 1];
+
+            let latestWeight: number | undefined;
+            let oldestWeight: number | undefined;
+
+            if (latestData && oldestData && 'kilograms' in latestData && 'kilograms' in oldestData) {
+                const latestKilogramsWeight = latestData.kilograms ? latestData.kilograms : undefined;
+                const oldestKilogramsWeight = oldestData.kilograms ? oldestData.kilograms : undefined;
+
+                latestWeight = convertKilogramsToPounds(latestKilogramsWeight);
+                oldestWeight = convertKilogramsToPounds(oldestKilogramsWeight);
+            } else if (latestData && oldestData && 'stone' in latestData && 'pounds' in latestData && 'stone' in oldestData && 'pounds' in oldestData) {
+                const latestImperialWeight = latestData.stone !== undefined && latestData.pounds !== undefined
+                    ? (latestData.stone * 14) + latestData.pounds
+                    : undefined;
+
+                const oldestImperialWeight = oldestData.stone !== undefined && oldestData.pounds !== undefined
+                    ? (oldestData.stone * 14) + oldestData.pounds
+                    : undefined;
+
+                latestWeight = latestImperialWeight;
+                oldestWeight = oldestImperialWeight;
+            } else {
+                console.log("Unsupported measurements units in data");
+                return;
+            }
+
+            if (latestWeight !== undefined && oldestWeight !== undefined) {
+                const weightDifference = latestWeight - oldestWeight;
+
+                let trendMessage = `No significant change in weight`
+
+                if (weightDifference > 0) {
+                    trendMessage = `Gained ${weightDifference.toFixed(2)} lbs`
+                    setTrendArrow('gaining');
+                } else if (weightDifference < 0) {
+                    trendMessage = `Lost ${Math.abs(weightDifference).toFixed(2)} lbs`
+                    setTrendArrow('loosing');
+                }
+
+                setTrend(trendMessage);
+            } else {
+                setTrend("Unable to calculate trend")
+            }
+        } else {
+            setTrend("Not enough data to calculate")
+        }
+    };
+
 
     const updateGoalBtn = async () => {
         setStoneError(false);
@@ -462,11 +559,11 @@ const Dashboard = () => {
                                                 <button className={"dashboard__goal--btn"} onClick={() => {
                                                     setUpdateGoalVisible(!updateGoalVisible)
                                                 }}>
-                                                    Change goal
+                                                    Update
                                                 </button>
 
                                                 <button className={"dashboard__goal--btn"} onClick={removeGoal}>
-                                                    Remove Goal
+                                                    Remove
                                                 </button>
                                             </div>
                                         </div>
@@ -483,18 +580,44 @@ const Dashboard = () => {
                             )}
                         </div>
 
-                        <div className="dashboard__soon">
-                        <div className="dashboard__title">Coming Soon</div>
-                            <div className={"dashboard__soon--background"}>
-                                <p className={"dashboard__soon--text"}>
-                                    Expected Release Date: Version 1.6.4 <br />
-                                    This feature is coming soon... <br />
-                                    very soon..... <br />
-                                </p>
-                            </div>
-                            <div className={"dashboard__soon--lock"}>
-                                <FaLock/>
-                            </div>
+                        <div className="dashboard__trend">
+                            <div className="dashboard__title">Weight Loss</div>
+
+                            {loading ? (
+                                <div className={"dashboard__loading"}>
+                                    <TailSpin />
+                                </div>
+                            ) : (
+                                <>
+                                    {trendArrow === "loosing" && (
+                                        <div className={"dashboard__trend--container"}>
+                                            <span className={"dashboard__trend--icon"}> <FaArrowDownLong/> </span>
+                                            <p className={"dashboard__trend--text"}>
+                                                {trend}
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {trendArrow === "gaining" && (
+                                        <div className={"dashboard__trend--container"}>
+                                            <span className={"dashboard__trend--icon"}> <FaArrowUpLong /> </span>
+
+                                            <p className={"dashboard__trend--text"}>
+                                                {trend}
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {trendArrow === "none" && (
+                                        <div className={"dashboard__trend--container"}>
+                                            <span className={"dashboard__trend--icon"}> <FaBan /> </span>
+                                            <p className={"dashboard__trend--text"}>
+                                                {trend}
+                                            </p>
+                                        </div>
+                                    )}
+                                </>
+                            )}
                         </div>
                     </>
                 )}

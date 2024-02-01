@@ -10,7 +10,39 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) ![WebStorm](https://img.shields.io/badge/webstorm-143?style=for-the-badge&logo=webstorm&logoColor=white&color=black)
 
 ```
-Recent Weight V1.6.3
+Dashboard: Weight Loss V1.6.4
+```
+
+- Added `Weight Loss` to dashboard component
+  - Calculates by: `Recent Weight (in lbs)` - `Oldest Weight (in lbs)`
+  - Currently only outputs in pounds, but later will convert it to either lbs or kilograms, depending on the value for the users' goal.
+  - An arrow accompanies the result as a way for users to quickly see if they are loosing or gaining weight
+  - Requires 2 or more pieces of data.
+- Updated styling for `Goal` dashboard component on smaller screens
+- Added aria-label to all buttons and links for accessibility
+- Converted all files from `.png` to `.svg` to improve load times
+- Added robots.txt for crawlers
+- Updated meta tag in `index.html`
+- Updated loader on `/manage-account`
+  - Dashboard Components now indicate when they are loading
+- Bug Fixes
+
+**Insight to the future of HealthMate:**
+
+- Currently working on generating a graph to show a more in-depth result for users' data, so they can track their weight loss journey.
+- Healthy Recipes (via API)
+- Account settings, which includes the following:
+  - Change display name
+  - Change email linked to account
+  - Change password
+  - Preferences:
+    - Dark/Light Theme
+    - Units (imperial or metric)
+    - Use display name or email (on `/manage-account`)
+- and more!..
+
+```
+Dashboard: Recent Weight V1.6.3
 ```
 - Added `Recent Weight` to dashboard component
   - Works with both stone + pounds & kilograms
