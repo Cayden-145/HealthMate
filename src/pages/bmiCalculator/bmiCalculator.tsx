@@ -653,7 +653,7 @@ const BMICalculator = () => {
                                 onClick={saveData}
                                 disabled={buttonDisabled}
                             >
-                                Save Data
+                                Save
                             </button>
                         </div>
                     </div>

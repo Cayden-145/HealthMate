@@ -305,7 +305,7 @@ input[type="number"] {
 .dropdown__button {
   background-color: #052b4d;
   color: var(--text-color);
-  width: 120px;
+  width: 90px;
   height: 40px;
   padding: 10px;
   border-radius: 30px;
