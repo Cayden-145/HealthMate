@@ -96,13 +96,13 @@ const Header = () => {
                             <a
                                 aria-label={"Login"}
                                 href="/login"
-                                className={`${isCurrentPage('/login' || '/') ? 'current' : ''}`}
+                                className={`${isCurrentPage('/login') ? 'current' : ''}`}
                             >
                                 Login
                             </a>
                         )}
 
-                        <a className={`${isCurrentPage('/home' || '/') ? 'current' : ''}`} href="/home">Home</a>
+                        <a className={`${isCurrentPage('/home') ? 'current' : '' || isCurrentPage('/') ? 'current' : ''}`} href="/home">Home</a>
                         <a className={`${isCurrentPage('/bmi-calculator') ? 'current' : ''}`} href="/bmi-calculator">BMI Calculator</a>
                         <a className={`${isCurrentPage('/height-converter') ? 'current' : ''}`} href="/height-converter">Height Converter</a>
                         <a className={`${isCurrentPage('/weight-converter') ? 'current' : ''}`} href="/weight-converter">Weight Converter</a>
