@@ -46,13 +46,13 @@
     font-size: 18px;
     border-radius: 5px;
     font-weight: 500;
-    z-index: 50;
+    z-index: 30;
 }
 
 .dashboard__title--alt {
     color: #bebdbd;
     font-size: 15px;
-    z-index: 51;
+    z-index: 31;
 }
 
 .dashboard__recent--text {

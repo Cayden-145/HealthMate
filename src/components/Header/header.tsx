@@ -3,7 +3,7 @@ import './style.css';
 import AuthDetails from "../../pages/auth/details/AuthDetails";
 import { CgProfile } from "react-icons/cg";
 import { CiMenuBurger } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import { signOut } from 'firebase/auth';
 import {auth} from "../../api/firebase";
 import {toast} from "sonner";
@@ -13,6 +13,8 @@ const Header = () => {
     const [menuActive, setMenuActive] = useState(false);
     const [dropdownActive, setDropdownActive] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const isCurrentPage = (path: string) => location.pathname === path;
 
     const toggleMenu = () => {
         setMenuActive(!menuActive);
@@ -80,8 +82,8 @@ const Header = () => {
                                 <div
                                     className={`dropdown-content ${dropdownActive ? 'active' : 'hidden'}`}
                                 >
-                                    <button aria-label={"Manage Account"} onClick={() => navigate('/manage-account')}>
-                                        Manage Account
+                                    <button aria-label={"Dashboard"} onClick={() => navigate('/manage-account')}>
+                                        Dashboard
                                     </button>
 
                                     <button onClick={signOutClick} aria-label={"Sign Out"}>
@@ -94,16 +96,16 @@ const Header = () => {
                             <a
                                 aria-label={"Login"}
                                 href="/login"
-                                className={'menu-links a'}
+                                className={`${isCurrentPage('/login' || '/') ? 'current' : ''}`}
                             >
                                 Login
                             </a>
                         )}
 
-                        <a href="/home">Home</a>
-                        <a href="/bmi-calculator">BMI Calculator</a>
-                        <a href="/height-converter">Height Converter</a>
-                        <a href="/weight-converter">Weight Converter</a>
+                        <a className={`${isCurrentPage('/home' || '/') ? 'current' : ''}`} href="/home">Home</a>
+                        <a className={`${isCurrentPage('/bmi-calculator') ? 'current' : ''}`} href="/bmi-calculator">BMI Calculator</a>
+                        <a className={`${isCurrentPage('/height-converter') ? 'current' : ''}`} href="/height-converter">Height Converter</a>
+                        <a className={`${isCurrentPage('/weight-converter') ? 'current' : ''}`} href="/weight-converter">Weight Converter</a>
 
                     </div>
                 </div>

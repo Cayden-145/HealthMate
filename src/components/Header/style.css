@@ -88,12 +88,14 @@ body {
 }
 
 .menu-links {
-    padding: 20px;
+    width: 85%;
+    height: 100%;
 }
 
 .menu-links a {
     display: block;
     padding: 10px;
+    width: 100%;
     text-decoration: none;
     color: #e0e0e0;
     font-size: 18px;
@@ -122,10 +124,19 @@ body {
     background-color: #2f2f2f;
 }
 
+.current {
+    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two));
+    padding-left: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: default;
+}
+
 /* Account Button */
 
 .dropdown-container {
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .header__button.dropdown-button {

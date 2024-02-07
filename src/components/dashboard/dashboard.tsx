@@ -87,13 +87,6 @@ const Dashboard = () => {
         return () => unsubscribe();
     }, []);
 
-    useEffect(() => {
-        downloadTrendData()
-            .then(() => console.log("downloading trend data"));
-
-        calculateTrend();
-    }, [userData]);
-
     const handleImperialToggle = () => {
         setImperialToggle(!imperialToggle);
 
@@ -279,10 +272,10 @@ const Dashboard = () => {
                 let trendMessage = `No significant change in weight`
 
                 if (weightDifference > 0) {
-                    trendMessage = `Gained ${weightDifference.toFixed(2)} lbs`
+                    trendMessage = `Total Gained ${weightDifference.toFixed(2)} lbs`
                     setTrendArrow('gaining');
                 } else if (weightDifference < 0) {
-                    trendMessage = `Lost ${Math.abs(weightDifference).toFixed(2)} lbs`
+                    trendMessage = `Total Lost ${Math.abs(weightDifference).toFixed(2)} lbs`
                     setTrendArrow('loosing');
                 }
 
@@ -294,6 +287,14 @@ const Dashboard = () => {
             setTrend("Not enough data to calculate")
         }
     };
+
+    useEffect(() => {
+        downloadTrendData()
+            .then(() => console.log("downloading trend data"));
+        calculateTrend()
+
+            // eslint-disable-next-line
+    }, [userData]);
 
 
     const updateGoalBtn = async () => {
