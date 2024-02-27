@@ -10,7 +10,6 @@ import Login from "./pages/auth/login/login";
 import Signup from "./pages/auth/signup/signup";
 import ManageAccount from "./pages/auth/manageAccount/manageAccount";
 import ResetPassword from "./pages/auth/resetPassword/resetPassword";
-import Settings from "./pages/auth/settings/settings";
 import Home from "./pages/Home/home";
 
 const App = () => {
@@ -18,8 +17,8 @@ const App = () => {
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />}/>
-                    <Route path="/home" element={<Home />}/>
+                    <Route path="/" element={<HomeLoader />}/>
+                    <Route path="/home" element={<HomeLoader />}/>
                     <Route path="/bmi-calculator" element={<BmiCalcLoader />} />
                     <Route path="/height-converter" element={<HeightConvLoader />} />
                     <Route path="/weight-converter" element={<WeightConvLazy />} />
@@ -28,7 +27,6 @@ const App = () => {
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/manage-account" element={<ManageAccount />} />
                     <Route path="/reset-password" element={<ResetPassword />} />
-                    <Route path="/settings" element={<Settings />} />
                 </Routes>
             </BrowserRouter>
         </>
