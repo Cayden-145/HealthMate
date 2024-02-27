@@ -5,6 +5,7 @@
     min-height: 100vh;
     text-align: center;
     align-items: center;
+    overflow-x: hidden;
 
     color: var(--text-color);
     background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 100svh, var(--dark-color));
@@ -236,10 +237,13 @@
 
     .home__choose--container {
         flex-direction: column;
+
     }
 
     .home__choose--grid {
         margin-bottom: 3rem;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
     }
 
     .home__bottom--last {
