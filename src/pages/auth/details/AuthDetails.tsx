@@ -91,6 +91,32 @@ const AuthDetails = (props: {
                     )}
                 </div>
             )}
+
+            {props.loginType && (
+                <div className={props.loginType === 'display' ? 'manageUser__container' : 'hidden'}>
+                    {authUser ? (
+                        <>
+                            <div className={'manageUser__text-container'}>
+                                <p className={'manageUser-text__display'}>
+                                    Hello,
+                                    <span className={"email"}>
+                                    {authUser.displayName}
+                                </span>
+                                </p>
+                            </div>
+
+                            <div className={"manageUser__information-container"}>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <p className={"manageUser__error"}>
+                                * You must be logged in to access this page!
+                            </p>
+                        </>
+                    )}
+                </div>
+            )}
         </>
     );
 };

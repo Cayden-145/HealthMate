@@ -30,8 +30,8 @@ const Header = () => {
             .then(() => {
                 toast.success("Successfully signed out.");
             }).catch((error => {
-                toast.error("An error occurred whilst signing out.", {
-                    description: error
+            toast.error("An error occurred whilst signing out.", {
+                description: error
             })
         }))
     }

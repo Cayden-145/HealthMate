@@ -62,6 +62,20 @@
     font-weight: 600;
 }
 
+.manageUser-text__display {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.display {
+    margin-left: 5px;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
 .hidden {
     display: none;
 }
