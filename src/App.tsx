@@ -10,7 +10,6 @@ import Login from "./pages/auth/login/login";
 import Signup from "./pages/auth/signup/signup";
 import ManageAccount from "./pages/auth/manageAccount/manageAccount";
 import ResetPassword from "./pages/auth/resetPassword/resetPassword";
-import Home from "./pages/Home/home";
 
 const App = () => {
     return (
