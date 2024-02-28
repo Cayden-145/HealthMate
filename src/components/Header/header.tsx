@@ -86,6 +86,10 @@ const Header = () => {
                                         Dashboard
                                     </button>
 
+                                    <button aria-label={"Settings"} onClick={() => navigate('/settings')}>
+                                        Settings
+                                    </button>
+
                                     <button onClick={signOutClick} aria-label={"Sign Out"}>
                                         Sign Out
                                     </button>

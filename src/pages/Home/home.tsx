@@ -219,6 +219,27 @@ const Home = () => {
                         promotes vitality and longevity.
                     </p>
                 </div>
+
+                <div className={"home__buttons--container-bottom"}>
+                    <a className={"home__buttons--full"} href={"/signup"}>
+                        Join Today
+                    </a>
+
+                    <div className={"home__buttons--group-bottom"}>
+                        <a className={"home__buttons--semi"} href={"/bmi-calculator"}>
+                            Calculate BMI
+                        </a>
+
+                        <a className={"home__buttons--semi"} href={"/height-converter"}>
+                            Height Converter
+                        </a>
+
+                        <a className={"home__buttons--semi"} href={"/weight-converter"}>
+                            Weight Converter
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
             <Footer/>
