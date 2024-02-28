@@ -1,4 +1,4 @@
-# [HealthMate](https://healthmate-c8e5c.web.app)
+# [HealthMate](https://healthmate.site)
 
 ### Introducing HealthMate. Your comprehensive health companion designed to empower you on your wellness journey. Whether you're striving for fitness goals, monitoring your health, or simply making lifestyle changes, HealthMate is here to support you every step of the way.
 
