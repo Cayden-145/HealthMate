@@ -402,3 +402,38 @@
         margin-bottom: 3rem;
     }
 }
+
+.cookie-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(28,28,28);
+    padding: 10px;
+    border: 3px solid #288bff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cookie-popup-content {
+    text-align: center;
+}
+
+.cookie-popup a,p {
+    color: var(--text-color);
+    font-size: 18px;
+}
+
+.cookie-popup a {
+    font-weight: 600;
+}
+
+.cookie-popup button {
+    background: linear-gradient(to right, #2170ce, #0b51af);
+    padding: 10px 20px;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

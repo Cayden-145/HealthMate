@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Header from "../../components/Header/header";
@@ -6,10 +6,40 @@ import './home.css';
 import Footer from "../../components/Footer/footer";
 
 const Home = () => {
+    const [showPopup, setShowPopup] = useState<boolean>(false)
+
+    useEffect(() => {
+        const currentDomain = window.location.hostname;
+        const desiredDomain = 'healthmate.site';
+
+        if (currentDomain !== desiredDomain) {
+            setShowPopup(true);
+        }
+    }, []);
+
+    const handleClose = () => {
+        setShowPopup(false);
+        window.location.href = 'https://healthmate.site';
+    }
 
     return (
         <>
-            <Header />
+            <Header/>
+
+            <div>
+                {showPopup && (
+                    <div className="cookie-popup">
+                        <div className="cookie-popup-content">
+                            <p>You are currently using an unsupported domain. Please change to our updated domain: <a
+                                href={"https://healthmate.site"}>
+                                https://healthmate.site
+                            </a></p>
+
+                            <button onClick={handleClose}>Take me there</button>
+                        </div>
+                    </div>
+                )}
+            </div>
 
             <div className={"home"}>
                 <div className={"home__title--content"}>
