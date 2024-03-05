@@ -20,6 +20,7 @@ const AuthDetails = (props: {
                 props.loggedIn?.(true);
                 props.headerVisible?.(true);
 
+
                 if (user.displayName) {
                     props.displayName?.(user.displayName);
                 }

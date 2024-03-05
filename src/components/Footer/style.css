@@ -9,7 +9,7 @@
     flex-direction: column;
     margin-top: 1svh;
     position: relative;
-    z-index: 3000;
+    z-index: 100;
     max-width: none;
 }
 
