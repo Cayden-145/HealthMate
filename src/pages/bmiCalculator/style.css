@@ -4,7 +4,7 @@
   --dark-color: #3a3a3a;
   --text-color: #FFFAFA;
   --grad-color-one: #061225;
-  --grad-color-two: #030f1e;
+  --grad-color-two: #020810;
   --button-background: #0d2748;
   --link: #71abff;
   --link-hover: #137bfd;
@@ -24,7 +24,7 @@ body {
   min-height: 100vh;
 
   color: var(--text-color);
-  background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
+  background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two));
 }
 
 .errors {

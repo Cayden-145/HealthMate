@@ -8,7 +8,7 @@
 
 body {
     color: var(--text-color);
-    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 80svh, var(--dark-color));
+    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two));
 }
 
 .login-page {

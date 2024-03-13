@@ -8,7 +8,7 @@
     overflow-x: hidden;
 
     color: var(--text-color);
-    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two), 100svh, var(--dark-color));
+    background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two));
 }
 
 .home__title--introduction {
@@ -103,6 +103,7 @@
 .home__offers--title {
     font-size: 30px;
     font-weight: 700;
+    margin-right: 25px;
 }
 
 .home__offers--description {
@@ -187,6 +188,10 @@
     border-radius: 30px;
 }
 
+.home__choose--grid:nth-child(1) {
+    margin-left: 0;
+}
+
 .home__choose--grid-title,
 .home__choose--grid-title-two {
     display: flex;
@@ -262,7 +267,6 @@
 
     .home__choose--container {
         flex-direction: column;
-
     }
 
     .home__choose--grid {
@@ -283,7 +287,6 @@
     .home__buttons--group-bottom {
         display: flex;
         flex-direction: column;
-        margin-left: 25px;
     }
 
     .home__buttons--full {
