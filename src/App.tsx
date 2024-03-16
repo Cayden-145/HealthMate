@@ -6,15 +6,14 @@ import BmiCalcLoader from "./pages/bmiCalculator/bmiCalcLoader";
 import HeightConvLoader from "./pages/heightConverter/heightConvLoader"                                                                                                                                                                                                                                                                     ;
 import NoPage from "./pages/error/pageNotFound/nopage";
 import WeightConvLazy from "./pages/weightConverter/weightConvLoader";
-import Login from "./pages/auth/login/login";
 import Signup from "./pages/auth/signup/signup";
 import ManageAccount from "./pages/auth/manageAccount/manageAccount";
 import ResetPassword from "./pages/auth/resetPassword/resetPassword";
-import '../src/pages/Home/home.css'
+import AccountLogin from "./pages/auth/login/accountLogin";
 
 const App = () => {
 
-    const [showPopup, setShowPopup] = useState<boolean>(false)
+    const [showPopup,setShowPopup] = useState<boolean>(false)
 
     useEffect(() => {
         const currentDomain = window.location.hostname;
@@ -55,7 +54,7 @@ const App = () => {
                     <Route path="/height-converter" element={<HeightConvLoader/>}/>
                     <Route path="/weight-converter" element={<WeightConvLazy/>}/>
                     <Route path="*" element={<NoPage/>}/>
-                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/login" element={<AccountLogin />}/>
                     <Route path="/signup" element={<Signup/>}/>
                     <Route path="/manage-account" element={<ManageAccount/>}/>
                     <Route path="/reset-password" element={<ResetPassword/>}/>

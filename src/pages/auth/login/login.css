@@ -1,8 +1,12 @@
-.login_page {
+.healthmate__login--body {
     font-family: 'Noto Sans', sans-serif;
     display: flex;
     flex-direction: column;
+
     align-items: center;
+    text-align: center;
+    align-content: center;
+
     min-height: 100vh;
 }
 
@@ -11,46 +15,82 @@ body {
     background: linear-gradient(to bottom, var(--grad-color-one), var(--grad-color-two));
 }
 
-.login-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+/* Title */
+
+.healthmate__login--title {
+    font-size: 38px;
 }
 
-.login-page__information {
-    width: 450px;
-    height: 100px;
-    text-align: center;
-    margin-top: 30px;
+.healthmate__login--title span {
+    font-size: 40px;
+    font-weight: 800;
+    background: -webkit-linear-gradient(180deg, #9cc6ff, #1c7eff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.login-page__information p {
-    color: var(--text-color);
+.healthmate__login--memo {
+    font-size: 23px;
+    margin-top: -20px;
 }
 
-.login-page__information-span {
-    font-size: 20px;
+.healthmate__login--memo span {
     font-weight: 600;
-    color: var(--text-color);
 }
 
-.login-page__container {
+/* Divider */
+
+.healthmate__login--divider {
+    display: block;
+    width: 30%;
+    height: 1px;
+    background-color: #ccc;
+    margin-top: 4svh;
+    margin-bottom: 4svh;
+    opacity: 50%;
+}
+
+/* Alternative Login */
+.healthmate__login--alternative {
     display: flex;
-    align-content: center;
-    flex-direction: column;
-    margin-top: 10vh;
+    flex-direction: row;
+    gap: 8svh;
 }
 
-.login-page__title {
-    font-size: 20px;
-    font-weight: 500;
-    margin-left: 27%;
+.healthmate__login--alternative button {
+    width: 60px;
+    height: 60px;
+    background: #3a3a3a;
     color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
-.login-page__input,
-.login-page__password {
+.healthmate__login--alternative img {
+    margin-top: 2px;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.healthmate__login--img {
+    filter: invert(100%) sepia(10%) saturate(150%) hue-rotate(180deg) brightness(120%) contrast(90%);
+}
+
+.healthmate__login--alternative button:hover {
+    background: #262626;
+}
+
+.healthmate__login--alternative button:active {
+    transform: scale(0.9);
+}
+
+/* Input Details */
+
+.healthmate__login--input,
+.healthmate__login--password {
     margin-bottom: 20px;
     background-color: var(--dark-color);
     color: var(--text-color);
@@ -61,11 +101,13 @@ body {
     padding-left: 20px;
 }
 
-.login-page__password-container {
+/* Password */
+
+.healthmate__password--container {
     position: relative;
 }
 
-.login-page__password-visible {
+.healthmate__password--visible {
     background-color: transparent;
     color: #b7b7b7;
     border: none;
@@ -78,138 +120,116 @@ body {
     cursor: pointer;
 }
 
-.login-page__button {
+/* Login Button */
+
+.healthmate__login--button {
     background-color: var(--button-background);
     border: none;
     color: var(--text-color);
-    padding: 10px 25px;
+    padding: 10px 40px;
     text-decoration: none;
-    display: inline-block;
     align-content: center;
-    font-size: 16px;
-    border-radius: 50px;
+    font-size: 20px;
+    border-radius: 15px;
     font-weight: 500;
     cursor: pointer;
-    transition: 0.5s;
-    width: 100px;
-    height: 35px;
-    margin-left: 40%;
 }
 
-.login-errors {
-    display: flex;
+.healthmate__login--button:hover {
+    background-color: #0a1c34;
 }
 
-.login-errors__text {
-    color: #cb4141;
-    font-weight: 600;
-    font-size: 17px;
-}
-
-.login-page__button:hover {
-    transition: 0.5s;
-    transform: scale(1.05);
-}
-
-.login-page__button:active {
-    transition: 0.3s;
+.healthmate__login--button:active {
     transform: scale(0.9);
 }
 
-.login-page__button:disabled {
+.healthmate__login--button:disabled {
     background-color: #2a2a2a;
     color: #808080;
     cursor: not-allowed;
 }
 
-.login-page__button:disabled:hover,
-.login-page__button:disabled:active {
+.healthmate__login--button:disabled:hover:active {
     background-color: #2a2a2a;
     color: #808080;
     transform: scale(1);
 }
 
-.login-page__signup,
-.login-page__signup-a {
-    text-decoration: none;
-    color: var(--text-color);
-    margin-top: 50px;
-    margin-left: 20%;
-    font-size: 16px;
-}
+/* Support */
 
-.login-page__signup-a {
-    margin-top: 20px;
-}
-
-.signup-text {
-    text-decoration: underline;
-    margin-left: 15px;
-    font-weight: 500;
-}
-
-.demo__container {
-    margin-top: 20svh;
-    width: 500px;
-    height: 200px;
+.healthmate__login--support {
+    margin-top: 3svh;
     display: flex;
-    flex-direction: row;
-    background: linear-gradient(to bottom, #08192FFF, #010810FF);
-    border: none;
-    box-shadow: -10px 14px 6px rgba(12, 35, 65, 0.22);
-    padding: 25px;
-    text-align: center;
-    align-items: center;
-    border-radius: 15px;
-}
-
-.demo__paragraph {
-    display: flex;
-    text-align: center;
-    color: var(--text-color);
     flex-direction: column;
 }
 
-.demo__title {
-    font-size: 20px;
-    font-weight: 500;
+.healthmate__login--support a {
     color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.demo__important {
-    margin-top: 30px;
-    font-size: 16px;
+.healthmate__login--support span {
+    margin-left: 10px;
+    text-decoration: underline;
     font-weight: 600;
-    color: #cb4141;
 }
 
-@media screen and (max-width: 792px) {
-    .login-page__information {
-        width: 85%;
-        height: auto;
+.healthmate__login--phone {
+    display: none;
+}
+
+/* Error */
+
+.healthmate__error--container-none {
+    display: none;
+}
+
+.healthmate__error--container {
+    display: flex;
+    flex-direction: column;
+}
+
+.healthmate__error--container p {
+    color: var(--error);
+    margin-bottom: 4svh;
+    margin-top: -2svh;
+}
+
+@media screen and (max-width: 500px) {
+    .healthmate__login--input,
+    .healthmate__login--password {
+        width: 300px;
     }
 
-    .login-page__container {
-        margin-top: 5svh;
+    .healthmate__login--memo {
+        width: 90%;
     }
 
-    .login-page__input {
-        width: 320px;
-        font-size: 17px;
+    .healthmate__login--divider  {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .healthmate__login--input,
+    .healthmate__login--password {
+        width: 250px;
     }
 
-    .login-page__password {
-        width: 320px;
-        font-size: 17px;
+    .healthmate__login--alternative {
+        display: none;
     }
 
-    .login-page__title {
-        margin-left: 20%;
+    .healthmate__login--divider {
+        display: none;
     }
 
-    .login-page__signup,
-    .login-page__signup-a {
-        margin: 30px 0 0 40px;
-        font-size: 17px;
+    .healthmate__login--phone {
+        display: flex;
+        width: 90%;
+        margin-bottom: 5svh;
+        color: #4b4b4b;
     }
 }

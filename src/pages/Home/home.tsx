@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Header from "../../components/Header/header";
 import './home.css';
 import Footer from "../../components/Footer/footer";
+import {Toaster} from "sonner";
 
 const Home = () => {
 
@@ -13,6 +14,7 @@ const Home = () => {
             <Header/>
 
             <div className={"home"}>
+                <Toaster richColors expand={false} position={"top-center"} duration={2000}/>
                 <div className={"home__title--content"}>
                     <p className={"home__title--introduction"}>
                         Introducing <span className={"home__title--span"}>HealthMate</span>

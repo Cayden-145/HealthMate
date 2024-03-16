@@ -7,6 +7,7 @@ import {
 import SubmitButton from "../../components/Buttons/submitButton";
 import ResetButton from "../../components/Buttons/resetButton";
 import SlidingToggle from "../../components/Toggle/toggle";
+import {Toaster} from "sonner";
 
 const WeightConvert = () => {
     const {stone, setStone} = useStoneState();
@@ -136,6 +137,7 @@ const WeightConvert = () => {
     return (
         <div className={"main"}>
             <Header />
+            <Toaster richColors expand={false} position={"top-center"} duration={2000}/>
 
             <div className={"page__title"}>
                 <p className={"page__title-text"}>

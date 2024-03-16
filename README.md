@@ -10,6 +10,19 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) ![WebStorm](https://img.shields.io/badge/webstorm-143?style=for-the-badge&logo=webstorm&logoColor=white&color=black)
 
 ```
+Account Authentication V1.6.6
+```
+- Redesigned `/login` page
+- Added the ability to login via **Google** or **Github** 
+  - This feature is currently device locked to tablets, laptops or desktops. We are working on support for mobile devices
+- Added an `unsupported domian` popup.
+  - Only shows if you aren't using the new domain *https://healthmate.site*
+- Updated css for container in `/manage-account`
+- Changed background gradient for all pages
+- Added buttons for significant pages at the bottom of `/home`
+- Fixed overflow & other styling issues on `/home`
+
+```
 Home V1.6.5
 ```
 - Overhauled Home page
