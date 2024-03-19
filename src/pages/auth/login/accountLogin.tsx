@@ -107,7 +107,7 @@ const AccountLogin = () => {
                     </button>
 
                     <button onClick={loginViaGithub}>
-                        <img className="healthmate__login--img" src={"github.svg"} alt={"github"}/>
+                        <img src={"github.svg"} alt={"github"}/>
                     </button>
                 </div>
 
@@ -115,7 +115,7 @@ const AccountLogin = () => {
 
                 {errorCode === '' ? (
                     <div className={"healthmate__error--container-none"}></div>
-                ): (
+                ) : (
                     <div className={"healthmate__error--container"}>
                         <p>
                             {errorCode === 'auth/account-exists-with-different-credential' ? 'Account already exists\n' : ''}
@@ -123,11 +123,7 @@ const AccountLogin = () => {
                             {errorCode !== 'auth/invalid-credential' && errorCode !== 'auth/account-exists-with-different-credential' ? 'An unknown error has occurred, try again later.\n' : ''}
                         </p>
                     </div>
-                    )}
-
-                <div className={"healthmate__login--phone"}>
-                    *Using a desktop allows you to login via google or github.
-                </div>
+                )}
 
                 <div className={"healthmate__login--information"}>
                     <input

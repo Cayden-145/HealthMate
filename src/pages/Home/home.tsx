@@ -52,7 +52,7 @@ const Home = () => {
 
                 <div className={"home__grid--container"}>
                     <p className={"home__grid--title"}>
-                        HealthMate V1.6.5
+                        HealthMate V1.6.7
                     </p>
                     <div className={"home__offers--grid"}>
                         <div className={"grid__item--container"}>

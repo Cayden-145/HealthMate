@@ -10,11 +10,19 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) ![WebStorm](https://img.shields.io/badge/webstorm-143?style=for-the-badge&logo=webstorm&logoColor=white&color=black)
 
 ```
+Login via Popup on Mobile Devices V1.6.7
+```
+- Mobile phones can now login via popup (Google or GitHub)
+- Fixed some styling issues in `/login`
+- Updated Google & GitHub .svg
+- Changed /home to HealthMate v.1.6.7
+- Removed filter for GitHub.svg
+
+```
 Account Authentication V1.6.6
 ```
 - Redesigned `/login` page
-- Added the ability to login via **Google** or **Github** 
-  - This feature is currently device locked to tablets, laptops or desktops. We are working on support for mobile devices
+- Added the ability to login via **Google** or **GitHub**
 - Added an `unsupported domian` popup.
   - Only shows if you aren't using the new domain *https://healthmate.site*
 - Updated css for container in `/manage-account`

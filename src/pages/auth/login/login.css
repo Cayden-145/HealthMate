@@ -50,6 +50,12 @@ body {
     opacity: 50%;
 }
 
+.healthmate__divider--text {
+    margin: 0 10px;
+    color: #999;
+    font-weight: bold;
+}
+
 /* Alternative Login */
 .healthmate__login--alternative {
     display: flex;
@@ -58,25 +64,19 @@ body {
 }
 
 .healthmate__login--alternative button {
-    width: 60px;
-    height: 60px;
-    background: #3a3a3a;
-    color: var(--text-color);
+    width: 74px;
+    height: 74px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 20px;
+    background: #3a3a3a;
+    padding: 0;
 }
 
 .healthmate__login--alternative img {
-    margin-top: 2px;
-    width: 50px;
-    height: 50px;
-    margin-right: 20px;
-}
-
-.healthmate__login--img {
-    filter: invert(100%) sepia(10%) saturate(150%) hue-rotate(180deg) brightness(120%) contrast(90%);
+    width: 64px;
+    height: 64px;
+    background: transparent;
 }
 
 .healthmate__login--alternative button:hover {
@@ -176,10 +176,6 @@ body {
     font-weight: 600;
 }
 
-.healthmate__login--phone {
-    display: none;
-}
-
 /* Error */
 
 .healthmate__error--container-none {
@@ -218,18 +214,27 @@ body {
         width: 250px;
     }
 
-    .healthmate__login--alternative {
-        display: none;
+    .healthmate__login--alternative button {
+        width: 74px;
+        height: 74px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #3a3a3a;
+        padding: 0;
     }
 
-    .healthmate__login--divider {
-        display: none;
+    .healthmate__login--alternative img {
+        width: 64px;
+        height: 64px;
+        background: transparent;
     }
 
-    .healthmate__login--phone {
-        display: flex;
-        width: 90%;
-        margin-bottom: 5svh;
-        color: #4b4b4b;
+    .healthmate__login--alternative button:hover {
+        background: #262626;
+    }
+
+    .healthmate__login--alternative button:active {
+        transform: scale(0.9);
     }
 }
