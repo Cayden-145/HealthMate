@@ -87,6 +87,17 @@ body {
     transform: scale(0.9);
 }
 
+.healthmate__login--alternative button:disabled {
+    cursor: not-allowed;
+    background-color: #2a2a2a;
+    transform: scale(1);
+}
+
+.healthmate__login--alternative button:hover:active:disabled {
+    background-color: #2a2a2a;
+    transform: scale(1);
+}
+
 /* Input Details */
 
 .healthmate__login--input,

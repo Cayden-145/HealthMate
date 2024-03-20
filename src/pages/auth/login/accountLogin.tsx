@@ -102,11 +102,11 @@ const AccountLogin = () => {
                 <div className={"divider"}></div>
 
                 <div className={"healthmate__login--alternative"}>
-                    <button onClick={loginViaGoogle}>
+                    <button disabled={isButtonDisabled} onClick={loginViaGoogle}>
                         <img src={"google.svg"} alt={"google"}/>
                     </button>
 
-                    <button onClick={loginViaGithub}>
+                    <button disabled={isButtonDisabled} onClick={loginViaGithub}>
                         <img src={"github.svg"} alt={"github"}/>
                     </button>
                 </div>
